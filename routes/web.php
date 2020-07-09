@@ -103,8 +103,15 @@ Route::get('laporan', 'LaporanController@index');
 
 
 
+// ============================================================== //
+//                                                                //
+//                         Manajemen Data                         //
+//                                                                //
+// ============================================================== //
 
 
+Route::get('entri/view', 'EntriController@view');
+Route::get('entri/add', 'EntriController@add');
 
 
 // =================================================

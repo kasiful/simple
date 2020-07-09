@@ -1,0 +1,20 @@
+1 user = 1 wilker
+bisa edit hanya di wilker
+
+output excel di protect
+
+tambahkan menu pilih tanggal 
+1. bulanan
+2. custom
+
+
+tambah submenu di lihat laporan
+1. rekap seperti di hape
+2. generate laporan (nama sementara)
+3. download laporan
+
+================
+
+untuk android
+
+level user

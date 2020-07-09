@@ -90,22 +90,34 @@
                 </div>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Entri Data</span></a>
-                    
+
+                    <a class="nav-link collapsed" href="<?php echo asset('sbadmin') ?>/#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Entri Data</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Entri Data</h6>
+                            <a class="collapse-item" href="<?php echo url('/entri/view') ?>">Lihat entrian</a>
+                            <a class="collapse-item" href="<?php echo url('/entri/add') ?>">Tambah isian</a>
+                        </div>
+                    </div>
+
+
+ 
+
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Edit</span></a>
-                    
+
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Hapus Entrian</span></a>
-                    
+
                     <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-check"></i>
                         <span>Approve Data</span></a>
-                    
+
                 </li>
 
 
@@ -140,7 +152,7 @@
 
                             <!-- Nav Item - Messages -->
 
-                            
+
 
 
                             <div class="topbar-divider d-none d-sm-block"></div>
@@ -163,7 +175,7 @@
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
-                                    
+
                                     <a class="dropdown-item" href="<?php echo asset('sbadmin') ?>/#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
