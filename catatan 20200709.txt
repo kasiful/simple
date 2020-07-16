@@ -18,3 +18,17 @@ tambah submenu di lihat laporan
 untuk android
 
 level user
+
+
+================
+
+catatan untuk git
+
+buat branch:
+git branch <nama branch>
+
+pindah branch:
+git checkout <nama branch>
+
+gabungin branch lain ke branch sekarang:
+git merge <branch>
