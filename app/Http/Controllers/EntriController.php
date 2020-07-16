@@ -30,7 +30,6 @@ class EntriController extends Controller
         $kantor_unit = DB::select("select * from list_kantor_unit");
         $pelabuhan = DB::select("select * from list_pelabuhan");
         
-//        print_r($prov);
         return view('entri/add',[
             "prov" => $prov,
             "kab" => $kab,
@@ -39,5 +38,11 @@ class EntriController extends Controller
         ]);
         
     }
+    
+    public function add_process(Request $request){
+//        print_r($_POST);
+        echo json_encode($_POST);
+    }
+    
     
 }

@@ -113,6 +113,8 @@ Route::get('laporan', 'LaporanController@index');
 Route::get('entri/view', 'EntriController@view');
 Route::get('entri/add', 'EntriController@add');
 
+Route::post('entri/add_process', 'EntriController@add_process');
+
 
 // =================================================
 // DocumentViewer Library

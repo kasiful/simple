@@ -59,19 +59,32 @@
                             <b>II</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-3" data-toggle="pill" href="#tab-3" role="tab" aria-controls="pills-contact" aria-selected="false">
-                            <b>III</b></a>
+                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-3a" data-toggle="pill" href="#tab-3a" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <b>III.a</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-4" data-toggle="pill" href="#tab-4" role="tab" aria-controls="pills-contact" aria-selected="false">
-                            <b>IV</b></a>
+                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-3b" data-toggle="pill" href="#tab-3b" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <b>III.b</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-4a" data-toggle="pill" href="#tab-4a" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <b>IV.a</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-4b" data-toggle="pill" href="#tab-4b" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <b>IV.b</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm shadow-sm" id="pills-tab-5" data-toggle="pill" href="#tab-5" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <b>V</b></a>
                     </li>
                 </ul>
 
             </div>
             <div class="card-body">
 
-                <form id="formulir">
+                <form id="formulir" method="post" action="<?php echo url("entri/add_process") ?>">
+                    @csrf
 
                     <div class="tab-content" id="pills-tabContent">
                         <div id="tab-1" class="tab-pane fade active show" role="tabpanel" aria-labelledby="pills-tab-1">
@@ -186,7 +199,17 @@
                                     </tr>
                                     <tr>
                                         <td>Jenis Kapal</td>
-                                        <td><input class="form-control" type="text" name="nama_kapal_1"></td>
+                                        <td>
+                                            <select class="form-control" name="nama_kapal_1">
+                                                <?php
+                                                $temp = ["KLM", "KM", "TB", "TK", "SPOB", "MT", "MV"];
+                                                foreach ($temp as $x) {
+                                                    echo "<option value='$x'>$x</option>";
+                                                }
+                                                ?>
+                                            </select>
+
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Bendera</td>
@@ -286,13 +309,13 @@
                             <a class="btn btn-primary" style="color:white" onclick="pindah('tab-1')">
                                 Prev</a>
 
-                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-3')">
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-3a')">
                                 Next</a>
 
                         </div>
 
-                        <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="pills-tab-3">
-                            <h3>III. Pelayaran Dalam Negeri (Bongkar Barang)</h3>
+                        <div class="tab-pane fade" id="tab-3a" role="tabpanel" aria-labelledby="pills-tab-3a">
+                            <h3>III.a. Pelayaran Dalam Negeri (Bongkar Barang)</h3>
                             <!-- Button trigger modal -->
 
                             <table class="table table-bordered">
@@ -352,8 +375,227 @@
                             <a class="btn btn-primary" style="color:white" onclick="pindah('tab-2')">
                                 Prev</a>
 
-                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4')">
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-3b')">
                                 Next</a>
+
+                        </div>
+
+
+
+
+                        <div class="tab-pane fade" id="tab-3b" role="tabpanel" aria-labelledby="pills-tab-3b">
+                            <h3>III.b. Pelayaran Dalam Negeri (Muat Barang)</h3>
+                            <!-- Button trigger modal -->
+
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Bendera</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr id="input-tambah-2">
+                                        <td><input class="form-control" type="number" id="input-r18"></td>
+                                        <td><select class="form-control" id="input-r18s">
+                                                <option value="Kg">Kg</option>
+                                                <option value="Metric Ton">Metric Ton</option>
+                                                <option value="Ton">Ton</option>
+                                                <option value="M3">M3</option>
+                                                <option value="Unit">Unit</option>
+                                                <option value="Batang">Batang</option>
+                                                <option value="Ekor">Ekor</option>
+                                                <option value="Bal">Bal</option>
+                                                <option value="Rak">Rak</option>
+                                            </select></td>
+                                        <td><input class="form-control" type="text" id="input-r18n"></td>
+                                        <td><input class="form-control" type="text" id="input-r19"></td>
+                                </tbody>
+
+                            </table>
+
+
+                            <button type="button" id='tambah-2'>
+                                Tambah
+                            </button>
+
+                            <br/><br/>
+
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Bendera</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tabel-input-dalamnegeri-muat">
+
+                                </tbody>
+                            </table>
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-3a')">
+                                Prev</a>
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4a')">
+                                Next</a>
+
+                        </div>
+
+
+
+                        <div class="tab-pane fade" id="tab-4a" role="tabpanel" aria-labelledby="pills-tab-4a">
+                            <h3>IV.a. Pelayaran Luar Negeri (Bongkar Barang)</h3>
+                            <!-- Button trigger modal -->
+
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Bendera</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr id="input-tambah-3">
+                                        <td><input class="form-control" type="number" id="input-r20"></td>
+                                        <td><select class="form-control" id="input-r20s">
+                                                <option value="Kg">Kg</option>
+                                                <option value="Metric Ton">Metric Ton</option>
+                                                <option value="Ton">Ton</option>
+                                                <option value="M3">M3</option>
+                                                <option value="Unit">Unit</option>
+                                                <option value="Batang">Batang</option>
+                                                <option value="Ekor">Ekor</option>
+                                                <option value="Bal">Bal</option>
+                                                <option value="Rak">Rak</option>
+                                            </select></td>
+                                        <td><input class="form-control" type="text" id="input-r20n"></td>
+                                        <td><input class="form-control" type="text" id="input-r20k"></td>
+                                </tbody>
+
+                            </table>
+
+
+                            <button type="button" id='tambah-3'>
+                                Tambah
+                            </button>
+
+                            <br/><br/>
+
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Bendera</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tabel-input-luarnegeri-bongkar">
+
+                                </tbody>
+                            </table>
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-3b')">
+                                Prev</a>
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4b')">
+                                Next</a>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-4b" role="tabpanel" aria-labelledby="pills-tab-4b">
+                            <h3>IV.b. Pelayaran Luar Negeri (Muat Barang)</h3>
+                            <!-- Button trigger modal -->
+
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Bendera</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr id="input-tambah-4">
+                                        <td><input class="form-control" type="number" id="input-r21"></td>
+                                        <td><select class="form-control" id="input-r21s">
+                                                <option value="Kg">Kg</option>
+                                                <option value="Metric Ton">Metric Ton</option>
+                                                <option value="Ton">Ton</option>
+                                                <option value="M3">M3</option>
+                                                <option value="Unit">Unit</option>
+                                                <option value="Batang">Batang</option>
+                                                <option value="Ekor">Ekor</option>
+                                                <option value="Bal">Bal</option>
+                                                <option value="Rak">Rak</option>
+                                            </select></td>
+                                        <td><input class="form-control" type="text" id="input-r21n"></td>
+                                        <td><input class="form-control" type="text" id="input-r21k"></td>
+                                </tbody>
+
+                            </table>
+
+
+                            <button type="button" id='tambah-4'>
+                                Tambah
+                            </button>
+
+                            <br/><br/>
+
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>Jumlah Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Bendera</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tabel-input-luarnegeri-muat">
+
+                                </tbody>
+                            </table>
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4a')">
+                                Prev</a>
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-5')">
+                                Next</a>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="pills-tab-5">
+                            <h3>V. Keterangan</h3>
+                            <!-- Button trigger modal -->
+
+                            <table class="table table-bordered">
+
+                                <textarea name="ket" class="form-control"></textarea>
+
+                            </table>
+
+
+                            <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4b')">
+                                Prev</a>
+
+                            <input class="btn btn-primary" style="color:white"  type="submit">
 
                         </div>
 
@@ -469,13 +711,75 @@
 //                alert(temp);
                 var temp2 = $("#tabel-input-dalamnegeri-bongkar").html();
                 $("#tabel-input-dalamnegeri-bongkar").html(temp2 + temp);
-                
+
                 $("#input-r16").val("");
                 $("#input-r16s").val("");
                 $("#input-r16n").val("");
                 $("#input-r17").val("");
 
             });
+
+
+            $("#tambah-2").click(function () {
+                temp_id = temp_id + 1;
+                var temp = '<tr id="tambah-2-' + temp_id + '">' +
+                        '<td><input type="hidden" name="r18[]" value="' + $("#input-r18").val() + '">' + $("#input-r18").val() + '</td>' +
+                        '<td><input type="hidden" name="r18s[]" value="' + $("#input-r18s").val() + '">' + $("#input-r18s").val() + '</td>' +
+                        '<td><input type="hidden" name="r18n[]" value="' + $("#input-r18n").val() + '">' + $("#input-r18n").val() + '</td>' +
+                        '<td><input type="hidden" name="r19[]" value="' + $("#input-r19").val() + '">' + $("#input-r19").val() + '</td>' +
+                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-2-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                        '</tr>';
+
+//                alert(temp);
+                var temp2 = $("#tabel-input-dalamnegeri-muat").html();
+                $("#tabel-input-dalamnegeri-muat").html(temp2 + temp);
+
+                $("#input-r18").val("");
+                $("#input-r18s").val("");
+                $("#input-r18n").val("");
+                $("#input-r19").val("");
+            });
+
+            $("#tambah-3").click(function () {
+                temp_id = temp_id + 1;
+                var temp = '<tr id="tambah-3-' + temp_id + '">' +
+                        '<td><input type="hidden" name="r20[]" value="' + $("#input-r20").val() + '">' + $("#input-r20").val() + '</td>' +
+                        '<td><input type="hidden" name="r20s[]" value="' + $("#input-r20s").val() + '">' + $("#input-r20s").val() + '</td>' +
+                        '<td><input type="hidden" name="r20n[]" value="' + $("#input-r20n").val() + '">' + $("#input-r20n").val() + '</td>' +
+                        '<td><input type="hidden" name="r20k[]" value="' + $("#input-r20k").val() + '">' + $("#input-r20k").val() + '</td>' +
+                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-3-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                        '</tr>';
+
+//                alert(temp);
+                var temp2 = $("#tabel-input-luarnegeri-bongkar").html();
+                $("#tabel-input-luarnegeri-bongkar").html(temp2 + temp);
+
+                $("#input-r20").val("");
+                $("#input-r20s").val("");
+                $("#input-r20n").val("");
+                $("#input-r20k").val("");
+            });
+
+            $("#tambah-4").click(function () {
+                temp_id = temp_id + 1;
+                var temp = '<tr id="tambah-4-' + temp_id + '">' +
+                        '<td><input type="hidden" name="r21[]" value="' + $("#input-r21").val() + '">' + $("#input-r21").val() + '</td>' +
+                        '<td><input type="hidden" name="r21s[]" value="' + $("#input-r21s").val() + '">' + $("#input-r21s").val() + '</td>' +
+                        '<td><input type="hidden" name="r21n[]" value="' + $("#input-r21n").val() + '">' + $("#input-r21n").val() + '</td>' +
+                        '<td><input type="hidden" name="r21k[]" value="' + $("#input-r21k").val() + '">' + $("#input-r21k").val() + '</td>' +
+                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-4-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                        '</tr>';
+
+//                alert(temp);
+                var temp2 = $("#tabel-input-luarnegeri-muat").html();
+                $("#tabel-input-luarnegeri-muat").html(temp2 + temp);
+
+                $("#input-r21").val("");
+                $("#input-r21s").val("");
+                $("#input-r21n").val("");
+                $("#input-r21k").val("");
+            });
+
         });
     </script>
 
