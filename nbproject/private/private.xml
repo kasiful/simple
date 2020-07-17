@@ -5,7 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/simple/app/Http/Controllers/EntriController.php</file>
             <file>file:/C:/xampp/htdocs/simple/resources/views/entri/add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/simple/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/simple/app/Http/Controllers/Dashboard.php</file>
         </group>
     </open-files>
 </project-private>

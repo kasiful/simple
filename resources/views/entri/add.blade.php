@@ -233,7 +233,7 @@
                                     </tr>
                                     <tr>
                                         <td>Volume NRT</td>
-                                        <td><input class="form-control"  type="number" name=""></td>
+                                        <td><input class="form-control"  type="number" name="volume_nrt"></td>
                                     </tr>
                                     <tr>
                                         <td>Panjang DWT</td>

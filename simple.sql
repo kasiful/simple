@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jul 2020 pada 12.08
+-- Waktu pembuatan: 16 Jul 2020 pada 14.57
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -58,7 +58,7 @@ CREATE TABLE `laporan_bulanan` (
   `penumpang_turun` int(11) NOT NULL,
   `ket` text NOT NULL,
   `operator` varchar(100) NOT NULL,
-  `keygen` varchar(25) NOT NULL,
+  `keygen` varchar(50) NOT NULL,
   `approval` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -783,7 +783,7 @@ CREATE TABLE `simple_tbl_pdn_bongkar_barang` (
   `r16s` varchar(100) NOT NULL,
   `r16n` varchar(200) NOT NULL,
   `r17` varchar(200) NOT NULL,
-  `keygen` varchar(25) NOT NULL
+  `keygen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -798,7 +798,7 @@ CREATE TABLE `simple_tbl_pdn_muat_barang` (
   `r18s` varchar(100) NOT NULL,
   `r18n` varchar(200) NOT NULL,
   `r19` varchar(200) NOT NULL,
-  `keygen` varchar(25) NOT NULL
+  `keygen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -813,7 +813,7 @@ CREATE TABLE `simple_tbl_pln_bongkar_barang` (
   `r20s` varchar(100) NOT NULL,
   `r20n` varchar(200) NOT NULL,
   `r20k` varchar(200) NOT NULL,
-  `keygen` varchar(25) NOT NULL
+  `keygen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -828,7 +828,7 @@ CREATE TABLE `simple_tbl_pln_muat_barang` (
   `r21s` varchar(100) NOT NULL,
   `r21n` varchar(200) NOT NULL,
   `r21k` varchar(200) NOT NULL,
-  `keygen` varchar(25) NOT NULL
+  `keygen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -878,7 +878,8 @@ INSERT INTO `user_token` (`id`, `user_id`, `username`, `token`) VALUES
 (4, 1, 'admin', 'Tm6U2c6e42no7uKhOqJyBV8e11fELd'),
 (7, 1, 'admin', '3NDQCUhTA0q06J6VmBuZKiX4rptWR8'),
 (9, 1, 'admin', 'IAuewqS1gH9LXzVR2l4CIUzDWJvuOt'),
-(10, 1, 'admin', 'ZzqeOMVfzPp3sw5iOWIIELO7nr0sja');
+(10, 1, 'admin', 'ZzqeOMVfzPp3sw5iOWIIELO7nr0sja'),
+(11, 1, 'admin', 'JG8CkKuwSO51BfSQFx92GwpOyq5oen');
 
 -- --------------------------------------------------------
 
@@ -887,7 +888,7 @@ INSERT INTO `user_token` (`id`, `user_id`, `username`, `token`) VALUES
 --
 DROP TABLE IF EXISTS `list_kab`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab` from (`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab` from (`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -896,7 +897,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `list_kantor_unit`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit` from ((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit` from ((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -905,7 +906,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `list_pelabuhan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_pelabuhan`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit`,`d`.`id` AS `pelabuhan_id`,`d`.`pelabuhan` AS `pelabuhan` from (((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) join `master_pelabuhan` `d` on((`d`.`kantor_unit_id` = `c`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_pelabuhan`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit`,`d`.`id` AS `pelabuhan_id`,`d`.`pelabuhan` AS `pelabuhan` from (((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) join `master_pelabuhan` `d` on((`d`.`kantor_unit_id` = `c`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -916,7 +917,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `laporan_bulanan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `pelabuhan_id` (`pelabuhan_id`);
+  ADD KEY `pelabuhan_id` (`pelabuhan_id`),
+  ADD KEY `keygen` (`keygen`);
 
 --
 -- Indeks untuk tabel `master_kab`
@@ -955,24 +957,28 @@ ALTER TABLE `master_prov`
 -- Indeks untuk tabel `simple_tbl_pdn_bongkar_barang`
 --
 ALTER TABLE `simple_tbl_pdn_bongkar_barang`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `keygen` (`keygen`);
 
 --
 -- Indeks untuk tabel `simple_tbl_pdn_muat_barang`
 --
 ALTER TABLE `simple_tbl_pdn_muat_barang`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `keygen` (`keygen`);
 
 --
 -- Indeks untuk tabel `simple_tbl_pln_bongkar_barang`
 --
 ALTER TABLE `simple_tbl_pln_bongkar_barang`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `keygen` (`keygen`);
 
 --
 -- Indeks untuk tabel `simple_tbl_pln_muat_barang`
 --
 ALTER TABLE `simple_tbl_pln_muat_barang`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `keygen` (`keygen`);
 
 --
@@ -997,13 +1003,37 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT untuk tabel `laporan_bulanan`
 --
 ALTER TABLE `laporan_bulanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_leveluser`
 --
 ALTER TABLE `master_leveluser`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `simple_tbl_pdn_bongkar_barang`
+--
+ALTER TABLE `simple_tbl_pdn_bongkar_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `simple_tbl_pdn_muat_barang`
+--
+ALTER TABLE `simple_tbl_pdn_muat_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `simple_tbl_pln_bongkar_barang`
+--
+ALTER TABLE `simple_tbl_pln_bongkar_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `simple_tbl_pln_muat_barang`
+--
+ALTER TABLE `simple_tbl_pln_muat_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -1015,7 +1045,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -1038,6 +1068,30 @@ ALTER TABLE `master_kantor_unit`
 --
 ALTER TABLE `master_pelabuhan`
   ADD CONSTRAINT `master_pelabuhan_ibfk_1` FOREIGN KEY (`kantor_unit_id`) REFERENCES `master_kantor_unit` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `simple_tbl_pdn_bongkar_barang`
+--
+ALTER TABLE `simple_tbl_pdn_bongkar_barang`
+  ADD CONSTRAINT `simple_tbl_pdn_bongkar_barang_ibfk_1` FOREIGN KEY (`keygen`) REFERENCES `laporan_bulanan` (`keygen`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `simple_tbl_pdn_muat_barang`
+--
+ALTER TABLE `simple_tbl_pdn_muat_barang`
+  ADD CONSTRAINT `simple_tbl_pdn_muat_barang_ibfk_1` FOREIGN KEY (`keygen`) REFERENCES `laporan_bulanan` (`keygen`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `simple_tbl_pln_bongkar_barang`
+--
+ALTER TABLE `simple_tbl_pln_bongkar_barang`
+  ADD CONSTRAINT `simple_tbl_pln_bongkar_barang_ibfk_1` FOREIGN KEY (`keygen`) REFERENCES `laporan_bulanan` (`keygen`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `simple_tbl_pln_muat_barang`
+--
+ALTER TABLE `simple_tbl_pln_muat_barang`
+  ADD CONSTRAINT `simple_tbl_pln_muat_barang_ibfk_1` FOREIGN KEY (`keygen`) REFERENCES `laporan_bulanan` (`keygen`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `user`
