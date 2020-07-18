@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Manajemen Data')
+@section('title', 'Manajemen Data / Tambah Entrian')
 
 
 @section('css')
@@ -83,7 +83,7 @@
             </div>
             <div class="card-body">
 
-                <form id="formulir" method="post" action="<?php echo url("entri/add_process") ?>">
+                <form id="formulir" method="post" action="<?php echo url("entri/add/process") ?>">
                     @csrf
 
                     <div class="tab-content" id="pills-tabContent">
@@ -609,188 +609,213 @@
 
     </div>
 
-
-    @endsection
-
+</div>
 
 
-    @section('js')
+@endsection
+
+
+
+@section('js')
 
 
 <!--<script src="<?php echo asset('sbadmin') ?>/vendor/datatables/jquery.dataTables.min.js"></script>-->
 <!--<script src="<?php echo asset('sbadmin') ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
 
-    <script src="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.js"></script>
+<script src="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.js"></script>
 
-
-
-    <script>
-                                //                                $(document).ready(function () {
-                                //                                    $('#dataTable').DataTable();
-                                //                                });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".datepicker").datepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true,
+<?php
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == 'berhasil') {
+        ?>
+        <script>
+                            $(document).ready(function () {
+                                alert("Penyimpanan data berhasil");
+                            });
+        </script>
+        <?php
+    } else if ($_GET['status'] == 'gagal') {
+        ?>
+        <script>
+            $(document).ready(function () {
+                alert("Gagal menyimpan data, silahkan hubungi admin");
             });
+        </script>
+
+        <?php
+    }
+}
+?>
+
+
+
+<script>
+    //                                $(document).ready(function () {
+    //                                    $('#dataTable').DataTable();
+    //                                });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".datepicker").datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+        });
+
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#kode-xx").change(function () {
+            var kode = $(this).val();
+
+            $("#kode-xxxx").val("0000");
+            $("#kode-xxxx option").hide();
+
+            $("#kode-xxxxxx").val("000000");
+            $("#kode-xxxxxx option").hide();
+
+            $("#kode-xxxxxxxx").val("00000000");
+            $("#kode-xxxxxxxx option").hide();
+
+            $(".kode-" + kode).show();
 
         });
-    </script>
+
+        $("#kode-xxxx").change(function () {
+            var kode = $(this).val();
+
+            $("#kode-xxxxxx").val("000000");
+            $("#kode-xxxxxx option").hide();
+
+            $("#kode-xxxxxxxx").val("00000000");
+            $("#kode-xxxxxxxx option").hide();
+
+            $(".kode-" + kode).show();
+        });
+
+        $("#kode-xxxxxx").change(function () {
+            var kode = $(this).val();
+
+            $("#kode-xxxxxxxx").val("00000000");
+            $("#kode-xxxxxxxx option").hide();
+
+            $(".kode-" + kode).show();
+        });
+
+    });
+</script>
+
+<script>
+    function pindah(x) {
+        $("#pills-" + x).click();
+    }
+</script>
 
 
-    <script>
-        $(document).ready(function () {
-            $("#kode-xx").change(function () {
-                var kode = $(this).val();
+<script>
+    var temp_id = 0;
+</script>
 
-                $("#kode-xxxx").val("0000");
-                $("#kode-xxxx option").hide();
+<script>
 
-                $("#kode-xxxxxx").val("000000");
-                $("#kode-xxxxxx option").hide();
+    $(document).ready(function () {
+        $("#tambah-1").click(function () {
+            temp_id = temp_id + 1;
+            var temp = '<tr id="tambah-1-' + temp_id + '">' +
+                    '<td><input type="hidden" name="r16[]" value="' + $("#input-r16").val() + '">' + $("#input-r16").val() + '</td>' +
+                    '<td><input type="hidden" name="r16s[]" value="' + $("#input-r16s").val() + '">' + $("#input-r16s").val() + '</td>' +
+                    '<td><input type="hidden" name="r16n[]" value="' + $("#input-r16n").val() + '">' + $("#input-r16n").val() + '</td>' +
+                    '<td><input type="hidden" name="r17[]" value="' + $("#input-r17").val() + '">' + $("#input-r17").val() + '</td>' +
+                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-1-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                    '</tr>';
 
-                $("#kode-xxxxxxxx").val("00000000");
-                $("#kode-xxxxxxxx option").hide();
+            //                alert(temp);
+            var temp2 = $("#tabel-input-dalamnegeri-bongkar").html();
+            $("#tabel-input-dalamnegeri-bongkar").html(temp2 + temp);
 
-                $(".kode-" + kode).show();
-
-            });
-
-            $("#kode-xxxx").change(function () {
-                var kode = $(this).val();
-
-                $("#kode-xxxxxx").val("000000");
-                $("#kode-xxxxxx option").hide();
-
-                $("#kode-xxxxxxxx").val("00000000");
-                $("#kode-xxxxxxxx option").hide();
-
-                $(".kode-" + kode).show();
-            });
-
-            $("#kode-xxxxxx").change(function () {
-                var kode = $(this).val();
-
-                $("#kode-xxxxxxxx").val("00000000");
-                $("#kode-xxxxxxxx option").hide();
-
-                $(".kode-" + kode).show();
-            });
+            $("#input-r16").val("");
+            $("#input-r16s").val("");
+            $("#input-r16n").val("");
+            $("#input-r17").val("");
 
         });
-    </script>
-
-    <script>
-        function pindah(x) {
-            $("#pills-" + x).click();
-        }
-    </script>
 
 
-    <script>
-        var temp_id = 0;
-    </script>
+        $("#tambah-2").click(function () {
+            temp_id = temp_id + 1;
+            var temp = '<tr id="tambah-2-' + temp_id + '">' +
+                    '<td><input type="hidden" name="r18[]" value="' + $("#input-r18").val() + '">' + $("#input-r18").val() + '</td>' +
+                    '<td><input type="hidden" name="r18s[]" value="' + $("#input-r18s").val() + '">' + $("#input-r18s").val() + '</td>' +
+                    '<td><input type="hidden" name="r18n[]" value="' + $("#input-r18n").val() + '">' + $("#input-r18n").val() + '</td>' +
+                    '<td><input type="hidden" name="r19[]" value="' + $("#input-r19").val() + '">' + $("#input-r19").val() + '</td>' +
+                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-2-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                    '</tr>';
 
-    <script>
+            //                alert(temp);
+            var temp2 = $("#tabel-input-dalamnegeri-muat").html();
+            $("#tabel-input-dalamnegeri-muat").html(temp2 + temp);
 
-        $(document).ready(function () {
-            $("#tambah-1").click(function () {
-                temp_id = temp_id + 1;
-                var temp = '<tr id="tambah-1-' + temp_id + '">' +
-                        '<td><input type="hidden" name="r16[]" value="' + $("#input-r16").val() + '">' + $("#input-r16").val() + '</td>' +
-                        '<td><input type="hidden" name="r16s[]" value="' + $("#input-r16s").val() + '">' + $("#input-r16s").val() + '</td>' +
-                        '<td><input type="hidden" name="r16n[]" value="' + $("#input-r16n").val() + '">' + $("#input-r16n").val() + '</td>' +
-                        '<td><input type="hidden" name="r17[]" value="' + $("#input-r17").val() + '">' + $("#input-r17").val() + '</td>' +
-                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-1-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                        '</tr>';
-
-//                alert(temp);
-                var temp2 = $("#tabel-input-dalamnegeri-bongkar").html();
-                $("#tabel-input-dalamnegeri-bongkar").html(temp2 + temp);
-
-                $("#input-r16").val("");
-                $("#input-r16s").val("");
-                $("#input-r16n").val("");
-                $("#input-r17").val("");
-
-            });
-
-
-            $("#tambah-2").click(function () {
-                temp_id = temp_id + 1;
-                var temp = '<tr id="tambah-2-' + temp_id + '">' +
-                        '<td><input type="hidden" name="r18[]" value="' + $("#input-r18").val() + '">' + $("#input-r18").val() + '</td>' +
-                        '<td><input type="hidden" name="r18s[]" value="' + $("#input-r18s").val() + '">' + $("#input-r18s").val() + '</td>' +
-                        '<td><input type="hidden" name="r18n[]" value="' + $("#input-r18n").val() + '">' + $("#input-r18n").val() + '</td>' +
-                        '<td><input type="hidden" name="r19[]" value="' + $("#input-r19").val() + '">' + $("#input-r19").val() + '</td>' +
-                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-2-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                        '</tr>';
-
-//                alert(temp);
-                var temp2 = $("#tabel-input-dalamnegeri-muat").html();
-                $("#tabel-input-dalamnegeri-muat").html(temp2 + temp);
-
-                $("#input-r18").val("");
-                $("#input-r18s").val("");
-                $("#input-r18n").val("");
-                $("#input-r19").val("");
-            });
-
-            $("#tambah-3").click(function () {
-                temp_id = temp_id + 1;
-                var temp = '<tr id="tambah-3-' + temp_id + '">' +
-                        '<td><input type="hidden" name="r20[]" value="' + $("#input-r20").val() + '">' + $("#input-r20").val() + '</td>' +
-                        '<td><input type="hidden" name="r20s[]" value="' + $("#input-r20s").val() + '">' + $("#input-r20s").val() + '</td>' +
-                        '<td><input type="hidden" name="r20n[]" value="' + $("#input-r20n").val() + '">' + $("#input-r20n").val() + '</td>' +
-                        '<td><input type="hidden" name="r20k[]" value="' + $("#input-r20k").val() + '">' + $("#input-r20k").val() + '</td>' +
-                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-3-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                        '</tr>';
-
-//                alert(temp);
-                var temp2 = $("#tabel-input-luarnegeri-bongkar").html();
-                $("#tabel-input-luarnegeri-bongkar").html(temp2 + temp);
-
-                $("#input-r20").val("");
-                $("#input-r20s").val("");
-                $("#input-r20n").val("");
-                $("#input-r20k").val("");
-            });
-
-            $("#tambah-4").click(function () {
-                temp_id = temp_id + 1;
-                var temp = '<tr id="tambah-4-' + temp_id + '">' +
-                        '<td><input type="hidden" name="r21[]" value="' + $("#input-r21").val() + '">' + $("#input-r21").val() + '</td>' +
-                        '<td><input type="hidden" name="r21s[]" value="' + $("#input-r21s").val() + '">' + $("#input-r21s").val() + '</td>' +
-                        '<td><input type="hidden" name="r21n[]" value="' + $("#input-r21n").val() + '">' + $("#input-r21n").val() + '</td>' +
-                        '<td><input type="hidden" name="r21k[]" value="' + $("#input-r21k").val() + '">' + $("#input-r21k").val() + '</td>' +
-                        '<td><a onclick="hapus_baris(' + "'" + 'tambah-4-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                        '</tr>';
-
-//                alert(temp);
-                var temp2 = $("#tabel-input-luarnegeri-muat").html();
-                $("#tabel-input-luarnegeri-muat").html(temp2 + temp);
-
-                $("#input-r21").val("");
-                $("#input-r21s").val("");
-                $("#input-r21n").val("");
-                $("#input-r21k").val("");
-            });
-
+            $("#input-r18").val("");
+            $("#input-r18s").val("");
+            $("#input-r18n").val("");
+            $("#input-r19").val("");
         });
-    </script>
 
-    <script>
-        function hapus_baris(baris) {
-            $("#" + baris).remove();
-        }
-    </script>
+        $("#tambah-3").click(function () {
+            temp_id = temp_id + 1;
+            var temp = '<tr id="tambah-3-' + temp_id + '">' +
+                    '<td><input type="hidden" name="r20[]" value="' + $("#input-r20").val() + '">' + $("#input-r20").val() + '</td>' +
+                    '<td><input type="hidden" name="r20s[]" value="' + $("#input-r20s").val() + '">' + $("#input-r20s").val() + '</td>' +
+                    '<td><input type="hidden" name="r20n[]" value="' + $("#input-r20n").val() + '">' + $("#input-r20n").val() + '</td>' +
+                    '<td><input type="hidden" name="r20k[]" value="' + $("#input-r20k").val() + '">' + $("#input-r20k").val() + '</td>' +
+                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-3-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                    '</tr>';
+
+            //                alert(temp);
+            var temp2 = $("#tabel-input-luarnegeri-bongkar").html();
+            $("#tabel-input-luarnegeri-bongkar").html(temp2 + temp);
+
+            $("#input-r20").val("");
+            $("#input-r20s").val("");
+            $("#input-r20n").val("");
+            $("#input-r20k").val("");
+        });
+
+        $("#tambah-4").click(function () {
+            temp_id = temp_id + 1;
+            var temp = '<tr id="tambah-4-' + temp_id + '">' +
+                    '<td><input type="hidden" name="r21[]" value="' + $("#input-r21").val() + '">' + $("#input-r21").val() + '</td>' +
+                    '<td><input type="hidden" name="r21s[]" value="' + $("#input-r21s").val() + '">' + $("#input-r21s").val() + '</td>' +
+                    '<td><input type="hidden" name="r21n[]" value="' + $("#input-r21n").val() + '">' + $("#input-r21n").val() + '</td>' +
+                    '<td><input type="hidden" name="r21k[]" value="' + $("#input-r21k").val() + '">' + $("#input-r21k").val() + '</td>' +
+                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-4-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                    '</tr>';
+
+            //                alert(temp);
+            var temp2 = $("#tabel-input-luarnegeri-muat").html();
+            $("#tabel-input-luarnegeri-muat").html(temp2 + temp);
+
+            $("#input-r21").val("");
+            $("#input-r21s").val("");
+            $("#input-r21n").val("");
+            $("#input-r21k").val("");
+        });
+
+    });
+</script>
+
+<script>
+    function hapus_baris(baris) {
+        $("#" + baris).remove();
+    }
+</script>
 
 
-<!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
+        <!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
 
 
-    @endsection
+@endsection

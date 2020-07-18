@@ -21,6 +21,31 @@ class EntriController extends Controller {
             "pelabuhan" => $pelabuhan
         ]);
     }
+    
+    public function view_list() {
+        
+        $prov               = addslashes($_POST['prov']);
+        $kab                = addslashes($_POST['kab']);
+        $kantor_unit        = addslashes($_POST['kantor_unit']);
+        $pelabuhan_id       = addslashes($_POST['pelabuhan_id']);
+        $jenis_pelayaran    = addslashes($_POST['jenis_pelayaran']);
+        $bulan              = addslashes($_POST['bulan']);
+        $tahun              = addslashes($_POST['tahun']);
+        
+        print_r($_POST);
+        
+//        <th>Jenis Kapal</th>
+//                            <th>Nama Kapal</th>
+//                            <th>Bendera</th>
+//                            <th>Pemilik</th>
+//                            <th>Agen</th>
+//                            <th>Aksi</th>
+        
+
+    }
+    
+    
+    
 
     public function add() {
         $prov = DB::select("select * from master_prov");
@@ -128,136 +153,141 @@ class EntriController extends Controller {
         $ket = addslashes($_POST['ket']);
         $keygen = md5(date("Y-m-d h:i:sa") . " " . generateRandomString(5));
         $operator = "Operator";
-        
-        
 
-        $sql = "INSERT INTO `laporan_bulanan`("
-                . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
-                . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
-                . "`nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, "
-                . "`panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, "
-                . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
-                . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
-                . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
-                . "`ket`, `operator`, `keygen`, `approval`) VALUES ("
-                . "$prov,"
-                . "$kab,"
-                . "$bulan,"
-                . "$tahun,"
-                . "$pelabuhan_id,"
-                . "$jenis_pelayaran,"
-                . "'$nama_kapal_1',"
-                . "'$nama_kapal',"
-                . "'$nama_agen_kapal',"
-                . "'$bendera',"
-                . "'$pemilik',"
-                . "$panjang_kapal,"
-                . "$panjang_grt,"
-                . "$volume_nrt,"
-                . "$panjang_dwt,"
-                . "'$tiba_tgl',"
-                . "'$tiba_jam',"
-                . "'$tiba_pelab_asal',"
-                . "'$tambat_tgl',"
-                . "'$tambat_jam',"
-                . "'$tambat_jenis',"
-                . "'$berangkat_tgl',"
-                . "'$berangkat_jam',"
-                . "'$berangkat_pelab_tujuan',"
-                . "$penumpang_naik,"
-                . "$penumpang_turun,"
-                . "'$ket',"
-                . "'$operator',"
-                . "'$keygen',"
-                . "0"
-                . ")";
+        DB::beginTransaction();
 
-        DB::insert($sql);
+        try {
+            $sql = "INSERT INTO `laporan_bulanan`("
+                    . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
+                    . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
+                    . "`nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, "
+                    . "`panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, "
+                    . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
+                    . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
+                    . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
+                    . "`ket`, `operator`, `keygen`, `approval`) VALUES ("
+                    . "$prov,"
+                    . "$kab,"
+                    . "$bulan,"
+                    . "$tahun,"
+                    . "$pelabuhan_id,"
+                    . "$jenis_pelayaran,"
+                    . "'$nama_kapal_1',"
+                    . "'$nama_kapal',"
+                    . "'$nama_agen_kapal',"
+                    . "'$bendera',"
+                    . "'$pemilik',"
+                    . "$panjang_kapal,"
+                    . "$panjang_grt,"
+                    . "$volume_nrt,"
+                    . "$panjang_dwt,"
+                    . "'$tiba_tgl',"
+                    . "'$tiba_jam',"
+                    . "'$tiba_pelab_asal',"
+                    . "'$tambat_tgl',"
+                    . "'$tambat_jam',"
+                    . "'$tambat_jenis',"
+                    . "'$berangkat_tgl',"
+                    . "'$berangkat_jam',"
+                    . "'$berangkat_pelab_tujuan',"
+                    . "$penumpang_naik,"
+                    . "$penumpang_turun,"
+                    . "'$ket',"
+                    . "'$operator',"
+                    . "'$keygen',"
+                    . "0"
+                    . ")";
 
-        if ($table1) {
-
-            for ($i = 0; $i < count($r16); $i++) {
-                $r16[$i] = addslashes($r16[$i]);
-                $r16s[$i] = addslashes($r16s[$i]);
-                $r16n[$i] = addslashes($r16n[$i]);
-                $r17[$i] = addslashes($r17[$i]);
-                $sql = "INSERT INTO `simple_tbl_pdn_bongkar_barang`("
-                        . "`r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES ("
-                        . "{$r16[$i]},"
-                        . "'{$r16s[$i]}',"
-                        . "'{$r16n[$i]}',"
-                        . "'{$r17[$i]}',"
-                        . "'$keygen'"
-                        . ")";
-            }
-            
             DB::insert($sql);
-            
-        }
-        
-        if ($table2) {
 
-            for ($i = 0; $i < count($r18); $i++) {
-                $r18[$i] = addslashes($r18[$i]);
-                $r18s[$i] = addslashes($r18s[$i]);
-                $r18n[$i] = addslashes($r18n[$i]);
-                $r19[$i] = addslashes($r19[$i]);
-                $sql = "INSERT INTO `simple_tbl_pdn_muat_barang`("
-                        . "`r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES ("
-                        . "{$r18[$i]},"
-                        . "'{$r18s[$i]}',"
-                        . "'{$r18n[$i]}',"
-                        . "'{$r19[$i]}',"
-                        . "'$keygen'"
-                        . ")";
-            }
-            
-            DB::insert($sql);
-            
-        }
-        
-        if ($table3) {
+            if ($table1) {
 
-            for ($i = 0; $i < count($r20); $i++) {
-                $r20[$i] = addslashes($r20[$i]);
-                $r20s[$i] = addslashes($r20s[$i]);
-                $r20n[$i] = addslashes($r20n[$i]);
-                $r20k[$i] = addslashes($r20k[$i]);
-                $sql = "INSERT INTO `simple_tbl_pln_bongkar_barang`("
-                        . "`r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES ("
-                        . "{$r20[$i]},"
-                        . "'{$r20s[$i]}',"
-                        . "'{$r20n[$i]}',"
-                        . "'{$r20k[$i]}',"
-                        . "'$keygen'"
-                        . ")";
-            }
-            
-            DB::insert($sql);
-            
-        }
-        
-        if ($table4) {
+                for ($i = 0; $i < count($r16); $i++) {
+                    $r16[$i] = addslashes($r16[$i]);
+                    $r16s[$i] = addslashes($r16s[$i]);
+                    $r16n[$i] = addslashes($r16n[$i]);
+                    $r17[$i] = addslashes($r17[$i]);
+                    $sql = "INSERT INTO `simple_tbl_pdn_bongkar_barang`("
+                            . "`r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES ("
+                            . "{$r16[$i]},"
+                            . "'{$r16s[$i]}',"
+                            . "'{$r16n[$i]}',"
+                            . "'{$r17[$i]}',"
+                            . "'$keygen'"
+                            . ")";
+                }
 
-            for ($i = 0; $i < count($r21); $i++) {
-                $r21[$i] = addslashes($r21[$i]);
-                $r21s[$i] = addslashes($r21s[$i]);
-                $r21n[$i] = addslashes($r21n[$i]);
-                $r21k[$i] = addslashes($r21k[$i]);
-                $sql = "INSERT INTO `simple_tbl_pln_muat_barang`("
-                        . "`r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES ("
-                        . "{$r21[$i]},"
-                        . "'{$r21s[$i]}',"
-                        . "'{$r21n[$i]}',"
-                        . "'{$r21k[$i]}',"
-                        . "'$keygen'"
-                        . ")";
+                DB::insert($sql);
             }
+
+            if ($table2) {
+
+                for ($i = 0; $i < count($r18); $i++) {
+                    $r18[$i] = addslashes($r18[$i]);
+                    $r18s[$i] = addslashes($r18s[$i]);
+                    $r18n[$i] = addslashes($r18n[$i]);
+                    $r19[$i] = addslashes($r19[$i]);
+                    $sql = "INSERT INTO `simple_tbl_pdn_muat_barang`("
+                            . "`r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES ("
+                            . "{$r18[$i]},"
+                            . "'{$r18s[$i]}',"
+                            . "'{$r18n[$i]}',"
+                            . "'{$r19[$i]}',"
+                            . "'$keygen'"
+                            . ")";
+                }
+
+                DB::insert($sql);
+            }
+
+            if ($table3) {
+
+                for ($i = 0; $i < count($r20); $i++) {
+                    $r20[$i] = addslashes($r20[$i]);
+                    $r20s[$i] = addslashes($r20s[$i]);
+                    $r20n[$i] = addslashes($r20n[$i]);
+                    $r20k[$i] = addslashes($r20k[$i]);
+                    $sql = "INSERT INTO `simple_tbl_pln_bongkar_barang`("
+                            . "`r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES ("
+                            . "{$r20[$i]},"
+                            . "'{$r20s[$i]}',"
+                            . "'{$r20n[$i]}',"
+                            . "'{$r20k[$i]}',"
+                            . "'$keygen'"
+                            . ")";
+                }
+
+                DB::insert($sql);
+            }
+
+            if ($table4) {
+
+                for ($i = 0; $i < count($r21); $i++) {
+                    $r21[$i] = addslashes($r21[$i]);
+                    $r21s[$i] = addslashes($r21s[$i]);
+                    $r21n[$i] = addslashes($r21n[$i]);
+                    $r21k[$i] = addslashes($r21k[$i]);
+                    $sql = "INSERT INTO `simple_tbl_pln_muat_barang`("
+                            . "`r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES ("
+                            . "{$r21[$i]},"
+                            . "'{$r21s[$i]}',"
+                            . "'{$r21n[$i]}',"
+                            . "'{$r21k[$i]}',"
+                            . "'$keygen'"
+                            . ")";
+                }
+
+                DB::insert($sql);
+            }
+
+            DB::commit();
+            return redirect("entri/add?status=berhasil");
             
-            DB::insert($sql);
-            
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect("entri/add?status=gagal");
+            // something went wrong
         }
-        
     }
 
 }

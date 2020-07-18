@@ -111,9 +111,11 @@ Route::get('laporan', 'LaporanController@index');
 
 
 Route::get('entri/view', 'EntriController@view');
+Route::post('entri/view/list', 'EntriController@view_list');
+
 Route::get('entri/add', 'EntriController@add');
 
-Route::post('entri/add_process', 'EntriController@add_process');
+Route::post('entri/add/process', 'EntriController@add_process');
 
 
 // =================================================
