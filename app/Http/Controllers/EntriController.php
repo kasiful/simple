@@ -21,31 +21,37 @@ class EntriController extends Controller {
             "pelabuhan" => $pelabuhan
         ]);
     }
-    
-    public function view_list() {
-        
-        $prov               = addslashes($_POST['prov']);
-        $kab                = addslashes($_POST['kab']);
-        $kantor_unit        = addslashes($_POST['kantor_unit']);
-        $pelabuhan_id       = addslashes($_POST['pelabuhan_id']);
-        $jenis_pelayaran    = addslashes($_POST['jenis_pelayaran']);
-        $bulan              = addslashes($_POST['bulan']);
-        $tahun              = addslashes($_POST['tahun']);
-        
-        print_r($_POST);
-        
-//        <th>Jenis Kapal</th>
-//                            <th>Nama Kapal</th>
-//                            <th>Bendera</th>
-//                            <th>Pemilik</th>
-//                            <th>Agen</th>
-//                            <th>Aksi</th>
-        
 
+    public function view_list() {
+
+        $prov = addslashes($_POST['prov']);
+        $kab = addslashes($_POST['kab']);
+        $kantor_unit = addslashes($_POST['kantor_unit']);
+        $pelabuhan_id = addslashes($_POST['pelabuhan_id']);
+        $jenis_pelayaran = addslashes($_POST['jenis_pelayaran']);
+        $bulan = addslashes($_POST['bulan']);
+        $tahun = addslashes($_POST['tahun']);
+
+//        print_r($_POST);
+//        print_r("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
+        $hasil = DB::select("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
+//        print_r($hasil);
+
+        if (count($hasil) > 0) {
+            foreach ($hasil as $x) {
+                echo "<tr>";
+                echo "<td>{$x->nama_kapal_1}</td>";
+                echo "<td>{$x->nama_kapal}</td>";
+                echo "<td>{$x->bendera}</td>";
+                echo "<td>{$x->pemilik}</td>";
+                echo "<td>{$x->nama_agen_kapal}</td>";
+                echo "<td>tombol</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan=6><i>Hasil pencarian tidak ditemukan</i></td></tr>";
+        }
     }
-    
-    
-    
 
     public function add() {
         $prov = DB::select("select * from master_prov");
@@ -215,9 +221,8 @@ class EntriController extends Controller {
                             . "'{$r17[$i]}',"
                             . "'$keygen'"
                             . ")";
+                    DB::insert($sql);
                 }
-
-                DB::insert($sql);
             }
 
             if ($table2) {
@@ -235,9 +240,8 @@ class EntriController extends Controller {
                             . "'{$r19[$i]}',"
                             . "'$keygen'"
                             . ")";
+                    DB::insert($sql);
                 }
-
-                DB::insert($sql);
             }
 
             if ($table3) {
@@ -255,9 +259,8 @@ class EntriController extends Controller {
                             . "'{$r20k[$i]}',"
                             . "'$keygen'"
                             . ")";
+                    DB::insert($sql);
                 }
-
-                DB::insert($sql);
             }
 
             if ($table4) {
@@ -275,14 +278,12 @@ class EntriController extends Controller {
                             . "'{$r21k[$i]}',"
                             . "'$keygen'"
                             . ")";
+                    DB::insert($sql);
                 }
-
-                DB::insert($sql);
             }
 
             DB::commit();
             return redirect("entri/add?status=berhasil");
-            
         } catch (\Exception $e) {
             DB::rollback();
             return redirect("entri/add?status=gagal");

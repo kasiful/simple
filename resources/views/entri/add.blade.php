@@ -21,6 +21,11 @@
         border-color: #6c6f8a;
         margin-right: 5px;
     }
+
+    .galat{
+        outline: 1px solid red;
+    }    
+
 </style>
 
 
@@ -629,9 +634,9 @@ if (isset($_GET['status'])) {
     if ($_GET['status'] == 'berhasil') {
         ?>
         <script>
-                            $(document).ready(function () {
-                                alert("Penyimpanan data berhasil");
-                            });
+                                $(document).ready(function () {
+                                    alert("Penyimpanan data berhasil");
+                                });
         </script>
         <?php
     } else if ($_GET['status'] == 'gagal') {
@@ -804,7 +809,6 @@ if (isset($_GET['status'])) {
             $("#input-r21n").val("");
             $("#input-r21k").val("");
         });
-
     });
 </script>
 
@@ -812,6 +816,59 @@ if (isset($_GET['status'])) {
     function hapus_baris(baris) {
         $("#" + baris).remove();
     }
+</script>
+
+
+<script>
+    $(document).ready(function () {
+
+        $('input[type="number"]').blur(function () {
+            if (!$(this).val() || isNaN($(this).val())) {
+                $(this).addClass("galat");
+                $(this).parent().children("span").remove();
+                $(this).parent().append("<span style='color:red'>Harus terisi angka, atau ketik \"0\" jika kosong</span>");
+            } else {
+                $(this).removeClass("galat");
+                $(this).parent().children("span").remove();
+            }
+        });
+        $('input[type="text"]').blur(function () {
+            if (!$(this).val()) {
+                $(this).addClass("galat");
+                $(this).parent().children("span").remove();
+                if ($(this).hasClass("datepicker")) {
+                    $(this).parent().append("<span style='color:red'>Format tanggal harus yyyy-mm-dd</span>");
+                } else {
+                    $(this).parent().append("<span style='color:red'>Harus terisi, atau ketik \"-\" jika kosong</span>");
+                }
+            } else {
+                $(this).removeClass("galat");
+                $(this).parent().children("span").remove();
+            }
+        });
+        $('.format-jam').val("00");
+        // entrian ketika enter berubah jadi tab
+
+        $('input').on("keypress", function (e) {
+            
+            /* ENTER PRESSED*/
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                /* FOCUS ELEMENT */
+                var inputs = $(this).parents("form").eq(0).find(":input");
+                var idx = inputs.index(this);
+
+                if (idx == inputs.length - 1) {
+                    inputs[0].select()
+                } else {
+                    inputs[idx + 1].focus(); //  handles submit buttons
+                    inputs[idx + 1].select();
+                }
+                return false;
+            }
+        });
+
+    });
 </script>
 
 

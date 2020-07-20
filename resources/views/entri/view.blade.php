@@ -25,7 +25,9 @@
                 I. Informasi
             </div>
             <div class="card-body">
+                
 
+                
                 <div id="menu_laporan">
                     <table class="table table-borderless" id="tabel_menu">
                         <tr>
@@ -126,8 +128,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </td>
                         </tr>
 
@@ -226,7 +226,7 @@
 //            var url = "<?php echo url("entri/view/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
             var url = "<?php echo url("entri/view/list") ?>";
 
-            
+//            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
 
             $.ajax({
                 type: "POST",
