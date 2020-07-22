@@ -7,6 +7,13 @@
 <link href="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.css" rel="stylesheet">
 <!--<link href="<?php echo asset('form_template') ?>/css.css" rel="stylesheet">-->
 
+<style>
+    .btn {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+</style>
+
 @endsection
 
 
@@ -25,9 +32,9 @@
                 I. Informasi
             </div>
             <div class="card-body">
-                
 
-                
+
+
                 <div id="menu_laporan">
                     <table class="table table-borderless" id="tabel_menu">
                         <tr>
@@ -157,6 +164,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Jenis Kapal</th>
                             <th>Nama Kapal</th>
                             <th>Bendera</th>
@@ -167,6 +175,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>No</th>
                             <th>Jenis Kapal</th>
                             <th>Nama Kapal</th>
                             <th>Bendera</th>
@@ -185,6 +194,11 @@
     </div>
 </div>
 
+<form id="edit-form" method="post" action="<?php echo url('entri/view/edit') ?>" style="visibility: hidden">
+    @csrf
+    <input type="hidden" id="key" name="key" value="">
+</form>
+
 
 @endsection
 
@@ -200,12 +214,29 @@
 
 
 <script>
-
     $("#loading").hide();
     $("#card-hasil").hide();
     $(document).ready(function () {
         $('#dataTable').DataTable();
-    });</script>
+    });
+
+    function detil(key) {
+        var url = "<?php echo url('entri/view/detil') ?>";
+        $.post(url, {_token: "{{ csrf_token() }}", key: key})
+                .done(function (data) {
+                    var w = window.open('about:blank', 'informasi rinci kapal', "height=500,width=700");
+                    w.document.write(data);
+                    w.document.close();
+                });
+    }
+
+    function edit(key) {
+        $("#key").val(key);
+        $("#edit-form").submit();
+    }
+
+
+</script>
 
 <script>
     $(document).ready(function () {
@@ -232,14 +263,14 @@
                 type: "POST",
                 url: url,
                 data: {
-                    _token          : "{{ csrf_token() }}",
-                    prov            : prov,
-                    kab             : kab,
-                    kantor_unit     : kantor_unit,
-                    pelabuhan_id    : pelabuhan_id,
-                    jenis_pelayaran : jenis_pelayaran,
-                    bulan           : bulan,
-                    tahun           : tahun
+                    _token: "{{ csrf_token() }}",
+                    prov: prov,
+                    kab: kab,
+                    kantor_unit: kantor_unit,
+                    pelabuhan_id: pelabuhan_id,
+                    jenis_pelayaran: jenis_pelayaran,
+                    bulan: bulan,
+                    tahun: tahun
                 },
                 success: function (hasil) {
                     $("#hasil").html(hasil);

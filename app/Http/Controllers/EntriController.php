@@ -38,19 +38,88 @@ class EntriController extends Controller {
 //        print_r($hasil);
 
         if (count($hasil) > 0) {
-            foreach ($hasil as $x) {
+            foreach ($hasil as $key => $x) {
                 echo "<tr>";
+                echo "<td>" . ($key + 1) . "</td>";
                 echo "<td>{$x->nama_kapal_1}</td>";
                 echo "<td>{$x->nama_kapal}</td>";
                 echo "<td>{$x->bendera}</td>";
                 echo "<td>{$x->pemilik}</td>";
                 echo "<td>{$x->nama_agen_kapal}</td>";
-                echo "<td>tombol</td>";
+                echo "<td><span style='white-space: nowrap'>"
+                . "<button class='btn btn-primary' onclick=\"detil('{$x->keygen}')\">Detil</button>"
+                . "<button class='btn btn-success' onclick=\"edit('{$x->keygen}')\">Edit</button>"
+                . "<button class='btn btn-danger' onclick=\"hapus('{$x->keygen}')\">Hapus</button>"
+                . "</span></td>";
                 echo "</tr>";
             }
         } else {
             echo "<tr><td colspan=6><i>Hasil pencarian tidak ditemukan</i></td></tr>";
         }
+    }
+
+    public function view_detil(Request $request) {
+        $keygen = addslashes($_POST['key']);
+
+        $data1 = DB::select("select * from laporan_bulanan where keygen='$keygen'");
+        $data2 = DB::select("select * from simple_tbl_pdn_bongkar_barang where keygen='$keygen'");
+        $data3 = DB::select("select * from simple_tbl_pdn_muat_barang where keygen='$keygen'");
+        $data4 = DB::select("select * from simple_tbl_pln_bongkar_barang where keygen='$keygen'");
+        $data5 = DB::select("select * from simple_tbl_pln_muat_barang where keygen='$keygen'");
+
+
+        return view("entri/detil", [
+            "data1" => $data1,
+            "data2" => $data2,
+            "data3" => $data3,
+            "data4" => $data4,
+            "data5" => $data5
+        ]);
+    }
+
+    public function edit(Request $request) {
+        $keygen = addslashes($_POST['key']);
+
+        $data1 = DB::select("select * from laporan_bulanan where keygen='$keygen'");
+        $data2 = DB::select("select * from simple_tbl_pdn_bongkar_barang where keygen='$keygen'");
+        $data3 = DB::select("select * from simple_tbl_pdn_muat_barang where keygen='$keygen'");
+        $data4 = DB::select("select * from simple_tbl_pln_bongkar_barang where keygen='$keygen'");
+        $data5 = DB::select("select * from simple_tbl_pln_muat_barang where keygen='$keygen'");
+        
+        
+        foreach ($data1 as $x){
+            $info_alamat = DB::select("select * from list_pelabuhan where pelabuhan_id=".$x->pelabuhan_id);
+            $info_alamat = $info_alamat[0];
+        }
+        
+
+        $prov = DB::select("select * from master_prov");
+        $kab = DB::select("select * from list_kab");
+        $kantor_unit = DB::select("select * from list_kantor_unit");
+        $pelabuhan = DB::select("select * from list_pelabuhan");
+
+//        return view('entri/add', [
+//            "prov" => $prov,
+//            "kab" => $kab,
+//            "kantor_unit" => $kantor_unit,
+//            "pelabuhan" => $pelabuhan
+//        ]);
+
+//        print_r($info_alamat->prov_id);
+        
+        return view("entri/edit", [
+            "keygen" => $keygen,
+            "data1" => $data1,
+            "data2" => $data2,
+            "data3" => $data3,
+            "data4" => $data4,
+            "data5" => $data5,
+            "prov" => $prov,
+            "kab" => $kab,
+            "kantor_unit" => $kantor_unit,
+            "pelabuhan" => $pelabuhan,
+            "info_alamat" => $info_alamat
+        ]);
     }
 
     public function add() {
