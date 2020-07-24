@@ -194,9 +194,14 @@
     </div>
 </div>
 
-<form id="edit-form" method="post" action="<?php echo url('entri/view/edit') ?>" style="visibility: hidden">
+<form id="edit-form" method="post" action="<?php echo url('entri/edit') ?>" style="visibility: hidden">
     @csrf
     <input type="hidden" id="key" name="key" value="">
+</form>
+
+<form id="hapus-form" method="post" action="<?php echo url('entri/hapus') ?>" style="visibility: hidden">
+    @csrf
+    <input type="hidden" id="key1" name="key" value="">
 </form>
 
 
@@ -233,6 +238,17 @@
     function edit(key) {
         $("#key").val(key);
         $("#edit-form").submit();
+    }
+
+    function hapus(key) {
+
+        var c = confirm("Apakah anda yakin menghapus isian?");
+
+        if (c) {
+            $("#key1").val(key);
+            $("#hapus-form").submit();
+        }
+
     }
 
 
@@ -317,8 +333,21 @@
 </script>
 
 
-
-
+<script>
+<?php
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == "edit_berhasil") {
+        echo "alert('Edit data berhasil');";
+    } else if ($_GET['status'] == "edit_gagal") {
+        echo "alert('Edit data gagal dilakukan, silahkan cek isian atau hubungi admin');";
+    } else if ($_GET['status'] == "hapus_berhasil") {
+        echo "alert('Hapus data berhasil');";
+    } else if ($_GET['status'] == "hapus_gagal") {
+        echo "alert('Hapus data gagal dilakukan, silahkan cek isian atau hubungi admin');";
+    }
+}
+?>
+</script>
 
 
         <!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->

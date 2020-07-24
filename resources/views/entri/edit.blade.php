@@ -88,7 +88,7 @@
             </div>
             <div class="card-body">
 
-                <form id="formulir" method="post" action="<?php echo url("entri/add/process") ?>">
+                <form id="formulir" method="post" action="<?php echo url("entri/edit/process") ?>">
                     @csrf
 
                     <input type="hidden" name="keygen" value="<?php echo $keygen ?>">
@@ -178,7 +178,7 @@
                                                     <?php
                                                     $jenis_pelayaran = ["Pelayaran Rakyat", "Non Pelayaran Rakyat", "Perintis", "Pelayaran Nasional", "Pelayaran Luar Negeri", "Pelayaran Khusus"];
                                                     foreach ($jenis_pelayaran as $key => $x) {
-                                                        if ($d1->jenis_pelayaran == ($key+1)) {
+                                                        if ($d1->jenis_pelayaran == ($key + 1)) {
                                                             echo "<option value='" . ($key + 1) . "' selected>{$x}</option>";
                                                         } else {
                                                             echo "<option value='" . ($key + 1) . "'>{$x}</option>";
@@ -204,7 +204,7 @@
                                             <td>
                                                 <select class="form-control  custom-select-sm" name="tahun">
                                                     <?php for ($i = date('Y'); $i >= 2018; $i--) { ?>
-                                                        <option value="<?php echo $i ?>" <?php if ($d1->tahun == $i) echo "selected"?>><?php echo $i ?></option>
+                                                        <option value="<?php echo $i ?>" <?php if ($d1->tahun == $i) echo "selected" ?>><?php echo $i ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </td>
@@ -231,7 +231,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Nama Kapal</td>
-                                        <td><input class="form-control" type="text" name="nama_kapal"></td>
+                                        <td><input class="form-control" type="text" name="nama_kapal" value="<?php echo $d1->nama_kapal ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Jenis Kapal</td>
@@ -240,7 +240,11 @@
                                                 <?php
                                                 $temp = ["KLM", "KM", "TB", "TK", "SPOB", "MT", "MV"];
                                                 foreach ($temp as $x) {
-                                                    echo "<option value='$x'>$x</option>";
+                                                    if ($d1->nama_kapal_1 == $x) {
+                                                        echo "<option value='$x' selected>$x</option>";
+                                                    } else {
+                                                        echo "<option value='$x'>$x</option>";
+                                                    }
                                                 }
                                                 ?>
                                             </select>
@@ -249,42 +253,46 @@
                                     </tr>
                                     <tr>
                                         <td>Bendera</td>
-                                        <td><input class="form-control" type="text" name="bendera"></td>
+                                        <td><input class="form-control" type="text" name="bendera" value="<?php echo $d1->bendera ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Pemilik</td>
-                                        <td><input class="form-control" type="text" name="pemilik"></td>
+                                        <td><input class="form-control" type="text" name="pemilik" value="<?php echo $d1->pemilik ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Agen</td>
-                                        <td><input class="form-control" type="text" name="nama_agen_kapal"></td>
+                                        <td><input class="form-control" type="text" name="nama_agen_kapal" value="<?php echo $d1->nama_agen_kapal ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Panjang Kapal (M)</td>
-                                        <td><input class="form-control" type="number" step="0.0001" name="panjang_kapal"></td>
+                                        <td><input class="form-control" type="number" step="0.0001" name="panjang_kapal" value="<?php echo $d1->panjang_kapal ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Volume GRT</td>
-                                        <td><input class="form-control" type="number" step="0.0001" name="panjang_grt"></td>
+                                        <td><input class="form-control" type="number" step="0.0001" name="panjang_grt" value="<?php echo $d1->panjang_grt ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Volume NRT</td>
-                                        <td><input class="form-control"  type="number" name="volume_nrt"></td>
+                                        <td><input class="form-control"  type="number" name="volume_nrt" value="<?php echo $d1->volume_nrt ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Panjang DWT</td>
-                                        <td><input class="form-control" type="number" step="0.0001" name="panjang_dwt"></td>
+                                        <td><input class="form-control" type="number" step="0.0001" name="panjang_dwt" value="<?php echo $d1->panjang_dwt ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Tiba Tanggal</td>
-                                        <td><input class="form-control datepicker" type="text" name="tiba_tgl"></td>
+                                        <td><input class="form-control datepicker" type="text" name="tiba_tgl" value="<?php echo $d1->tiba_tgl ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Tiba Jam</td>
                                         <td>
                                             <span>
-                                                <input type="text" class="format-jam" name="tiba_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2"> :
-                                                <input type="text" class="format-jam" name="tiba_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2">
+                                                <?php
+                                                $temp = explode(":", $d1->tiba_jam);
+                                                ?>
+
+                                                <input type="text" class="format-jam" name="tiba_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2" value="<?php echo $temp[0] ?>"> :
+                                                <input type="text" class="format-jam" name="tiba_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2" value="<?php echo $temp[1] ?>">
                                                 <!--<input class="form-control" type="text" name="tiba_jam">-->
                                             </span>
 
@@ -292,18 +300,21 @@
                                     </tr>
                                     <tr>
                                         <td>Pelabuhan Asal</td>
-                                        <td><input class="form-control" type="text" name="tiba_pelab_asal"></td>
+                                        <td><input class="form-control" type="text" name="tiba_pelab_asal" value="<?php echo $d1->tiba_pelab_asal ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Tambat Tanggal</td>
-                                        <td><input class="form-control datepicker" type="text" name="tambat_tgl"></td>
+                                        <td><input class="form-control datepicker" type="text" name="tambat_tgl" value="<?php echo $d1->tambat_tgl ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Tambat Jam</td>
                                         <td>
                                             <span>
-                                                <input type="text" class="format-jam" name="tambat_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2"> :
-                                                <input type="text" class="format-jam" name="tambat_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2">
+                                                <?php
+                                                $temp = explode(":", $d1->tambat_jam);
+                                                ?>
+                                                <input type="text" class="format-jam" name="tambat_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2" value="<?php echo $temp[0] ?>"> :
+                                                <input type="text" class="format-jam" name="tambat_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2" value="<?php echo $temp[1] ?>">
                                                 <!--<input class="form-control" type="text" name="tiba_jam">-->
                                             </span>
                                         </td>
@@ -311,33 +322,36 @@
                                     </tr>
                                     <tr>
                                         <td>Tambat Jenis</td>
-                                        <td><input class="form-control" type="text" name="tambat_jenis"></td>
+                                        <td><input class="form-control" type="text" name="tambat_jenis" value="<?php echo $d1->tambat_jenis ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Berangkat Tanggal</td>
-                                        <td><input class="form-control datepicker" type="text" name="berangkat_tgl"></td>
+                                        <td><input class="form-control datepicker" type="text" name="berangkat_tgl" value="<?php echo $d1->berangkat_tgl ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Berangkat Jam</td>
                                         <td>
                                             <span>
-                                                <input type="text" class="format-jam" name="berangkat_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2"> :
-                                                <input type="text" class="format-jam" name="berangkat_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2">
+                                                <?php
+                                                $temp = explode(":", $d1->berangkat_jam);
+                                                ?>
+                                                <input type="text" class="format-jam" name="berangkat_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2" value="<?php echo $temp[0] ?>"> :
+                                                <input type="text" class="format-jam" name="berangkat_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2" value="<?php echo $temp[1] ?>">
                                                 <!--<input class="form-control" type="text" name="tiba_jam">-->
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Pelabuhan Tujuan</td>
-                                        <td><input class="form-control" type="text" name="berangkat_pelab_tujuan"></td>
+                                        <td><input class="form-control" type="text" name="berangkat_pelab_tujuan" value="<?php echo $d1->berangkat_pelab_tujuan ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Penumpang Naik</td>
-                                        <td><input class="form-control" type="number" name="penumpang_naik"></td>
+                                        <td><input class="form-control" type="number" name="penumpang_naik" value="<?php echo $d1->penumpang_naik ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Penumpang Turun</td>
-                                        <td><input class="form-control" type="number" name="penumpang_turun"></td>
+                                        <td><input class="form-control" type="number" name="penumpang_turun" value="<?php echo $d1->penumpang_turun ?>"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -369,15 +383,13 @@
                                     <tr id="input-tambah-1">
                                         <td><input class="form-control" type="number" id="input-r16"></td>
                                         <td><select class="form-control" id="input-r16s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
+                                                <?php
+                                                $satuan = ["Kg", "Metric Ton", "Ton", "M3", "Unit", "Batang", "Ekor", "Bal", "Rak"];
+
+                                                foreach ($satuan as $x) {
+                                                    echo "<option value='$x'>$x</option>";
+                                                }
+                                                ?>
                                             </select></td>
                                         <td><input class="form-control" type="text" id="input-r16n"></td>
                                         <td><input class="form-control" type="text" id="input-r17"></td>
@@ -404,7 +416,23 @@
                                 </thead>
 
                                 <tbody id="tabel-input-dalamnegeri-bongkar">
+                                    <?php
+                                    $loop = 1;
+                                    ?>
 
+                                    <?php
+                                    foreach ($data2 as $d2) {
+
+                                        echo "<tr id='tambah-1-$loop'>";
+                                        echo "<td><input type='hidden' name='r16[]' value='" . $d2->r16 . "'>" . $d2->r16 . "</td>";
+                                        echo "<td><input type='hidden' name='r16s[]' value='" . $d2->r16s . "'>" . $d2->r16s . "</td>";
+                                        echo "<td><input type='hidden' name='r16n[]' value='" . $d2->r16n . "'>" . $d2->r16n . "</td>";
+                                        echo "<td><input type='hidden' name='r17[]' value='" . $d2->r17 . "'>" . $d2->r17 . "</td>";
+                                        echo "<td><a onclick=\"hapus_baris('tambah-1-$loop')\" style=\"font-weight: bold; color: red\">Hapus</a></td>";
+
+                                        $loop++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 
@@ -438,15 +466,13 @@
                                     <tr id="input-tambah-2">
                                         <td><input class="form-control" type="number" id="input-r18"></td>
                                         <td><select class="form-control" id="input-r18s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
+                                                <?php
+                                                $satuan = ["Kg", "Metric Ton", "Ton", "M3", "Unit", "Batang", "Ekor", "Bal", "Rak"];
+
+                                                foreach ($satuan as $x) {
+                                                    echo "<option value='$x'>$x</option>";
+                                                }
+                                                ?>
                                             </select></td>
                                         <td><input class="form-control" type="text" id="input-r18n"></td>
                                         <td><input class="form-control" type="text" id="input-r19"></td>
@@ -473,7 +499,19 @@
                                 </thead>
 
                                 <tbody id="tabel-input-dalamnegeri-muat">
+                                    <?php
+                                    foreach ($data3 as $d3) {
 
+                                        echo "<tr id='tambah-1-$loop'>";
+                                        echo "<td><input type='hidden' name='r18[]' value='" . $d3->r18 . "'>" . $d3->r18 . "</td>";
+                                        echo "<td><input type='hidden' name='r18s[]' value='" . $d3->r18s . "'>" . $d3->r18s . "</td>";
+                                        echo "<td><input type='hidden' name='r18n[]' value='" . $d3->r18n . "'>" . $d3->r18n . "</td>";
+                                        echo "<td><input type='hidden' name='r19[]' value='" . $d3->r19 . "'>" . $d3->r19 . "</td>";
+                                        echo "<td><a onclick=\"hapus_baris('tambah-2-$loop')\" style=\"font-weight: bold; color: red\">Hapus</a></td>";
+
+                                        $loop++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 
@@ -506,15 +544,13 @@
                                     <tr id="input-tambah-3">
                                         <td><input class="form-control" type="number" id="input-r20"></td>
                                         <td><select class="form-control" id="input-r20s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
+                                                <?php
+                                                $satuan = ["Kg", "Metric Ton", "Ton", "M3", "Unit", "Batang", "Ekor", "Bal", "Rak"];
+
+                                                foreach ($satuan as $x) {
+                                                    echo "<option value='$x'>$x</option>";
+                                                }
+                                                ?>
                                             </select></td>
                                         <td><input class="form-control" type="text" id="input-r20n"></td>
                                         <td><input class="form-control" type="text" id="input-r20k"></td>
@@ -541,7 +577,19 @@
                                 </thead>
 
                                 <tbody id="tabel-input-luarnegeri-bongkar">
+                                    <?php
+                                    foreach ($data4 as $d4) {
 
+                                        echo "<tr id='tambah-1-$loop'>";
+                                        echo "<td><input type='hidden' name='r20[]' value='" . $d4->r20 . "'>" . $d4->r20 . "</td>";
+                                        echo "<td><input type='hidden' name='r20s[]' value='" . $d4->r20s . "'>" . $d4->r20s . "</td>";
+                                        echo "<td><input type='hidden' name='r20n[]' value='" . $d4->r20n . "'>" . $d4->r20n . "</td>";
+                                        echo "<td><input type='hidden' name='r20k[]' value='" . $d4->r20k . "'>" . $d4->r20k . "</td>";
+                                        echo "<td><a onclick=\"hapus_baris('tambah-3-$loop')\" style=\"font-weight: bold; color: red\">Hapus</a></td>";
+
+                                        $loop++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 
@@ -571,15 +619,13 @@
                                     <tr id="input-tambah-4">
                                         <td><input class="form-control" type="number" id="input-r21"></td>
                                         <td><select class="form-control" id="input-r21s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
+                                                <?php
+                                                $satuan = ["Kg", "Metric Ton", "Ton", "M3", "Unit", "Batang", "Ekor", "Bal", "Rak"];
+
+                                                foreach ($satuan as $x) {
+                                                    echo "<option value='$x'>$x</option>";
+                                                }
+                                                ?>
                                             </select></td>
                                         <td><input class="form-control" type="text" id="input-r21n"></td>
                                         <td><input class="form-control" type="text" id="input-r21k"></td>
@@ -606,7 +652,19 @@
                                 </thead>
 
                                 <tbody id="tabel-input-luarnegeri-muat">
+                                    <?php
+                                    foreach ($data5 as $d5) {
 
+                                        echo "<tr id='tambah-1-$loop'>";
+                                        echo "<td><input type='hidden' name='r21[]' value='" . $d5->r21 . "'>" . $d5->r21 . "</td>";
+                                        echo "<td><input type='hidden' name='r21s[]' value='" . $d5->r21s . "'>" . $d5->r21s . "</td>";
+                                        echo "<td><input type='hidden' name='r21n[]' value='" . $d5->r21n . "'>" . $d5->r21n . "</td>";
+                                        echo "<td><input type='hidden' name='r21k[]' value='" . $d5->r21k . "'>" . $d5->r21k . "</td>";
+                                        echo "<td><a onclick=\"hapus_baris('tambah-4-$loop')\" style=\"font-weight: bold; color: red\">Hapus</a></td>";
+
+                                        $loop++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 
@@ -623,7 +681,7 @@
 
                             <table class="table table-bordered">
 
-                                <textarea name="ket" class="form-control"></textarea>
+                                <textarea name="ket" class="form-control"><?php foreach($data1 as $d1) echo $d1->ket ?></textarea>
 
                             </table>
 
@@ -753,7 +811,7 @@ if (isset($_GET['status'])) {
 
 
 <script>
-    var temp_id = 0;
+    var temp_id = <?php echo $loop ?>;
 </script>
 
 <script>
