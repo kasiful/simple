@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class EntriController extends Controller {
+class EntriController extends Controller
+{
 
-    public function view() {
+    public function view()
+    {
         $prov = DB::select("select * from master_prov");
         $kab = DB::select("select * from list_kab");
         $kantor_unit = DB::select("select * from list_kantor_unit");
         $pelabuhan = DB::select("select * from list_pelabuhan");
 
-//        print_r($prov);
+        //        print_r($prov);
         return view('entri/view', [
             "prov" => $prov,
             "kab" => $kab,
@@ -22,7 +24,8 @@ class EntriController extends Controller {
         ]);
     }
 
-    public function view_list() {
+    public function view_list()
+    {
 
         $prov = addslashes($_POST['prov']);
         $kab = addslashes($_POST['kab']);
@@ -32,10 +35,10 @@ class EntriController extends Controller {
         $bulan = addslashes($_POST['bulan']);
         $tahun = addslashes($_POST['tahun']);
 
-//        print_r($_POST);
-//        print_r("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
+        //        print_r($_POST);
+        //        print_r("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
         $hasil = DB::select("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran and approval=0");
-//        print_r($hasil);
+        //        print_r($hasil);
 
         $logo_status = [
             '<a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle"></i></a> Belum Selesai',
@@ -53,10 +56,10 @@ class EntriController extends Controller {
                 echo "<td>{$x->nama_agen_kapal}</td>";
                 echo "<td>{$logo_status[$x->status]}</td>";
                 echo "<td><span style='white-space: nowrap'>"
-                . "<button class='btn btn-primary' onclick=\"detil('{$x->keygen}')\">Detil</button>"
-                . "<button class='btn btn-success' onclick=\"edit('{$x->keygen}')\">Edit</button>"
-                . "<button class='btn btn-danger' onclick=\"hapus('{$x->keygen}')\">Hapus</button>"
-                . "</span></td>";
+                    . "<button class='btn btn-primary' onclick=\"detil('{$x->keygen}')\">Detil</button>"
+                    . "<button class='btn btn-success' onclick=\"edit('{$x->keygen}')\">Edit</button>"
+                    . "<button class='btn btn-danger' onclick=\"hapus('{$x->keygen}')\">Hapus</button>"
+                    . "</span></td>";
                 echo "</tr>";
             }
         } else {
@@ -64,7 +67,8 @@ class EntriController extends Controller {
         }
     }
 
-    public function view_detil(Request $request) {
+    public function view_detil(Request $request)
+    {
         $keygen = addslashes($_POST['key']);
 
         $data1 = DB::select("select * from laporan_bulanan where keygen='$keygen'");
@@ -83,7 +87,8 @@ class EntriController extends Controller {
         ]);
     }
 
-    public function edit(Request $request) {
+    public function edit(Request $request)
+    {
         $keygen = addslashes($_POST['key']);
 
         $data1 = DB::select("select * from laporan_bulanan where keygen='$keygen'");
@@ -119,7 +124,8 @@ class EntriController extends Controller {
         ]);
     }
 
-    public function edit_process(Request $request) {
+    public function edit_process(Request $request)
+    {
 
         $keygen = addslashes($_POST['keygen']);
 
@@ -212,46 +218,46 @@ class EntriController extends Controller {
             DB::delete("delete from laporan_bulanan where keygen='$keygen'");
 
             $sql = "INSERT INTO `laporan_bulanan`("
-                    . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
-                    . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
-                    . "`nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, "
-                    . "`panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, "
-                    . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
-                    . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
-                    . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
-                    . "`ket`, `operator`, `keygen`, `approval`, `status`) VALUES ("
-                    . "$prov,"
-                    . "$kab,"
-                    . "$bulan,"
-                    . "$tahun,"
-                    . "$pelabuhan_id,"
-                    . "$jenis_pelayaran,"
-                    . "'$nama_kapal_1',"
-                    . "'$nama_kapal',"
-                    . "'$nama_agen_kapal',"
-                    . "'$bendera',"
-                    . "'$pemilik',"
-                    . "$panjang_kapal,"
-                    . "$panjang_grt,"
-                    . "$volume_nrt,"
-                    . "$panjang_dwt,"
-                    . "'$tiba_tgl',"
-                    . "'$tiba_jam',"
-                    . "'$tiba_pelab_asal',"
-                    . "'$tambat_tgl',"
-                    . "'$tambat_jam',"
-                    . "'$tambat_jenis',"
-                    . "'$berangkat_tgl',"
-                    . "'$berangkat_jam',"
-                    . "'$berangkat_pelab_tujuan',"
-                    . "$penumpang_naik,"
-                    . "$penumpang_turun,"
-                    . "'$ket',"
-                    . "'$operator',"
-                    . "'$keygen',"
-                    . "0,"
-                    . "$status"
-                    . ")";
+                . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
+                . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
+                . "`nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, "
+                . "`panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, "
+                . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
+                . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
+                . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
+                . "`ket`, `operator`, `keygen`, `approval`, `status`) VALUES ("
+                . "$prov,"
+                . "$kab,"
+                . "$bulan,"
+                . "$tahun,"
+                . "$pelabuhan_id,"
+                . "$jenis_pelayaran,"
+                . "'$nama_kapal_1',"
+                . "'$nama_kapal',"
+                . "'$nama_agen_kapal',"
+                . "'$bendera',"
+                . "'$pemilik',"
+                . "$panjang_kapal,"
+                . "$panjang_grt,"
+                . "$volume_nrt,"
+                . "$panjang_dwt,"
+                . "'$tiba_tgl',"
+                . "'$tiba_jam',"
+                . "'$tiba_pelab_asal',"
+                . "'$tambat_tgl',"
+                . "'$tambat_jam',"
+                . "'$tambat_jenis',"
+                . "'$berangkat_tgl',"
+                . "'$berangkat_jam',"
+                . "'$berangkat_pelab_tujuan',"
+                . "$penumpang_naik,"
+                . "$penumpang_turun,"
+                . "'$ket',"
+                . "'$operator',"
+                . "'$keygen',"
+                . "0,"
+                . "$status"
+                . ")";
 
             DB::insert($sql);
 
@@ -263,13 +269,13 @@ class EntriController extends Controller {
                     $r16n[$i] = addslashes($r16n[$i]);
                     $r17[$i] = addslashes($r17[$i]);
                     $sql = "INSERT INTO `simple_tbl_pdn_bongkar_barang`("
-                            . "`r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES ("
-                            . "{$r16[$i]},"
-                            . "'{$r16s[$i]}',"
-                            . "'{$r16n[$i]}',"
-                            . "'{$r17[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES ("
+                        . "{$r16[$i]},"
+                        . "'{$r16s[$i]}',"
+                        . "'{$r16n[$i]}',"
+                        . "'{$r17[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -282,13 +288,13 @@ class EntriController extends Controller {
                     $r18n[$i] = addslashes($r18n[$i]);
                     $r19[$i] = addslashes($r19[$i]);
                     $sql = "INSERT INTO `simple_tbl_pdn_muat_barang`("
-                            . "`r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES ("
-                            . "{$r18[$i]},"
-                            . "'{$r18s[$i]}',"
-                            . "'{$r18n[$i]}',"
-                            . "'{$r19[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES ("
+                        . "{$r18[$i]},"
+                        . "'{$r18s[$i]}',"
+                        . "'{$r18n[$i]}',"
+                        . "'{$r19[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -301,13 +307,13 @@ class EntriController extends Controller {
                     $r20n[$i] = addslashes($r20n[$i]);
                     $r20k[$i] = addslashes($r20k[$i]);
                     $sql = "INSERT INTO `simple_tbl_pln_bongkar_barang`("
-                            . "`r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES ("
-                            . "{$r20[$i]},"
-                            . "'{$r20s[$i]}',"
-                            . "'{$r20n[$i]}',"
-                            . "'{$r20k[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES ("
+                        . "{$r20[$i]},"
+                        . "'{$r20s[$i]}',"
+                        . "'{$r20n[$i]}',"
+                        . "'{$r20k[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -320,13 +326,13 @@ class EntriController extends Controller {
                     $r21n[$i] = addslashes($r21n[$i]);
                     $r21k[$i] = addslashes($r21k[$i]);
                     $sql = "INSERT INTO `simple_tbl_pln_muat_barang`("
-                            . "`r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES ("
-                            . "{$r21[$i]},"
-                            . "'{$r21s[$i]}',"
-                            . "'{$r21n[$i]}',"
-                            . "'{$r21k[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES ("
+                        . "{$r21[$i]},"
+                        . "'{$r21s[$i]}',"
+                        . "'{$r21n[$i]}',"
+                        . "'{$r21k[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -335,13 +341,14 @@ class EntriController extends Controller {
             return redirect("entri/view?status=edit_berhasil");
         } catch (\Exception $e) {
             DB::rollback();
-//            print_r($e->getMessage());
+            //            print_r($e->getMessage());
             return redirect("entri/view?status=edit_gagal");
             // something went wrong
         }
     }
 
-    public function add() {
+    public function add()
+    {
         $prov = DB::select("select * from master_prov");
         $kab = DB::select("select * from list_kab");
         $kantor_unit = DB::select("select * from list_kantor_unit");
@@ -355,7 +362,8 @@ class EntriController extends Controller {
         ]);
     }
 
-    public function add_process(Request $request) {
+    public function add_process(Request $request)
+    {
 
         $prov = addslashes($_POST['prov']);
         $kab = addslashes($_POST['kab']);
@@ -434,7 +442,8 @@ class EntriController extends Controller {
             $r21k = $_POST['r21k'];
         }
 
-        function generateRandomString($length = 10) {
+        function generateRandomString($length = 10)
+        {
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charactersLength = strlen($characters);
             $randomString = '';
@@ -454,46 +463,46 @@ class EntriController extends Controller {
 
         try {
             $sql = "INSERT INTO `laporan_bulanan`("
-                    . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
-                    . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
-                    . "`nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, "
-                    . "`panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, "
-                    . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
-                    . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
-                    . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
-                    . "`ket`, `operator`, `keygen`, `approval`, `status`) VALUES ("
-                    . "$prov,"
-                    . "$kab,"
-                    . "$bulan,"
-                    . "$tahun,"
-                    . "$pelabuhan_id,"
-                    . "$jenis_pelayaran,"
-                    . "'$nama_kapal_1',"
-                    . "'$nama_kapal',"
-                    . "'$nama_agen_kapal',"
-                    . "'$bendera',"
-                    . "'$pemilik',"
-                    . "$panjang_kapal,"
-                    . "$panjang_grt,"
-                    . "$volume_nrt,"
-                    . "$panjang_dwt,"
-                    . "'$tiba_tgl',"
-                    . "'$tiba_jam',"
-                    . "'$tiba_pelab_asal',"
-                    . "'$tambat_tgl',"
-                    . "'$tambat_jam',"
-                    . "'$tambat_jenis',"
-                    . "'$berangkat_tgl',"
-                    . "'$berangkat_jam',"
-                    . "'$berangkat_pelab_tujuan',"
-                    . "$penumpang_naik,"
-                    . "$penumpang_turun,"
-                    . "'$ket',"
-                    . "'$operator',"
-                    . "'$keygen',"
-                    . "0,"
-                    . "$status"
-                    . ")";
+                . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
+                . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
+                . "`nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, "
+                . "`panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, "
+                . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
+                . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
+                . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
+                . "`ket`, `operator`, `keygen`, `approval`, `status`) VALUES ("
+                . "$prov,"
+                . "$kab,"
+                . "$bulan,"
+                . "$tahun,"
+                . "$pelabuhan_id,"
+                . "$jenis_pelayaran,"
+                . "'$nama_kapal_1',"
+                . "'$nama_kapal',"
+                . "'$nama_agen_kapal',"
+                . "'$bendera',"
+                . "'$pemilik',"
+                . "$panjang_kapal,"
+                . "$panjang_grt,"
+                . "$volume_nrt,"
+                . "$panjang_dwt,"
+                . "'$tiba_tgl',"
+                . "'$tiba_jam',"
+                . "'$tiba_pelab_asal',"
+                . "'$tambat_tgl',"
+                . "'$tambat_jam',"
+                . "'$tambat_jenis',"
+                . "'$berangkat_tgl',"
+                . "'$berangkat_jam',"
+                . "'$berangkat_pelab_tujuan',"
+                . "$penumpang_naik,"
+                . "$penumpang_turun,"
+                . "'$ket',"
+                . "'$operator',"
+                . "'$keygen',"
+                . "0,"
+                . "$status"
+                . ")";
 
             DB::insert($sql);
 
@@ -505,13 +514,13 @@ class EntriController extends Controller {
                     $r16n[$i] = addslashes($r16n[$i]);
                     $r17[$i] = addslashes($r17[$i]);
                     $sql = "INSERT INTO `simple_tbl_pdn_bongkar_barang`("
-                            . "`r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES ("
-                            . "{$r16[$i]},"
-                            . "'{$r16s[$i]}',"
-                            . "'{$r16n[$i]}',"
-                            . "'{$r17[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES ("
+                        . "{$r16[$i]},"
+                        . "'{$r16s[$i]}',"
+                        . "'{$r16n[$i]}',"
+                        . "'{$r17[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -524,13 +533,13 @@ class EntriController extends Controller {
                     $r18n[$i] = addslashes($r18n[$i]);
                     $r19[$i] = addslashes($r19[$i]);
                     $sql = "INSERT INTO `simple_tbl_pdn_muat_barang`("
-                            . "`r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES ("
-                            . "{$r18[$i]},"
-                            . "'{$r18s[$i]}',"
-                            . "'{$r18n[$i]}',"
-                            . "'{$r19[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES ("
+                        . "{$r18[$i]},"
+                        . "'{$r18s[$i]}',"
+                        . "'{$r18n[$i]}',"
+                        . "'{$r19[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -543,13 +552,13 @@ class EntriController extends Controller {
                     $r20n[$i] = addslashes($r20n[$i]);
                     $r20k[$i] = addslashes($r20k[$i]);
                     $sql = "INSERT INTO `simple_tbl_pln_bongkar_barang`("
-                            . "`r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES ("
-                            . "{$r20[$i]},"
-                            . "'{$r20s[$i]}',"
-                            . "'{$r20n[$i]}',"
-                            . "'{$r20k[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES ("
+                        . "{$r20[$i]},"
+                        . "'{$r20s[$i]}',"
+                        . "'{$r20n[$i]}',"
+                        . "'{$r20k[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -562,13 +571,13 @@ class EntriController extends Controller {
                     $r21n[$i] = addslashes($r21n[$i]);
                     $r21k[$i] = addslashes($r21k[$i]);
                     $sql = "INSERT INTO `simple_tbl_pln_muat_barang`("
-                            . "`r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES ("
-                            . "{$r21[$i]},"
-                            . "'{$r21s[$i]}',"
-                            . "'{$r21n[$i]}',"
-                            . "'{$r21k[$i]}',"
-                            . "'$keygen'"
-                            . ")";
+                        . "`r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES ("
+                        . "{$r21[$i]},"
+                        . "'{$r21s[$i]}',"
+                        . "'{$r21n[$i]}',"
+                        . "'{$r21k[$i]}',"
+                        . "'$keygen'"
+                        . ")";
                     DB::insert($sql);
                 }
             }
@@ -577,13 +586,14 @@ class EntriController extends Controller {
             return redirect("entri/add?status=berhasil");
         } catch (\Exception $e) {
             DB::rollback();
-//            print_r($e->getMessage());
+            //            print_r($e->getMessage());
             return redirect("entri/add?status=gagal");
             // something went wrong
         }
     }
 
-    public function hapus(Request $request) {
+    public function hapus(Request $request)
+    {
         $keygen = addslashes($_POST['key']);
         DB::beginTransaction();
         try {
@@ -595,5 +605,4 @@ class EntriController extends Controller {
             return redirect("entri/view?status=hapus_gagal");
         }
     }
-
 }

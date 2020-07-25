@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ApprovalController extends Controller {
+class ApprovalController extends Controller
+{
 
-    public function view() {
+    public function view()
+    {
         $prov = DB::select("select * from master_prov");
         $kab = DB::select("select * from list_kab");
         $kantor_unit = DB::select("select * from list_kantor_unit");
@@ -20,8 +23,9 @@ class ApprovalController extends Controller {
             "pelabuhan" => $pelabuhan
         ]);
     }
-    
-    public function  view_list(Request $request){
+
+    public function view_list(Request $request)
+    {
         $prov = addslashes($_POST['prov']);
         $kab = addslashes($_POST['kab']);
         $kantor_unit = addslashes($_POST['kantor_unit']);
@@ -30,19 +34,16 @@ class ApprovalController extends Controller {
         $bulan = addslashes($_POST['bulan']);
         $tahun = addslashes($_POST['tahun']);
 
-//        print_r($_POST);
-//        print_r("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
         $hasil = DB::select("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran and status=1");
-//        print_r($hasil);
 
         $logo_status = [
             '<a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle"></i></a> Belum Selesai',
             '<a href="#" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a> Selesai'
         ];
-        
+
         $logo_approval = [
             '<a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle"></i></a> Belum Aprove',
-            '<a href="#" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a> Sudah Approve'
+            '<a href="#" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a> Approve'
         ];
 
         if (count($hasil) > 0) {
@@ -54,9 +55,9 @@ class ApprovalController extends Controller {
                 echo "<td>{$x->bendera}</td>";
                 echo "<td>{$x->pemilik}</td>";
                 echo "<td>{$x->nama_agen_kapal}</td>";
-                echo "<td>{$logo_status[$x->status]}</td>";
+                echo "<td>{$logo_status[$x->status]} (<a onclick=\"detil('$x->keygen')\" style='cursor: pointer;color: #007bff'>detil</a>)</td>";
                 echo "<td>{$logo_approval[$x->approval]}</td>";
-                echo "<td><input class='form-control' type='checkbox' name='approval' value='{$x->keygen}'></td>";
+                echo "<td><input class='form-control approval_input' type='checkbox' name='approval[]' value='{$x->keygen}'></td>";
                 echo "</tr>";
             }
         } else {
@@ -64,4 +65,43 @@ class ApprovalController extends Controller {
         }
     }
 
+    public function view_detil(Request $request)
+    {
+        $keygen = addslashes($_POST['key']);
+
+        $data1 = DB::select("select * from laporan_bulanan where keygen='$keygen'");
+        $data2 = DB::select("select * from simple_tbl_pdn_bongkar_barang where keygen='$keygen'");
+        $data3 = DB::select("select * from simple_tbl_pdn_muat_barang where keygen='$keygen'");
+        $data4 = DB::select("select * from simple_tbl_pln_bongkar_barang where keygen='$keygen'");
+        $data5 = DB::select("select * from simple_tbl_pln_muat_barang where keygen='$keygen'");
+
+
+        return view("entri/detil", [
+            "data1" => $data1,
+            "data2" => $data2,
+            "data3" => $data3,
+            "data4" => $data4,
+            "data5" => $data5
+        ]);
+    }
+
+    public function view_process(Request $request)
+    {
+
+        DB::beginTransaction();
+
+        try {
+            if (isset($_POST['approval'])) {
+                foreach($_POST['approval'] as $x){
+                    $temp = addslashes($x);
+                    DB::update("update laporan_bulanan set approval=1 where keygen='$temp'");
+                }
+                DB::commit();
+            }
+            return redirect("approval/view?status=approval_berhasil");
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect("approval/view?status=approval_gagal");
+        }
+    }
 }

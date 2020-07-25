@@ -5,11 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/simple/resources/views/entri/view.blade.php</file>
             <file>file:/C:/xampp/htdocs/simple/app/Http/Controllers/EntriController.php</file>
-            <file>file:/C:/xampp/htdocs/simple/resources/views/entri/detil.blade.php</file>
-            <file>file:/C:/xampp/htdocs/simple/resources/views/template/app.blade.php</file>
-            <file>file:/C:/xampp/htdocs/simple/resources/views/entri/edit.blade.php</file>
-            <file>file:/C:/xampp/htdocs/simple/resources/views/entri/add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/simple/resources/views/approval/view.blade.php</file>
             <file>file:/C:/xampp/htdocs/simple/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/simple/app/Http/Controllers/ApprovalController.php</file>
         </group>
     </open-files>
 </project-private>

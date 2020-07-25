@@ -149,7 +149,7 @@
 
 </div>
 
-<hr/>
+<hr />
 
 <div class="row" id="card-hasil">
     <div class="col">
@@ -162,47 +162,59 @@
             <div class="card-body">
 
                 <input id="search" placeholder="Search...">
+
+                <br /><br />
+
+                <form id="form_simpan" method="POST" action="<?php echo url("approval/view/process") ?>">
+
+                    @csrf
+
+                    <table class="table table-bordered" id="dataTable" style="font-size: 80%;">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Jenis Kapal</th>
+                                <th>Nama Kapal</th>
+                                <th>Bendera</th>
+                                <th>Pemilik</th>
+                                <th>Agen</th>
+                                <th>Status Entri</th>
+                                <th>Status Approval</th>
+                                <th>Approve?</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Jenis Kapal</th>
+                                <th>Nama Kapal</th>
+                                <th>Bendera</th>
+                                <th>Pemilik</th>
+                                <th>Agen</th>
+                                <th>Status Entri</th>
+                                <th>Status Approval</th>
+                                <th>Approve?</th>
+                            </tr>
+                        </tfoot>
+                        <tbody id="hasil">
+                        </tbody>
+
+                    </table>
+
+                    
+
+                </form>
+
+                <button type="button" id="simpan" onclick="simpan()">Simpan Perubahan</button>
+
+                <br /><br />
+
                 
-                <br/><br/>
-
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Jenis Kapal</th>
-                            <th>Nama Kapal</th>
-                            <th>Bendera</th>
-                            <th>Pemilik</th>
-                            <th>Agen</th>
-                            <th>Status Entri</th>
-                            <th>Status Approval</th>
-                            <th>Approve?</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Jenis Kapal</th>
-                            <th>Nama Kapal</th>
-                            <th>Bendera</th>
-                            <th>Pemilik</th>
-                            <th>Agen</th>
-                            <th>Status Entri</th>
-                            <th>Status Approval</th>
-                            <th>Approve?</th>
-                        </tr>
-                    </tfoot>
-                    <tbody id="hasil">
-                    </tbody>
-
-                </table>
             </div>
 
         </div>
     </div>
 </div>
-
-
 
 @endsection
 
@@ -214,53 +226,30 @@
 <script src="<?php echo asset('sbadmin') ?>/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo asset('sbadmin') ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!--<script src="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.js"></script>-->
-
+<!--<script src="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.js"></script>-->
 
 <script>
     $("#loading").hide();
     $("#card-hasil").hide();
-//    $(document).ready(function () {
-//        $('#dataTable').DataTable();
-//    });
-
-
-
-
 
     function detil(key) {
         var url = "<?php echo url('entri/view/detil') ?>";
-        $.post(url, {_token: "{{ csrf_token() }}", key: key})
-                .done(function (data) {
-                    var w = window.open('about:blank', 'informasi rinci kapal', "height=500,width=700");
-                    w.document.write(data);
-                    w.document.close();
-                });
+        $.post(url, {
+                _token: "{{ csrf_token() }}",
+                key: key
+            })
+            .done(function(data) {
+                var w = window.open('about:blank', 'informasi rinci kapal', "height=500,width=700");
+                w.document.write(data);
+                w.document.close();
+            });
     }
-
-    function edit(key) {
-        $("#key").val(key);
-        $("#edit-form").submit();
-    }
-
-    function hapus(key) {
-
-        var c = confirm("Apakah anda yakin menghapus isian?");
-
-        if (c) {
-            $("#key1").val(key);
-            $("#hapus-form").submit();
-        }
-
-    }
-
-
 </script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        $("#btn-cari").click(function () {
+        $("#btn-cari").click(function() {
 
             var prov = $("#kode-xx").val();
             var kab = $("#kode-xxxx").val();
@@ -273,10 +262,10 @@
             $("#card-hasil").show();
             $("#loading").show();
 
-//            var url = "<?php echo url("approval/view/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
+            //            var url = "<?php echo url("approval/view/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
             var url = "<?php echo url("approval/view/list") ?>";
 
-//            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
+            //            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
 
             $.ajax({
                 type: "POST",
@@ -291,15 +280,15 @@
                     bulan: bulan,
                     tahun: tahun
                 },
-                success: function (hasil) {
+                success: function(hasil) {
                     $("#hasil").html(hasil);
 
                     // ini untuk search
                     var $rows = $('#hasil tr');
-                    $('#search').keyup(function () {
+                    $('#search').keyup(function() {
                         var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
-                        $rows.show().filter(function () {
+                        $rows.show().filter(function() {
                             var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
                             return !~text.indexOf(val);
                         }).hide();
@@ -309,19 +298,30 @@
                     $("#card-hasil").show();
                 }
             });
-//            alert(url);
-//            $("#hasil").load(url);
+            //            alert(url);
+            //            $("#hasil").load(url);
 
             $("#loading").hide();
 
 
         });
-    });</script>
+    });
+</script>
+
+<script>
+    function simpan(){
+        var c = confirm("WARNING! Setelah di approve, data yang terpilih TIDAK lagi bisa diubah, apakah anda yakin?");
+        if(c){
+            $("#form_simpan").submit();
+        }
+    }
+</script>
+
 
 
 <script>
-    $(document).ready(function () {
-        $("#kode-xx").change(function () {
+    $(document).ready(function() {
+        $("#kode-xx").change(function() {
             var kode = $(this).val();
             $("#kode-xxxx").val("0000");
             $("#kode-xxxx option").hide();
@@ -331,7 +331,7 @@
             $("#kode-xxxxxxxx option").hide();
             $(".kode-" + kode).show();
         });
-        $("#kode-xxxx").change(function () {
+        $("#kode-xxxx").change(function() {
             var kode = $(this).val();
             $("#kode-xxxxxx").val("000000");
             $("#kode-xxxxxx option").hide();
@@ -339,7 +339,7 @@
             $("#kode-xxxxxxxx option").hide();
             $(".kode-" + kode).show();
         });
-        $("#kode-xxxxxx").change(function () {
+        $("#kode-xxxxxx").change(function() {
             var kode = $(this).val();
             $("#kode-xxxxxxxx").val("00000000");
             $("#kode-xxxxxxxx option").hide();
@@ -350,23 +350,19 @@
 
 
 <script>
-<?php
-if (isset($_GET['status'])) {
-    if ($_GET['status'] == "edit_berhasil") {
-        echo "alert('Edit data berhasil');";
-    } else if ($_GET['status'] == "edit_gagal") {
-        echo "alert('Edit data gagal dilakukan, silahkan cek isian atau hubungi admin');";
-    } else if ($_GET['status'] == "hapus_berhasil") {
-        echo "alert('Hapus data berhasil');";
-    } else if ($_GET['status'] == "hapus_gagal") {
-        echo "alert('Hapus data gagal dilakukan, silahkan cek isian atau hubungi admin');";
+    <?php
+    if (isset($_GET['status'])) {
+        if ($_GET['status'] == "approval_berhasil") {
+            echo "alert('Approval data berhasil');";
+        } else if ($_GET['status'] == "edit_gagal") {
+            echo "alert('Approval data gagal dilakukan, silahkan cek isian atau hubungi admin');";
+        } 
     }
-}
-?>
+    ?>
 </script>
 
 
-        <!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
+<!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
 
 
 @endsection
