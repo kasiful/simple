@@ -34,8 +34,13 @@ class EntriController extends Controller {
 
 //        print_r($_POST);
 //        print_r("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
-        $hasil = DB::select("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran");
+        $hasil = DB::select("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran and approval=0");
 //        print_r($hasil);
+
+        $logo_status = [
+            '<a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle"></i></a> Belum Selesai',
+            '<a href="#" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a> Selesai'
+        ];
 
         if (count($hasil) > 0) {
             foreach ($hasil as $key => $x) {
@@ -46,6 +51,7 @@ class EntriController extends Controller {
                 echo "<td>{$x->bendera}</td>";
                 echo "<td>{$x->pemilik}</td>";
                 echo "<td>{$x->nama_agen_kapal}</td>";
+                echo "<td>{$logo_status[$x->status]}</td>";
                 echo "<td><span style='white-space: nowrap'>"
                 . "<button class='btn btn-primary' onclick=\"detil('{$x->keygen}')\">Detil</button>"
                 . "<button class='btn btn-success' onclick=\"edit('{$x->keygen}')\">Edit</button>"
@@ -114,9 +120,9 @@ class EntriController extends Controller {
     }
 
     public function edit_process(Request $request) {
-        
+
         $keygen = addslashes($_POST['keygen']);
-        
+
         $prov = addslashes($_POST['prov']);
         $kab = addslashes($_POST['kab']);
         $kantor_unit = addslashes($_POST['kantor_unit']);
@@ -197,12 +203,14 @@ class EntriController extends Controller {
         $ket = addslashes($_POST['ket']);
         $operator = "Operator";
 
+        $status = addslashes($_POST["status"]);
+
         DB::beginTransaction();
 
         try {
-            
+
             DB::delete("delete from laporan_bulanan where keygen='$keygen'");
-            
+
             $sql = "INSERT INTO `laporan_bulanan`("
                     . "`prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, "
                     . "`jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, "
@@ -211,7 +219,7 @@ class EntriController extends Controller {
                     . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
                     . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
                     . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
-                    . "`ket`, `operator`, `keygen`, `approval`) VALUES ("
+                    . "`ket`, `operator`, `keygen`, `approval`, `status`) VALUES ("
                     . "$prov,"
                     . "$kab,"
                     . "$bulan,"
@@ -241,7 +249,8 @@ class EntriController extends Controller {
                     . "'$ket',"
                     . "'$operator',"
                     . "'$keygen',"
-                    . "0"
+                    . "0,"
+                    . "$status"
                     . ")";
 
             DB::insert($sql);
@@ -326,6 +335,7 @@ class EntriController extends Controller {
             return redirect("entri/view?status=edit_berhasil");
         } catch (\Exception $e) {
             DB::rollback();
+//            print_r($e->getMessage());
             return redirect("entri/view?status=edit_gagal");
             // something went wrong
         }
@@ -437,6 +447,8 @@ class EntriController extends Controller {
         $ket = addslashes($_POST['ket']);
         $keygen = md5(date("Y-m-d h:i:sa") . " " . generateRandomString(5));
         $operator = "Operator";
+        $status = addslashes($_POST['status']);
+
 
         DB::beginTransaction();
 
@@ -449,7 +461,7 @@ class EntriController extends Controller {
                     . "`tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, "
                     . "`tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, "
                     . "`berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, "
-                    . "`ket`, `operator`, `keygen`, `approval`) VALUES ("
+                    . "`ket`, `operator`, `keygen`, `approval`, `status`) VALUES ("
                     . "$prov,"
                     . "$kab,"
                     . "$bulan,"
@@ -479,7 +491,8 @@ class EntriController extends Controller {
                     . "'$ket',"
                     . "'$operator',"
                     . "'$keygen',"
-                    . "0"
+                    . "0,"
+                    . "$status"
                     . ")";
 
             DB::insert($sql);
@@ -564,20 +577,20 @@ class EntriController extends Controller {
             return redirect("entri/add?status=berhasil");
         } catch (\Exception $e) {
             DB::rollback();
-            print_r($e->getMessage());
-//            return redirect("entri/add?status=gagal");
+//            print_r($e->getMessage());
+            return redirect("entri/add?status=gagal");
             // something went wrong
         }
     }
-    
-    public function hapus(Request $request){
+
+    public function hapus(Request $request) {
         $keygen = addslashes($_POST['key']);
         DB::beginTransaction();
-        try{
+        try {
             DB::delete("delete from laporan_bulanan where keygen='$keygen'");
             DB::commit();
             return redirect("entri/view?status=hapus_berhasil");
-        } catch (Exception $e){
+        } catch (Exception $e) {
             DB::rollback();
             return redirect("entri/view?status=hapus_gagal");
         }

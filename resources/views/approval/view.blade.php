@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Manajemen Data / Lihat Entrian')
+@section('title', 'Manajemen Data / Approval')
 
 
 @section('css')
@@ -162,7 +162,7 @@
             <div class="card-body">
 
                 <input id="search" placeholder="Search...">
-
+                
                 <br/><br/>
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -175,7 +175,8 @@
                             <th>Pemilik</th>
                             <th>Agen</th>
                             <th>Status Entri</th>
-                            <th>Aksi</th>
+                            <th>Status Approval</th>
+                            <th>Approve?</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -187,7 +188,8 @@
                             <th>Pemilik</th>
                             <th>Agen</th>
                             <th>Status Entri</th>
-                            <th>Aksi</th>
+                            <th>Status Approval</th>
+                            <th>Approve?</th>
                         </tr>
                     </tfoot>
                     <tbody id="hasil">
@@ -200,15 +202,6 @@
     </div>
 </div>
 
-<form id="edit-form" method="post" action="<?php echo url('entri/edit') ?>" style="visibility: hidden">
-    @csrf
-    <input type="hidden" id="key" name="key" value="">
-</form>
-
-<form id="hapus-form" method="post" action="<?php echo url('entri/hapus') ?>" style="visibility: hidden">
-    @csrf
-    <input type="hidden" id="key1" name="key" value="">
-</form>
 
 
 @endsection
@@ -230,6 +223,10 @@
 //    $(document).ready(function () {
 //        $('#dataTable').DataTable();
 //    });
+
+
+
+
 
     function detil(key) {
         var url = "<?php echo url('entri/view/detil') ?>";
@@ -276,8 +273,8 @@
             $("#card-hasil").show();
             $("#loading").show();
 
-//            var url = "<?php echo url("entri/view/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
-            var url = "<?php echo url("entri/view/list") ?>";
+//            var url = "<?php echo url("approval/view/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
+            var url = "<?php echo url("approval/view/list") ?>";
 
 //            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
 
@@ -307,6 +304,7 @@
                             return !~text.indexOf(val);
                         }).hide();
                     });
+
 
                     $("#card-hasil").show();
                 }

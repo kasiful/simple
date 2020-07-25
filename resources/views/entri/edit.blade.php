@@ -688,6 +688,13 @@
 
                             <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4b')">
                                 Prev</a>
+                            
+                            <hr/>
+                            <p>
+                                Apakah entrian ini sudah selesai?<br/>
+                                <input type="radio" name="status" value="1"> Ya, entrian sudah lengkap<br/>
+                                <input type="radio" name="status" value="0" checked=""> Belum, dan akan dilanjutkan di lain waktu
+                            </p>
 
                             <input class="btn btn-primary" style="color:white"  type="submit">
 

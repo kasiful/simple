@@ -91,7 +91,7 @@
 
                 <li class="nav-item">
 
-                    <a class="nav-link collapsed" href="<?php echo asset('sbadmin') ?>/#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Entri Data</span>
                     </a>
@@ -103,20 +103,9 @@
                         </div>
                     </div>
 
-
- 
-
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Edit</span></a>
-
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Hapus Entrian</span></a>
-
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="<?php echo url('approval/view') ?>">
                         <i class="fas fa-fw fa-check"></i>
-                        <span>Approve Data</span></a>
+                        <span>Approval</span></a>
 
                 </li>
 

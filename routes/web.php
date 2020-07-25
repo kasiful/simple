@@ -119,8 +119,10 @@ Route::post('entri/edit/process', 'EntriController@edit_process');
 Route::post('entri/hapus', 'EntriController@hapus');
 
 Route::get('entri/add', 'EntriController@add');
-
 Route::post('entri/add/process', 'EntriController@add_process');
+
+Route::get('approval/view', 'ApprovalController@view');
+Route::post('approval/view/list', 'ApprovalController@view_list');
 
 
 // =================================================
