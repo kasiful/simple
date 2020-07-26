@@ -27,6 +27,8 @@ Route::get('/dashboard', 'Dashboard@index')->middleware('autentikasi');
 
 Route::get('laporan', 'LaporanController@index');
 Route::get('laporan/generate', 'LaporanController@generate');
+Route::post('laporan/generate/list', 'LaporanController@generate_list');
+Route::post('laporan/generate/list2', 'LaporanController@generate_list2');
 
 // ============================================================== //
 //                                                                //

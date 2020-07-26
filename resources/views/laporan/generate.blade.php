@@ -73,7 +73,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Pelabuhan</td>
                             <td colspan="3">
                                 <select id="kode-xxxxxxxx" class="form-control custom-select-sm">
@@ -98,7 +98,7 @@
                                     ?>
                                 </select>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td>Model Laporan</td>
 
@@ -168,7 +168,9 @@
 
 </div>
 
-<div class="row" id="card-hasil">
+<br />
+
+<div class="row" id="card-hasil" style="display: none;">
     <div class="col">
         <div class="card shadow">
 
@@ -178,53 +180,15 @@
 
             <div class="card-body">
 
-                <input id="search" placeholder="Search...">
-
-                <br /><br />
-
-                <form id="form_simpan" method="POST" action="<?php echo url("approval/view/process") ?>">
-
+                <form id="form_simpan" method="POST" action="<?php echo url("laporan/generate/process") ?>">
                     @csrf
+                    <div id="hasil">
 
-                    <table class="table table-bordered" id="dataTable" style="font-size: 80%;">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Jenis Kapal</th>
-                                <th>Nama Kapal</th>
-                                <th>Bendera</th>
-                                <th>Pemilik</th>
-                                <th>Agen</th>
-                                <th>Status Entri</th>
-                                <th>Status Approval</th>
-                                <th>Approve?</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Jenis Kapal</th>
-                                <th>Nama Kapal</th>
-                                <th>Bendera</th>
-                                <th>Pemilik</th>
-                                <th>Agen</th>
-                                <th>Status Entri</th>
-                                <th>Status Approval</th>
-                                <th>Approve?</th>
-                            </tr>
-                        </tfoot>
-                        <tbody id="hasil">
-                        </tbody>
-
-                    </table>
-
+                    </div>
                 </form>
 
-                <button type="button" id="simpan" onclick="simpan()">Simpan Perubahan</button>
 
-                <br /><br />
 
-                
             </div>
 
         </div>
@@ -238,31 +202,18 @@
 
 @section('js')
 
-
-<script src="<?php echo asset('sbadmin') ?>/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo asset('sbadmin') ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
 <script src="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.js"></script>
 
-
-
 <script>
-    // $(document).ready(function() {
-    //     $('#dataTable').DataTable();
-    // });
-</script>
+    var model_laporan = 1;
 
-<script>
-
-        var model_laporan = 1;
-
-    $("#radio-1").click(function(){
+    $("#radio-1").click(function() {
         $("#model_laporan_bulanan").show();
         $("#model_laporan_custom").hide();
         model_laporan = 1;
     });
 
-    $("#radio-2").click(function(){
+    $("#radio-2").click(function() {
         $("#model_laporan_bulanan").hide();
         $("#model_laporan_custom").show();
         model_laporan = 2;
@@ -272,12 +223,58 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(".datepicker").datepicker({
+            "setDate": new Date(),
             format: 'yyyy-mm-dd',
             autoclose: true,
             todayHighlight: true,
         });
+        $(".datepicker").datepicker("setDate", new Date());
     });
 </script>
+
+<script>
+    function lihat_record() {
+
+        var prov = $("#input_prov").val();
+        var kab = $("#input_kab").val();
+        var kantor_unit = $("#input_kantor_unit").val();
+        var bulan = $("#input_bulan").val();
+        var tahun = $("#input_tahun").val();
+        var tgl1 = $("#input_tgl1").val();
+        var tgl2 = $("#input_tgl2").val();
+
+        //            var url = "<?php echo url("laporan/generate/list2") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
+        var url = "<?php echo url("laporan/generate/list2") ?>";
+
+        //            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                _token: "{{ csrf_token() }}",
+                prov: prov,
+                kab: kab,
+                kantor_unit: kantor_unit,
+                bulan: bulan,
+                tahun: tahun,
+                tgl1: tgl1,
+                tgl2: tgl2,
+                model_laporan: model_laporan
+            },
+            success: function(data) {
+                var w = window.open('about:blank', 'Hasil Record', "height=500,width=700");
+                w.document.write(data);
+                w.document.close();
+            }
+        });
+        //            alert(url);
+        //            $("#hasil").load(url);
+
+        $("#loading").hide();
+    };
+</script>
+
 
 <script>
     $(document).ready(function() {
@@ -288,7 +285,6 @@
             var kab = $("#kode-xxxx").val();
             var kantor_unit = $("#kode-xxxxxx").val();
             var pelabuhan_id = $("#kode-xxxxxxxx").val();
-            var jenis_pelayaran = $("#jenis_pelayaran").val();
             var bulan = $("#bulan").val();
             var tahun = $("#tahun").val();
             var tgl1 = $("#tgl1").val();
@@ -297,8 +293,8 @@
             $("#card-hasil").show();
             $("#loading").show();
 
-            //            var url = "<?php echo url("approval/view/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
-            var url = "<?php echo url("approval/view/list") ?>";
+            //            var url = "<?php echo url("laporan/generate/list") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
+            var url = "<?php echo url("laporan/generate/list") ?>";
 
             //            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
 
@@ -310,8 +306,6 @@
                     prov: prov,
                     kab: kab,
                     kantor_unit: kantor_unit,
-                    pelabuhan_id: pelabuhan_id,
-                    jenis_pelayaran: jenis_pelayaran,
                     bulan: bulan,
                     tahun: tahun,
                     tgl1: tgl1,
@@ -320,18 +314,6 @@
                 },
                 success: function(hasil) {
                     $("#hasil").html(hasil);
-
-                    // ini untuk search
-                    var $rows = $('#hasil tr');
-                    $('#search').keyup(function() {
-                        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-                        $rows.show().filter(function() {
-                            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-                            return !~text.indexOf(val);
-                        }).hide();
-                    });
-
                     $("#card-hasil").show();
                 }
             });

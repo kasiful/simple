@@ -33,11 +33,11 @@ class ApprovalController extends Controller
         $jenis_pelayaran = addslashes($_POST['jenis_pelayaran']);
         $bulan = addslashes($_POST['bulan']);
         $tahun = addslashes($_POST['tahun']);
-        $tgl1 = addslashes($_POST['tgl1']);
-        $tgl2 = addslashes($_POST['tgl2']);
-        $model_laporan = addslashes($_POST['model_laporan']);
+
 
         $hasil = DB::select("select * from laporan_bulanan where prov=$prov and kab=$kab and bulan=$bulan and tahun=$tahun and pelabuhan_id=$pelabuhan_id and jenis_pelayaran=$jenis_pelayaran and status=1");
+
+        // print_r($hasil);
 
         $logo_status = [
             '<a href="#" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-exclamation-triangle"></i></a> Belum Selesai',
