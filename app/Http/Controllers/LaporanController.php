@@ -100,9 +100,13 @@ class LaporanController extends Controller
             print_r("model_1");
             $rekap = new RekapModel();
             $hasil = $rekap->record_bulanan($prov, $kab, $kantor_unit, $bulan, $tahun);
-            print_r($hasil);
+            $json = json_encode($hasil);
+            print_r($json);
         } else if ($model_laporan == 2) {
             print_r("model_2");
         }
+
+        return view("laporan/generate2");
+
     }
 }

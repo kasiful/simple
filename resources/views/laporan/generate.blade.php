@@ -263,7 +263,7 @@
                 model_laporan: model_laporan
             },
             success: function(data) {
-                var w = window.open('about:blank', 'Hasil Record', "height=500,width=700");
+                var w = window.open('about:blank', 'Hasil Record');
                 w.document.write(data);
                 w.document.close();
             }
