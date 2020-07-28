@@ -96,17 +96,30 @@ class LaporanController extends Controller
         $tgl2 = addslashes($_POST['tgl2']);
         $model_laporan = addslashes($_POST['model_laporan']);
 
+
+        $nama_kantor_unit = DB::select("select kantor_unit from master_kantor_unit where id=$kantor_unit");
+        $nama_kantor_unit = $nama_kantor_unit[0]->kantor_unit;
+
         if ($model_laporan == 1) {
             print_r("model_1");
             $rekap = new RekapModel();
             $hasil = $rekap->record_bulanan($prov, $kab, $kantor_unit, $bulan, $tahun);
-            $json = json_encode($hasil);
-            print_r($json);
+
+            $temp = json_encode($hasil);
+            print_r($temp);
+
+            return view("laporan/generate2", [
+                "nama_kantor_unit" => $nama_kantor_unit,
+                "record" => $hasil,
+                "bulan" => $bulan,
+                "tahun" => $tahun
+            ]);
+
         } else if ($model_laporan == 2) {
             print_r("model_2");
         }
 
-        return view("laporan/generate2");
+        
 
     }
 }

@@ -1,5 +1,15 @@
 <?php
 
+
+
+use App\RekapModel;
+Route::get('tes', function(){
+    $model= new RekapModel();
+    $tes = $model->record_bulanan(76,7604,760402,7,2020);
+    print_r($tes);
+});
+
+
 Route::get('login', "LoginController@login");
 Route::post('login/cek', "LoginController@cek");
 Route::get('logout', "LoginController@logout");
