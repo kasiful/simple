@@ -186,7 +186,7 @@
 
                     </div>
                 </form>
-                
+
             </div>
 
         </div>
@@ -229,6 +229,7 @@
         $(".datepicker").datepicker("setDate", new Date());
     });
 </script>
+
 
 <script>
     function lihat_record() {
@@ -322,6 +323,8 @@
 
 
         });
+
+
     });
 </script>
 

@@ -104,6 +104,30 @@
             </li>
 
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Publikasi
+            </div>
+
+            <!-- Transaksi Surat -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePublikasi" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Publikasi</span>
+                </a>
+                <div id="collapsePublikasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Publikasi</h6>
+                        <a class="collapse-item" href="<?php echo url('publikasi/bulanan') ?>">Bulanan</a>
+                        <a class="collapse-item" href="<?php echo url('publikasi/custom') ?>">Custom</a>
+                    </div>
+                </div>
+            </li>
+
+
 
 
 

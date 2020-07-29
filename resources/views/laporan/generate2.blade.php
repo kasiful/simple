@@ -3,19 +3,28 @@
 <head>
 
     <style>
+        html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
         table {
             font-size: 75%;
+            
         }
 
         #table1 {
             border-collapse: collapse;
-            font-size: 65%;
+            font-size: 60%;
+            width: 100%;
+            min-width: 100%;
+            max-width: 100%;
         }
 
         #table1 thead tr td {
             border: 1px solid black;
             padding: 5px;
             font-weight: bold;
+            text-align: center;
         }
 
         #table1 tbody tr td {
@@ -28,6 +37,17 @@
             padding-left: 13px;
         }
 
+        .header_jenis_pelayaran {
+            background-color: lightgray;
+            font-weight: bold;
+        }
+
+        .page_break { page-break-before: always; }
+
+        /* .border_dotted {
+            border-top-style: 1px dotted;
+            border-bottom-style: 1px dashed;
+        } */
     </style>
 
 </head>
@@ -41,7 +61,7 @@
 
     <?php foreach ($record as $x) { ?>
 
-        <p><strong>LAPORAN BULANAN KEGIATAN OPERASIONAL DI PELABUHAN<br />YANG TIDAK DIUSAHAKAN</strong></p>
+        <p style="text-align: center;"><strong>LAPORAN BULANAN KEGIATAN OPERASIONAL DI PELABUHAN<br />YANG TIDAK DIUSAHAKAN</strong></p>
         <table>
             <tbody>
                 <tr>
@@ -73,7 +93,7 @@
                     <td rowspan="3">NO</td>
                     <td rowspan="3">NAMA KAPAL</td>
                     <td rowspan="3">BDR</td>
-                    <td rowspan="3">PEMILIK/AGEN</td>
+                    <td rowspan="3">PEMILIK/ AGEN</td>
                     <td colspan="3">PANJANG</td>
                     <td colspan="3">TIBA</td>
                     <td colspan="3">TAMBAT</td>
@@ -84,18 +104,18 @@
                     <td rowspan="3">KET</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">KAPAL(M)</td>
+                    <td rowspan="2">KAPAL (M)</td>
                     <td rowspan="2">GRT</td>
                     <td rowspan="2">DWT</td>
-                    <td rowspan="2">TANGGAL</td>
+                    <td rowspan="2">TGL</td>
                     <td rowspan="2">JAM</td>
-                    <td rowspan="2">PLB_ASAL</td>
-                    <td rowspan="2">TANGGAL</td>
+                    <td rowspan="2">PLB ASAL</td>
+                    <td rowspan="2">TGL</td>
                     <td rowspan="2">JAM</td>
                     <td rowspan="2">JENIS</td>
-                    <td rowspan="2">TANGGAL</td>
+                    <td rowspan="2">TGL</td>
                     <td rowspan="2">JAM</td>
-                    <td rowspan="2">PLB_TUJUAN</td>
+                    <td rowspan="2">PLB TUJUAN</td>
                     <td>BONGKAR</td>
                     <td>MUAT</td>
                     <td>BONGKAR</td>
@@ -139,7 +159,7 @@
             <tbody>
 
                 <?php foreach ($x['pelayaran'] as $y) { ?>
-                    <tr>
+                    <tr class="header_jenis_pelayaran">
                         <td colspan="23">
                             <?php echo $y['jenis_pelayaran'] ?>
                         </td>
@@ -150,7 +170,7 @@
                     $iterasi = 1;
 
                     foreach ($y['record'] as $z) { ?>
-                        <tr>
+                        <tr class="record">
                             <td><?php echo $iterasi ?></td>
                             <td><?php echo $z['nama_kapal_1'] . " " . $z['nama_kapal'] ?></td>
                             <td><?php echo $z['bendera'] ?></td>
@@ -170,48 +190,73 @@
                             <td>
                                 <?php
                                 $string_temp = [];
-                                foreach ($z['pdn_bongkar'] as $a) {
-                                    $string_temp[] = "<li>" . $a['r16'] . " " . $a['r16s'] . " " . $a['r16n'] . "</li>";
+
+                                if (isset($z['pdn_bongkar'])) {
+                                    foreach ($z['pdn_bongkar'] as $a) {
+                                        $string_temp[] = "<li>" . $a['r16'] . " " . $a['r16s'] . " " . $a['r16n'] . "</li>";
+                                    }
+                                    $string_temp = implode("", $string_temp);
+                                    echo "<ul class='padding_ul'>" . $string_temp . "</ul>";
+                                } else {
+                                    echo "<ul>-</ul>";
                                 }
-                                $string_temp = implode("",$string_temp);
-                                echo "<ul class='padding_ul'>".$string_temp."</ul>";
+
                                 ?>
                             </td>
                             <td>
                                 <?php
                                 $string_temp = [];
-                                foreach ($z['pdn_muat'] as $a) {
-                                    $string_temp[] = "<li>" . $a['r18'] . " " . $a['r18s'] . " " . $a['r18n'] . "</li>";
+
+                                if (isset($z['pdn_muat'])) {
+                                    foreach ($z['pdn_muat'] as $a) {
+                                        $string_temp[] = "<li>" . $a['r18'] . " " . $a['r18s'] . " " . $a['r18n'] . "</li>";
+                                    }
+                                    $string_temp = implode("", $string_temp);
+                                    echo "<ul class='padding_ul'>" . $string_temp . "</ul>";
+                                } else {
+                                    echo "<ul>-</ul>";
                                 }
-                                $string_temp = implode("",$string_temp);
-                                echo "<ul class='padding_ul'>".$string_temp."</ul>";
+
                                 ?>
                             </td>
                             <td>
-                            <?php
+                                <?php
                                 $string_temp = [];
-                                foreach ($z['pln_bongkar'] as $a) {
-                                    $string_temp[] = "<li>" . $a['r20'] . " " . $a['r20s'] . " " . $a['r20n'] . "</li>";
+
+                                if (isset($z['pln_bongkar'])) {
+                                    foreach ($z['pln_bongkar'] as $a) {
+                                        $string_temp[] = "<li>" . $a['r20'] . " " . $a['r20s'] . " " . $a['r20n'] . "</li>";
+                                    }
+                                    $string_temp = implode("", $string_temp);
+                                    echo "<ul class='padding_ul'>" . $string_temp . "</ul>";
+                                } else {
+                                    echo "<ul>-</ul>";
                                 }
-                                $string_temp = implode("",$string_temp);
-                                echo "<ul class='padding_ul'>".$string_temp."</ul>";
                                 ?>
                             </td>
                             <td>
-                            <?php
+                                <?php
                                 $string_temp = [];
-                                foreach ($z['pln_muat'] as $a) {
-                                    $string_temp[] = "<li>" . $a['r21'] . " " . $a['r21s'] . " " . $a['r21n'] . "</li>";
+                                if (isset($z['pln_muat'])) {
+                                    foreach ($z['pln_muat'] as $a) {
+                                        $string_temp[] = "<li>" . $a['r21'] . " " . $a['r21s'] . " " . $a['r21n'] . "</li>";
+                                    }
+                                    $string_temp = implode("", $string_temp);
+                                    echo "<ul class='padding_ul'>" . $string_temp . "</ul>";
+                                } else {
+                                    echo "<ul>-</ul>";
                                 }
-                                $string_temp = implode("",$string_temp);
-                                echo "<ul class='padding_ul'>".$string_temp."</ul>";
                                 ?>
                             </td>
                             <td><?php echo $z['penumpang_naik'] ?></td>
                             <td><?php echo $z['penumpang_turun'] ?></td>
                             <td><?php echo $z['ket'] ?></td>
                         </tr>
-                    <?php } ?>
+                    <?php
+                        $iterasi++;
+                    }
+
+                    ?>
 
 
 
@@ -221,6 +266,8 @@
 
             </tbody>
         </table>
+
+        <div class="page_break"></div>
 
     <?php } ?>
 

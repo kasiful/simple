@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\RekapModel;
 use Exception;
+use PDF;
+use Illuminate\Support\Facades\Storage;
 
 class LaporanController extends Controller
 {
@@ -83,6 +85,10 @@ class LaporanController extends Controller
         echo "<input type='hidden' name='kantor_unit' id='input_kantor_unit' value='$kantor_unit'>";
 
         echo "<i>Terdapat $hasil record data yang telah di approve</i> (<a onclick='lihat_record()' style='color: #4e73df;cursor: pointer;'>Lihat record</a>)";
+
+        echo "<br/>";
+
+        echo "<button type='submit'>Publish</button>";
     }
 
     public function generate_list2(Request $request)
@@ -100,13 +106,25 @@ class LaporanController extends Controller
         $nama_kantor_unit = DB::select("select kantor_unit from master_kantor_unit where id=$kantor_unit");
         $nama_kantor_unit = $nama_kantor_unit[0]->kantor_unit;
 
+        function make_dir($path, $permissions = 0777)
+        {
+            return is_dir($path) || mkdir($path, $permissions, true);
+        }
+
         if ($model_laporan == 1) {
             print_r("model_1");
             $rekap = new RekapModel();
             $hasil = $rekap->record_bulanan($prov, $kab, $kantor_unit, $bulan, $tahun);
 
             $temp = json_encode($hasil);
-            print_r($temp);
+            // print_r($temp);
+
+            $data = [
+                "nama_kantor_unit" => $nama_kantor_unit,
+                "record" => $hasil,
+                "bulan" => $bulan,
+                "tahun" => $tahun
+            ];
 
             return view("laporan/generate2", [
                 "nama_kantor_unit" => $nama_kantor_unit,
@@ -114,12 +132,76 @@ class LaporanController extends Controller
                 "bulan" => $bulan,
                 "tahun" => $tahun
             ]);
+        } else if ($model_laporan == 2) {
+            print_r("model_2");
+        }
+    }
+
+    public function generate_process(Request $request)
+    {
+
+        $prov = addslashes($_POST['prov']);
+        $kab = addslashes($_POST['kab']);
+        $kantor_unit = addslashes($_POST['kantor_unit']);
+        $bulan = addslashes($_POST['bulan']);
+        $tahun = addslashes($_POST['tahun']);
+        $tgl1 = addslashes($_POST['tgl1']);
+        $tgl2 = addslashes($_POST['tgl2']);
+        $model_laporan = addslashes($_POST['model_laporan']);
+
+        $nama_kantor_unit = DB::select("select kantor_unit from master_kantor_unit where id=$kantor_unit");
+        $nama_kantor_unit = $nama_kantor_unit[0]->kantor_unit;
+
+        function make_dir($path, $permissions = 0777)
+        {
+            return is_dir($path) || mkdir($path, $permissions, true);
+        }
+
+        if ($model_laporan == 1) {
+            print_r("model_1");
+            $rekap = new RekapModel();
+            $hasil = $rekap->record_bulanan($prov, $kab, $kantor_unit, $bulan, $tahun);
+
+            $temp = json_encode($hasil);
+            // print_r($temp);
+
+            $data = [
+                "nama_kantor_unit" => $nama_kantor_unit,
+                "record" => $hasil,
+                "bulan" => $bulan,
+                "tahun" => $tahun
+            ];
+
+            $pdf = PDF::loadView('laporan/generate2', $data)->setPaper('legal', 'landscape');
+
+            DB::beginTransaction();
+            try {
+                $temp = public_path("pdf/bulanan/$kantor_unit");
+                make_dir($temp);
+                $temp = $temp . "/" . $tahun;
+                make_dir($temp);
+
+                $path = $temp;
+                $fileName =  "$tahun" . sprintf("%02d", $bulan) . "_$nama_kantor_unit.pdf";
+                $pdf->save($path . '/' . $fileName);
+
+                $path = "pdf/bulanan/$kantor_unit/$tahun/" . $fileName;
+
+                DB::delete("delete from publikasi_bulanan where prov=$prov and kab=$kab and $kantor_unit=$kantor_unit and bulan=$bulan and tahun=$tahun");
+                DB::insert("INSERT INTO `publikasi_bulanan`(`prov`, `kab`, `kantor_unit`, `bulan`, `tahun`, `url`) VALUES ($prov, $kab, $kantor_unit, $bulan, $tahun, '$path')");
+                DB::commit();
+
+                echo "Generate Publikasi Bulanan Berhasil";
+            } catch (Exception $e) {
+                DB::rollBack();
+                echo $e->getMessage();
+            }
+
+            // return $pdf->stream('laporan_bulanan.pdf');
+
 
         } else if ($model_laporan == 2) {
             print_r("model_2");
         }
-
-        
-
     }
 }

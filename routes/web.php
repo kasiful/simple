@@ -1,13 +1,11 @@
 <?php
 
-
-
-use App\RekapModel;
-Route::get('tes', function(){
-    $model= new RekapModel();
-    $tes = $model->record_bulanan(76,7604,760402,7,2020);
-    print_r($tes);
-});
+// use App\RekapModel;
+// Route::get('tes', function(){
+//     $model= new RekapModel();
+//     $tes = $model->record_bulanan(76,7604,760402,7,2020);
+//     print_r($tes);
+// });
 
 
 Route::get('login', "LoginController@login");
@@ -39,13 +37,15 @@ Route::get('laporan', 'LaporanController@index');
 Route::get('laporan/generate', 'LaporanController@generate');
 Route::post('laporan/generate/list', 'LaporanController@generate_list');
 Route::post('laporan/generate/list2', 'LaporanController@generate_list2');
+Route::post('laporan/generate/process', 'LaporanController@generate_process');
+
+Route::get('generate-pdf','PDFController@generatePDF');
 
 // ============================================================== //
 //                                                                //
 //                         Manajemen Data                         //
 //                                                                //
 // ============================================================== //
-
 
 Route::get('entri/view', 'EntriController@view');
 Route::post('entri/view/list', 'EntriController@view_list');
@@ -62,6 +62,14 @@ Route::get('approval/view', 'ApprovalController@view');
 Route::post('approval/view/list', 'ApprovalController@view_list');
 Route::post('approval/view/process', 'ApprovalController@view_process');
 
+// ============================================================== //
+//                                                                //
+//                            Publikasi                           //
+//                                                                //
+// ============================================================== //
+
+Route::get('publikasi/bulanan', 'PublikasiController@bulanan');
+Route::post('publikasi/bulanan/list', 'PublikasiController@bulanan_list');
 
 // =================================================
 // DocumentViewer Library
