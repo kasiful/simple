@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2020 pada 15.57
+-- Waktu pembuatan: 29 Jul 2020 pada 09.33
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -69,7 +69,12 @@ CREATE TABLE `laporan_bulanan` (
 
 INSERT INTO `laporan_bulanan` (`id`, `prov`, `kab`, `bulan`, `tahun`, `pelabuhan_id`, `jenis_pelayaran`, `nama_kapal_1`, `nama_kapal`, `nama_agen_kapal`, `bendera`, `pemilik`, `panjang_kapal`, `panjang_grt`, `volume_nrt`, `panjang_dwt`, `tiba_tgl`, `tiba_jam`, `tiba_pelab_asal`, `tambat_tgl`, `tambat_jam`, `tambat_jenis`, `berangkat_tgl`, `berangkat_jam`, `berangkat_pelab_tujuan`, `penumpang_naik`, `penumpang_turun`, `ket`, `operator`, `status`, `keygen`, `approval`) VALUES
 (15, 76, 7604, 7, 2020, 76040201, 1, 'KLM', 'kapal 1', 'asd', 'RI', 'qwe', 123, 123, 123, 123, '2020-07-21', '09:00:00', 'qwe', '2020-07-22', '06:00:00', 'qwe', '2020-07-25', '09:30:00', 'qwe', 123, 123, 'OKE', 'Operator', 1, 'e93bd90214bc2dfd69ad8f203167a891', 1),
-(16, 76, 7604, 7, 2020, 76040201, 1, 'KLM', 'Kapal Api', '', 'RI', 'Apri', 100, 100, 100, 100, '2020-07-12', '00:00:00', 'Makassar', '2020-07-12', '00:00:00', 'Jenis Tambat', '2020-07-16', '00:00:00', 'Manado', 50, 0, 'Keterangan Saja EDITED', 'Operator', 1, '914a9124bc2030ba3113e5be0fd28805', 0);
+(16, 76, 7604, 7, 2020, 76040201, 1, 'KLM', 'Kapal Api', '', 'RI', 'Apri', 100, 100, 100, 100, '2020-07-12', '00:00:00', 'Makassar', '2020-07-12', '00:00:00', 'Jenis Tambat', '2020-07-16', '00:00:00', 'Manado', 50, 0, 'Keterangan Saja EDITED', 'Operator', 1, '914a9124bc2030ba3113e5be0fd28805', 1),
+(17, 76, 7604, 7, 2020, 76040201, 1, 'KLM', 'wqesd', 'cxvxv', 'RI', 'sefd', 123, 123, 123, 213, '2020-07-21', '00:00:00', 'qweds', '2020-07-28', '00:00:00', 'sdfcv', '2020-07-29', '00:00:00', 'asdcx', 123, 123, 'scfdsfew', 'Operator', 1, 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d', 1),
+(18, 76, 7604, 7, 2020, 76040201, 2, 'KLM', 'dscfse', 'sdcds', 'dcx', 'vdscds', 213, 213, 213, 232, '2020-07-21', '00:00:00', 'qweasdc', '2020-07-28', '00:00:00', 'qwe', '2020-07-29', '00:00:00', 'wefsd', 123, 123, '12easd', 'Operator', 1, '117ee1b2284fda24aa283c85c41df5f7', 1),
+(19, 76, 7604, 7, 2020, 76040201, 1, 'KLM', 'dascxz', 'xcvdsf', 'sdcxz ', 'sdfsx', 123, 213, 123, 123, '2020-07-20', '00:00:00', 'asd', '2020-07-27', '00:00:00', 'asd', '2020-07-29', '00:00:00', 'sdasc', 123, 123, 'asd', 'Operator', 1, '3d9a0285a2a3b1f044511c747313c4e2', 1),
+(20, 76, 7604, 7, 2020, 76040201, 2, 'KLM', 'asdq', 'asd', 'dsadc', 'csxzc', 123, 123, 123, 123, '2020-07-20', '00:00:00', 'sad', '2020-07-28', '00:00:00', 'sdqwe', '2020-07-29', '00:00:00', 'sdas', 123, 123, '', 'Operator', 1, '00f44c75da86495e06b242e20d7d2a0c', 1),
+(21, 76, 7604, 7, 2020, 76040201, 3, 'KLM', 'weer', 'sdsd', 'ewrsdc', 'sdf', 123, 123, 123, 123, '2020-07-15', '00:00:00', 'wsad', '2020-07-24', '00:00:00', '2qeas', '2020-07-29', '00:00:00', 'asd2', 123, 123, 'oksad', 'Operator', 1, '4bfe389be5f518dbf66fb44e65e85846', 0);
 
 -- --------------------------------------------------------
 
@@ -783,6 +788,30 @@ INSERT INTO `master_prov` (`id`, `provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `publikasi_bulanan`
+--
+
+CREATE TABLE `publikasi_bulanan` (
+  `id` int(11) NOT NULL,
+  `prov` int(2) NOT NULL,
+  `kab` int(4) NOT NULL,
+  `kantor_unit` int(6) NOT NULL,
+  `bulan` int(2) NOT NULL,
+  `tahun` int(4) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `url` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `publikasi_bulanan`
+--
+
+INSERT INTO `publikasi_bulanan` (`id`, `prov`, `kab`, `kantor_unit`, `bulan`, `tahun`, `created_at`, `url`) VALUES
+(4, 76, 7604, 760402, 7, 2020, '2020-07-29 14:34:21', 'pdf/bulanan/760402/2020/202007_UPP Kelas III Belang-belang.pdf');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `simple_tbl_pdn_bongkar_barang`
 --
 
@@ -802,7 +831,18 @@ CREATE TABLE `simple_tbl_pdn_bongkar_barang` (
 INSERT INTO `simple_tbl_pdn_bongkar_barang` (`id`, `r16`, `r16s`, `r16n`, `r17`, `keygen`) VALUES
 (14, 123, 'Kg', 'DFG', 'RI', 'e93bd90214bc2dfd69ad8f203167a891'),
 (15, 123, 'Unit', 'asd', 'RI', 'e93bd90214bc2dfd69ad8f203167a891'),
-(16, 123, 'Kg', 'aaa', 'RI', '914a9124bc2030ba3113e5be0fd28805');
+(16, 123, 'Kg', 'aaa', 'RI', '914a9124bc2030ba3113e5be0fd28805'),
+(17, 22, 'Unit', 'swad', 'RI', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(18, 342, 'Kg', 'wqdc', 'RI', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(19, 33, 'Ekor', 'ssad', 'RI', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(20, 23, 'Kg', 'asdasd', 'dscsdf', '117ee1b2284fda24aa283c85c41df5f7'),
+(21, 21, 'Metric Ton', 'asdas', 'asdcasc', '117ee1b2284fda24aa283c85c41df5f7'),
+(22, 123, 'Metric Ton', '3qwe', 'sadas', '117ee1b2284fda24aa283c85c41df5f7'),
+(23, 12, 'Metric Ton', 'wsd', '213s', '117ee1b2284fda24aa283c85c41df5f7'),
+(24, 23, 'Rak', 'sad', 'sadas', '117ee1b2284fda24aa283c85c41df5f7'),
+(25, 123, 'Kg', 'qweassxx', 'asd', '00f44c75da86495e06b242e20d7d2a0c'),
+(26, 123, 'Unit', 'asdas', 'dsad', '00f44c75da86495e06b242e20d7d2a0c'),
+(27, 23, 'Kg', 'wasd', 'asda', '4bfe389be5f518dbf66fb44e65e85846');
 
 -- --------------------------------------------------------
 
@@ -826,7 +866,15 @@ CREATE TABLE `simple_tbl_pdn_muat_barang` (
 INSERT INTO `simple_tbl_pdn_muat_barang` (`id`, `r18`, `r18s`, `r18n`, `r19`, `keygen`) VALUES
 (13, 234, 'Kg', 'dfgdfg', 'RI', 'e93bd90214bc2dfd69ad8f203167a891'),
 (14, 123, 'Unit', 'was', 'RU', 'e93bd90214bc2dfd69ad8f203167a891'),
-(15, 123, 'Kg', 'qwe', 'RI', '914a9124bc2030ba3113e5be0fd28805');
+(15, 123, 'Kg', 'qwe', 'RI', '914a9124bc2030ba3113e5be0fd28805'),
+(16, 123, 'Kg', 'waed', 'cxz', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(17, 324, 'Batang', 'efds', 'dsv', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(18, 3, 'Ton', 'asd', 'zxce', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(19, 23, 'Kg', 'wqd', 'asd', '117ee1b2284fda24aa283c85c41df5f7'),
+(20, 123, 'Metric Ton', 'sad', 'weq', '117ee1b2284fda24aa283c85c41df5f7'),
+(21, 12, 'Ton', 'sad', 'asd', '117ee1b2284fda24aa283c85c41df5f7'),
+(22, 123, 'Metric Ton', 'asd', 'sad', '117ee1b2284fda24aa283c85c41df5f7'),
+(23, 213, 'Kg', '123w', 'sqdasd', '00f44c75da86495e06b242e20d7d2a0c');
 
 -- --------------------------------------------------------
 
@@ -849,7 +897,12 @@ CREATE TABLE `simple_tbl_pln_bongkar_barang` (
 
 INSERT INTO `simple_tbl_pln_bongkar_barang` (`id`, `r20`, `r20s`, `r20n`, `r20k`, `keygen`) VALUES
 (13, 123, 'Kg', 'ws', 'RI', 'e93bd90214bc2dfd69ad8f203167a891'),
-(14, 123, 'Kg', 'qwe', 'RI', '914a9124bc2030ba3113e5be0fd28805');
+(14, 123, 'Kg', 'qwe', 'RI', '914a9124bc2030ba3113e5be0fd28805'),
+(15, 432, 'Kg', 'xcdc', 'df', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(16, 23, 'Ton', 'asdsc', 'xzvcds', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(17, 123, 'Kg', 'weq', 'sadsad', '117ee1b2284fda24aa283c85c41df5f7'),
+(18, 123, 'Kg', 'wesada', 'asdasda', '00f44c75da86495e06b242e20d7d2a0c'),
+(19, 324, 'Metric Ton', 'ASDas', 'wqesad', '00f44c75da86495e06b242e20d7d2a0c');
 
 -- --------------------------------------------------------
 
@@ -872,7 +925,11 @@ CREATE TABLE `simple_tbl_pln_muat_barang` (
 
 INSERT INTO `simple_tbl_pln_muat_barang` (`id`, `r21`, `r21s`, `r21n`, `r21k`, `keygen`) VALUES
 (12, 123, 'Kg', 'sdad', 'YI', 'e93bd90214bc2dfd69ad8f203167a891'),
-(13, 123, 'Kg', 'qwe', 'RI', '914a9124bc2030ba3113e5be0fd28805');
+(13, 123, 'Kg', 'qwe', 'RI', '914a9124bc2030ba3113e5be0fd28805'),
+(14, 213, 'Kg', 'sdcsc', 'xzsdfv', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(15, 32, 'Metric Ton', 'wqedsac', 'scsc', 'd0ecc0cdcacf7d1a6e3cf37aea7cee8d'),
+(16, 123, 'Kg', 'wqedsad', 'xcas', '117ee1b2284fda24aa283c85c41df5f7'),
+(17, 123, 'Kg', 'asd', 'sadas', '3d9a0285a2a3b1f044511c747313c4e2');
 
 -- --------------------------------------------------------
 
@@ -923,7 +980,7 @@ INSERT INTO `user_token` (`id`, `user_id`, `username`, `token`) VALUES
 (9, 1, 'admin', 'IAuewqS1gH9LXzVR2l4CIUzDWJvuOt'),
 (10, 1, 'admin', 'ZzqeOMVfzPp3sw5iOWIIELO7nr0sja'),
 (11, 1, 'admin', 'JG8CkKuwSO51BfSQFx92GwpOyq5oen'),
-(12, 1, 'admin', 'B9OLzIQ6YKUYRSz2dWeoILwWWsW3vE');
+(13, 1, 'admin', 'DIkFnnK8daJL1IigY0dlcTaxUf3jpT');
 
 -- --------------------------------------------------------
 
@@ -932,7 +989,7 @@ INSERT INTO `user_token` (`id`, `user_id`, `username`, `token`) VALUES
 --
 DROP TABLE IF EXISTS `list_kab`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab` from (`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab` from (`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -941,7 +998,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `list_kantor_unit`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit` from ((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit` from ((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -950,7 +1007,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `list_pelabuhan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_pelabuhan`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit`,`d`.`id` AS `pelabuhan_id`,`d`.`pelabuhan` AS `pelabuhan` from (((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) join `master_pelabuhan` `d` on((`d`.`kantor_unit_id` = `c`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_pelabuhan`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit`,`d`.`id` AS `pelabuhan_id`,`d`.`pelabuhan` AS `pelabuhan` from (((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) join `master_pelabuhan` `d` on((`d`.`kantor_unit_id` = `c`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -996,6 +1053,15 @@ ALTER TABLE `master_pelabuhan`
 --
 ALTER TABLE `master_prov`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `publikasi_bulanan`
+--
+ALTER TABLE `publikasi_bulanan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `prov` (`prov`),
+  ADD KEY `kab` (`kab`),
+  ADD KEY `kantor_unit` (`kantor_unit`);
 
 --
 -- Indeks untuk tabel `simple_tbl_pdn_bongkar_barang`
@@ -1047,7 +1113,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT untuk tabel `laporan_bulanan`
 --
 ALTER TABLE `laporan_bulanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_leveluser`
@@ -1056,28 +1122,34 @@ ALTER TABLE `master_leveluser`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT untuk tabel `publikasi_bulanan`
+--
+ALTER TABLE `publikasi_bulanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `simple_tbl_pdn_bongkar_barang`
 --
 ALTER TABLE `simple_tbl_pdn_bongkar_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `simple_tbl_pdn_muat_barang`
 --
 ALTER TABLE `simple_tbl_pdn_muat_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `simple_tbl_pln_bongkar_barang`
 --
 ALTER TABLE `simple_tbl_pln_bongkar_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `simple_tbl_pln_muat_barang`
 --
 ALTER TABLE `simple_tbl_pln_muat_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -1089,7 +1161,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -1112,6 +1184,14 @@ ALTER TABLE `master_kantor_unit`
 --
 ALTER TABLE `master_pelabuhan`
   ADD CONSTRAINT `master_pelabuhan_ibfk_1` FOREIGN KEY (`kantor_unit_id`) REFERENCES `master_kantor_unit` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `publikasi_bulanan`
+--
+ALTER TABLE `publikasi_bulanan`
+  ADD CONSTRAINT `publikasi_bulanan_ibfk_1` FOREIGN KEY (`prov`) REFERENCES `master_prov` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `publikasi_bulanan_ibfk_2` FOREIGN KEY (`kab`) REFERENCES `master_kab` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `publikasi_bulanan_ibfk_3` FOREIGN KEY (`kantor_unit`) REFERENCES `master_kantor_unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `simple_tbl_pdn_bongkar_barang`
