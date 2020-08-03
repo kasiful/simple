@@ -33,11 +33,11 @@ Route::get('/dashboard', 'Dashboard@index')->middleware('autentikasi');
 // ============================================================== //
 
 
-Route::get('laporan', 'LaporanController@index');
-Route::get('laporan/generate', 'LaporanController@generate');
-Route::post('laporan/generate/list', 'LaporanController@generate_list');
-Route::post('laporan/generate/list2', 'LaporanController@generate_list2');
-Route::post('laporan/generate/process', 'LaporanController@generate_process');
+Route::get('laporan', 'LaporanController@index')->middleware('autentikasi');
+Route::get('laporan/generate', 'LaporanController@generate')->middleware('autentikasi');
+Route::post('laporan/generate/list', 'LaporanController@generate_list')->middleware('autentikasi');
+Route::post('laporan/generate/list2', 'LaporanController@generate_list2')->middleware('autentikasi');
+Route::post('laporan/generate/process', 'LaporanController@generate_process')->middleware('autentikasi');
 
 Route::get('generate-pdf','PDFController@generatePDF');
 
@@ -47,20 +47,20 @@ Route::get('generate-pdf','PDFController@generatePDF');
 //                                                                //
 // ============================================================== //
 
-Route::get('entri/view', 'EntriController@view');
-Route::post('entri/view/list', 'EntriController@view_list');
-Route::post('entri/view/detil', 'EntriController@view_detil');
-Route::post('entri/edit', 'EntriController@edit');
-Route::post('entri/edit/process', 'EntriController@edit_process');
+Route::get('entri/view', 'EntriController@view')->middleware('autentikasi');
+Route::post('entri/view/list', 'EntriController@view_list')->middleware('autentikasi');
+Route::post('entri/view/detil', 'EntriController@view_detil')->middleware('autentikasi');
+Route::post('entri/edit', 'EntriController@edit')->middleware('autentikasi');
+Route::post('entri/edit/process', 'EntriController@edit_process')->middleware('autentikasi');
 
-Route::post('entri/hapus', 'EntriController@hapus');
+Route::post('entri/hapus', 'EntriController@hapus')->middleware('autentikasi');
 
-Route::get('entri/add', 'EntriController@add');
-Route::post('entri/add/process', 'EntriController@add_process');
+Route::get('entri/add', 'EntriController@add')->middleware('autentikasi');
+Route::post('entri/add/process', 'EntriController@add_process')->middleware('autentikasi');
 
-Route::get('approval/view', 'ApprovalController@view');
-Route::post('approval/view/list', 'ApprovalController@view_list');
-Route::post('approval/view/process', 'ApprovalController@view_process');
+Route::get('approval/view', 'ApprovalController@view')->middleware('autentikasi');
+Route::post('approval/view/list', 'ApprovalController@view_list')->middleware('autentikasi');
+Route::post('approval/view/process', 'ApprovalController@view_process')->middleware('autentikasi');
 
 // ============================================================== //
 //                                                                //
@@ -68,8 +68,23 @@ Route::post('approval/view/process', 'ApprovalController@view_process');
 //                                                                //
 // ============================================================== //
 
-Route::get('publikasi/bulanan', 'PublikasiController@bulanan');
-Route::post('publikasi/bulanan/list', 'PublikasiController@bulanan_list');
+Route::get('publikasi/bulanan', 'PublikasiController@bulanan')->middleware('autentikasi');
+Route::post('publikasi/bulanan/list', 'PublikasiController@bulanan_list')->middleware('autentikasi');
+
+// ============================================================== //
+//                                                                //
+//                           Manajemen User                       //
+//                                                                //
+// ============================================================== //
+
+Route::get('user/view', 'UserController@view');
+Route::post('user/add', 'UserController@add');
+Route::post('user/add/process', 'UserController@add_process');
+Route::post('user/edit', 'UserController@edit');
+Route::post('user/edit/process', 'UserController@edit_process');
+Route::post('user/hapus', 'UserController@hapus');
+Route::post('user/hapus/process', 'UserController@hapus_process');
+
 
 // =================================================
 // DocumentViewer Library
