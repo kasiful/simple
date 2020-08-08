@@ -71,6 +71,17 @@ Route::post('approval/view/process', 'ApprovalController@view_process');
 Route::get('publikasi/bulanan', 'PublikasiController@bulanan');
 Route::post('publikasi/bulanan/list', 'PublikasiController@bulanan_list');
 
+// ============================================================== //
+//                                                                //
+//                            Manajemen User                      //
+//                                                                //
+// ============================================================== //
+
+Route::get('user/view', "UserController@view");
+Route::get('user/add', "UserController@add");
+Route::get('user/hapus', "UserController@hapus");
+Route::get('user/edit', "UserController@edit");
+
 // =================================================
 // DocumentViewer Library
 Route::any('ViewerJS/{all?}', function () {
