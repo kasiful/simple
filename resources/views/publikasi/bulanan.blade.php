@@ -77,41 +77,7 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <!-- <td>Bulan</td>
-                            <td>
-                                <?php $bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"] ?>
-                                <select class="form-control  custom-select-sm" id="bulan">
-                                    <?php foreach ($bulan as $key => $val) { ?>
-                                        <option value="<?php echo $key + 1 ?>" <?php if (date("n") == ($key + 1)) echo "selected" ?>><?php echo $val ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td> -->
-                            <td>
-                                Tahun
-                            </td>
-                            <td>
-                                <select class="form-control  custom-select-sm" id="tahun">
-                                    <?php for ($i = date('Y'); $i >= 2018; $i--) { ?>
-                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                                    <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="4">
-                                <button id="btn-cari" class="form-control btn btn-primary btn-sm">Cari</button>
-
-                                <div id="loading" style="display: none;">
-                                    <div class="d-flex justify-content-center" style="margin-top: 20px;">
-                                        <div class="spinner-border" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        
 
                     </table>
                 </div>
