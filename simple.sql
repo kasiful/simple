@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jul 2020 pada 09.33
+-- Waktu pembuatan: 14 Agu 2020 pada 15.18
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -693,9 +693,11 @@ CREATE TABLE `master_leveluser` (
 
 INSERT INTO `master_leveluser` (`id`, `leveluser`, `level`) VALUES
 (1, 1, 'Administrator'),
-(2, 2, 'Admin UPP'),
-(3, 3, 'Operator UPP'),
-(4, 4, 'Akun BPS');
+(2, 2, 'Tim Provinsi'),
+(3, 3, 'Tim Kabupaten'),
+(4, 4, 'Tim Kantor Unit'),
+(5, 5, 'Admin Pelabuhan'),
+(6, 6, 'Operator Pelabuhan');
 
 -- --------------------------------------------------------
 
@@ -954,7 +956,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `username`, `password`, `prov_id`, `kab_id`, `kantor_unit_id`, `pelabuhan_id`, `leveluser_id`) VALUES
-(1, 'Administrator', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, 0, 0, 0, 1);
+(1, 'Administrator', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, 0, 0, 0, 1),
+(2, 'level2', 'level2', '7c4a8d09ca3762af61e59520943dc26494f8941b', 76, 0, 0, 0, 2),
+(3, 'level3', 'level3', '7c4a8d09ca3762af61e59520943dc26494f8941b', 76, 7604, 0, 0, 3),
+(4, 'level4', 'level4', '7c4a8d09ca3762af61e59520943dc26494f8941b', 76, 7604, 760402, 0, 4),
+(8, 'level5', 'level5', '210a28f50a8e9a0986df287ac9ae224de95b8978', 76, 7604, 760402, 76040201, 5),
+(9, 'level6', 'level6', '210a28f50a8e9a0986df287ac9ae224de95b8978', 76, 7604, 760402, 76040201, 6);
 
 -- --------------------------------------------------------
 
@@ -980,7 +987,7 @@ INSERT INTO `user_token` (`id`, `user_id`, `username`, `token`) VALUES
 (9, 1, 'admin', 'IAuewqS1gH9LXzVR2l4CIUzDWJvuOt'),
 (10, 1, 'admin', 'ZzqeOMVfzPp3sw5iOWIIELO7nr0sja'),
 (11, 1, 'admin', 'JG8CkKuwSO51BfSQFx92GwpOyq5oen'),
-(13, 1, 'admin', 'DIkFnnK8daJL1IigY0dlcTaxUf3jpT');
+(15, 1, 'admin', 'tZ0jhtXFHVt7jcKdTIHAPOJbpNRM8c');
 
 -- --------------------------------------------------------
 
@@ -989,7 +996,7 @@ INSERT INTO `user_token` (`id`, `user_id`, `username`, `token`) VALUES
 --
 DROP TABLE IF EXISTS `list_kab`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab` from (`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab` from (`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -998,7 +1005,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kab`  AS  select `a`.
 --
 DROP TABLE IF EXISTS `list_kantor_unit`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit` from ((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit` from ((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -1007,7 +1014,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_kantor_unit`  AS  sel
 --
 DROP TABLE IF EXISTS `list_pelabuhan`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `list_pelabuhan`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit`,`d`.`id` AS `pelabuhan_id`,`d`.`pelabuhan` AS `pelabuhan` from (((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) join `master_pelabuhan` `d` on((`d`.`kantor_unit_id` = `c`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_pelabuhan`  AS  select `a`.`id` AS `prov_id`,`a`.`provinsi` AS `prov`,`b`.`id` AS `kab_id`,`b`.`kab` AS `kab`,`c`.`id` AS `kantor_unit_id`,`c`.`kantor_unit` AS `kantor_unit`,`d`.`id` AS `pelabuhan_id`,`d`.`pelabuhan` AS `pelabuhan` from (((`master_prov` `a` join `master_kab` `b` on((`b`.`prov_id` = `a`.`id`))) join `master_kantor_unit` `c` on((`c`.`kab_id` = `b`.`id`))) join `master_pelabuhan` `d` on((`d`.`kantor_unit_id` = `c`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -1119,7 +1126,7 @@ ALTER TABLE `laporan_bulanan`
 -- AUTO_INCREMENT untuk tabel `master_leveluser`
 --
 ALTER TABLE `master_leveluser`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `publikasi_bulanan`
@@ -1155,13 +1162,13 @@ ALTER TABLE `simple_tbl_pln_muat_barang`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
