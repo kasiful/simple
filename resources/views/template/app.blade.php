@@ -63,12 +63,12 @@
             <li class="nav-item">
 
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-file"></i>
                     <span>Entri Data</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Entri Data</h6>
+                        <!-- <h6 class="collapse-header">Entri Data</h6> -->
                         <a class="collapse-item" href="<?php echo url('/entri/view') ?>">Lihat entrian</a>
                         <a class="collapse-item" href="<?php echo url('/entri/add') ?>">Tambah isian</a>
                     </div>
@@ -91,12 +91,12 @@
             <!-- Transaksi Surat -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLaporan" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-chart-pie"></i>
                     <span>Laporan</span>
                 </a>
                 <div id="collapseLaporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Laporan</h6>
+                        <!-- <h6 class="collapse-header">Laporan</h6> -->
                         <a class="collapse-item" href="<?php echo url('laporan') ?>">Laporan</a>
                         <a class="collapse-item" href="<?php echo url('laporan/generate') ?>">Generate Publikasi</a>
                     </div>
@@ -112,15 +112,15 @@
                 Publikasi
             </div>
 
-            <!-- Transaksi Surat -->
+            <!-- Publikasi -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePublikasi" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Publikasi</span>
                 </a>
                 <div id="collapsePublikasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Publikasi</h6>
+                        <!-- <h6 class="collapse-header">Publikasi</h6> -->
                         <a class="collapse-item" href="<?php echo url('publikasi/bulanan') ?>">Bulanan</a>
                         <a class="collapse-item" href="<?php echo url('publikasi/custom') ?>">Custom</a>
                     </div>
@@ -128,7 +128,20 @@
             </li>
 
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Manajemen User
+            </div>
+
+            <!-- Publikasi -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo url('user') ?>">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Manajemen User</span></a>
+            </li>
 
 
 

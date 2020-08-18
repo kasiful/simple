@@ -61,6 +61,10 @@ class LoginController extends Controller
                     'leveluser_id' => $temp->leveluser_id,
                     'leveluser' => $temp->leveluser,
                     'level' => $temp->level,
+                    'prov_id' => $temp->prov_id,
+                    'kab_id' => $temp->kab_id,
+                    'kantor_unit_id' => $temp->kantor_unit_id,
+                    'pelabuhan_id' => $temp->pelabuhan_id,
                     'token' => $token
                 ]);
                 return redirect('/dashboard');

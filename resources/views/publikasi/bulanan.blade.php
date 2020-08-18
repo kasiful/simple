@@ -76,10 +76,26 @@
                                 </select>
                             </td>
                         </tr>
+                        <tr>
+                            <td>Tahun</td>
+                            <td colspan="3">
+                                <select id="tahun" class="form-control custom-select-sm">
+                                    <option value="<?php echo date("Y") ?>"><?php echo date("Y") ?></option>
+                                    <?php
+                                    for ($i = (date("Y")-1); $i>=2018;$i--) {
+                                        echo "<option value='{$i}'>{$i}</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
 
                         
 
                     </table>
+
+                                    <button id="btn-cari">Refresh</button>
+
                 </div>
 
             </div>
@@ -157,7 +173,6 @@
             var prov = $("#kode-xx").val();
             var kab = $("#kode-xxxx").val();
             var kantor_unit = $("#kode-xxxxxx").val();
-            var bulan = $("#bulan").val();
             var tahun = $("#tahun").val();
 
             $("#card-hasil").show();

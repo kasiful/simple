@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Lihat Laporan')
+@section('title', 'Lihat Laporan / Generate Publikasi')
 
 
 @section('css')

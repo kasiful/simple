@@ -165,51 +165,60 @@
 
                 <br /><br />
 
-                <form id="form_simpan" method="POST" action="<?php echo url("approval/view/process") ?>">
+                <?php
+                if (session("leveluser") <= 5) {
+                ?>
+                    <form id="form_simpan" method="POST" action="<?php echo url("approval/view/process") ?>">
+                        @csrf
+                    <?php
+                } else {
+                    ?>
+                        <form>
+                        <?php
+                    }
+                        ?>
 
-                    @csrf
+                        <table class="table table-bordered" id="dataTable" style="font-size: 80%;">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Jenis Kapal</th>
+                                    <th>Nama Kapal</th>
+                                    <th>Bendera</th>
+                                    <th>Pemilik</th>
+                                    <th>Agen</th>
+                                    <th>Status Entri</th>
+                                    <th>Status Approval</th>
+                                    <th>Approve?</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Jenis Kapal</th>
+                                    <th>Nama Kapal</th>
+                                    <th>Bendera</th>
+                                    <th>Pemilik</th>
+                                    <th>Agen</th>
+                                    <th>Status Entri</th>
+                                    <th>Status Approval</th>
+                                    <th>Approve?</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="hasil">
+                            </tbody>
 
-                    <table class="table table-bordered" id="dataTable" style="font-size: 80%;">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Jenis Kapal</th>
-                                <th>Nama Kapal</th>
-                                <th>Bendera</th>
-                                <th>Pemilik</th>
-                                <th>Agen</th>
-                                <th>Status Entri</th>
-                                <th>Status Approval</th>
-                                <th>Approve?</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Jenis Kapal</th>
-                                <th>Nama Kapal</th>
-                                <th>Bendera</th>
-                                <th>Pemilik</th>
-                                <th>Agen</th>
-                                <th>Status Entri</th>
-                                <th>Status Approval</th>
-                                <th>Approve?</th>
-                            </tr>
-                        </tfoot>
-                        <tbody id="hasil">
-                        </tbody>
+                        </table>
 
-                    </table>
 
-                    
 
-                </form>
+                        </form>
 
-                <button type="button" id="simpan" onclick="simpan()">Simpan Perubahan</button>
+                        <button type="button" id="simpan" onclick="simpan()">Simpan Perubahan</button>
 
-                <br /><br />
+                        <br /><br />
 
-                
+
             </div>
 
         </div>
@@ -309,11 +318,19 @@
 </script>
 
 <script>
-    function simpan(){
-        var c = confirm("WARNING! Setelah di approve, data yang terpilih TIDAK lagi bisa diubah, apakah anda yakin?");
-        if(c){
-            $("#form_simpan").submit();
-        }
+    function simpan() {
+
+        <?php if (session("leveluser") <= 5) { ?>
+            var c = confirm("WARNING! Setelah di approve, data yang terpilih TIDAK lagi bisa diubah, apakah anda yakin?");
+            if (c) {
+                $("#form_simpan").submit();
+            }
+        <?php } else { ?>
+            alert("Untuk approval mohon hubungi admin");
+
+        <?php } ?>
+
+
     }
 </script>
 
@@ -356,7 +373,7 @@
             echo "alert('Approval data berhasil');";
         } else if ($_GET['status'] == "edit_gagal") {
             echo "alert('Approval data gagal dilakukan, silahkan cek isian atau hubungi admin');";
-        } 
+        }
     }
     ?>
 </script>

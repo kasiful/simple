@@ -10,10 +10,34 @@ class EntriController extends Controller
 
     public function view()
     {
-        $prov = DB::select("select * from master_prov");
-        $kab = DB::select("select * from list_kab");
-        $kantor_unit = DB::select("select * from list_kantor_unit");
-        $pelabuhan = DB::select("select * from list_pelabuhan");
+
+        if (session("leveluser") == 1) { // admin utama
+            $prov = DB::select("select * from master_prov");
+            $kab = DB::select("select * from list_kab");
+            $kantor_unit = DB::select("select * from list_kantor_unit");
+            $pelabuhan = DB::select("select * from list_pelabuhan");
+        } else if (session("leveluser") == 2) { // tim provinsi
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where prov_id=".session("prov_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where prov_id=".session("prov_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where prov_id=".session("prov_id"));
+        } else if (session("leveluser") == 3) { // tim kabupaten
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kab_id=".session("kab_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where kab_id=".session("kab_id"));
+        } else if (session("leveluser") == 4) { // tim kantor unit
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kantor_unit_id=".session("kantor_unit_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where kantor_unit_id=".session("kantor_unit_id"));
+        } else if (session("leveluser") == 5 || session("leveluser") == 6) { // admin / operator pelabuhan
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kantor_unit_id=".session("kantor_unit_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where pelabuhan_id=".session("pelabuhan_id"));
+        }
+
 
         //        print_r($prov);
         return view('entri/view', [
@@ -104,10 +128,32 @@ class EntriController extends Controller
         }
 
 
-        $prov = DB::select("select * from master_prov");
-        $kab = DB::select("select * from list_kab");
-        $kantor_unit = DB::select("select * from list_kantor_unit");
-        $pelabuhan = DB::select("select * from list_pelabuhan");
+        if (session("leveluser") == 1) { // admin utama
+            $prov = DB::select("select * from master_prov");
+            $kab = DB::select("select * from list_kab");
+            $kantor_unit = DB::select("select * from list_kantor_unit");
+            $pelabuhan = DB::select("select * from list_pelabuhan");
+        } else if (session("leveluser") == 2) { // tim provinsi
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where prov_id=".session("prov_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where prov_id=".session("prov_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where prov_id=".session("prov_id"));
+        } else if (session("leveluser") == 3) { // tim kabupaten
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kab_id=".session("kab_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where kab_id=".session("kab_id"));
+        } else if (session("leveluser") == 4) { // tim kantor unit
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kantor_unit_id=".session("kantor_unit_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where kantor_unit_id=".session("kantor_unit_id"));
+        } else if (session("leveluser") == 5 || session("leveluser") == 6) { // admin / operator pelabuhan
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kantor_unit_id=".session("kantor_unit_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where pelabuhan_id=".session("pelabuhan_id"));
+        }
 
         return view("entri/edit", [
             "keygen" => $keygen,
@@ -349,10 +395,32 @@ class EntriController extends Controller
 
     public function add()
     {
-        $prov = DB::select("select * from master_prov");
-        $kab = DB::select("select * from list_kab");
-        $kantor_unit = DB::select("select * from list_kantor_unit");
-        $pelabuhan = DB::select("select * from list_pelabuhan");
+        if (session("leveluser") == 1) { // admin utama
+            $prov = DB::select("select * from master_prov");
+            $kab = DB::select("select * from list_kab");
+            $kantor_unit = DB::select("select * from list_kantor_unit");
+            $pelabuhan = DB::select("select * from list_pelabuhan");
+        } else if (session("leveluser") == 2) { // tim provinsi
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where prov_id=".session("prov_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where prov_id=".session("prov_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where prov_id=".session("prov_id"));
+        } else if (session("leveluser") == 3) { // tim kabupaten
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kab_id=".session("kab_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where kab_id=".session("kab_id"));
+        } else if (session("leveluser") == 4) { // tim kantor unit
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kantor_unit_id=".session("kantor_unit_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where kantor_unit_id=".session("kantor_unit_id"));
+        } else if (session("leveluser") == 5 || session("leveluser") == 6) { // admin / operator pelabuhan
+            $prov = DB::select("select * from master_prov where id=".session("prov_id"));
+            $kab = DB::select("select * from list_kab where kab_id=".session("kab_id"));
+            $kantor_unit = DB::select("select * from list_kantor_unit where kantor_unit_id=".session("kantor_unit_id"));
+            $pelabuhan = DB::select("select * from list_pelabuhan where pelabuhan_id=".session("pelabuhan_id"));
+        }
 
         return view('entri/add', [
             "prov" => $prov,

@@ -27,10 +27,14 @@ class PublikasiController extends Controller
         $kantor_unit = addslashes($_POST['kantor_unit']);
         $tahun = addslashes($_POST['tahun']);
 
+        // $prov = addslashes($_GET['prov']);
+        // $kab = addslashes($_GET['kab']);
+        // $kantor_unit = addslashes($_GET['kantor_unit']);
+        // $tahun = addslashes($_GET['tahun']);
+
         $sql = "select * from publikasi_bulanan where prov=$prov and kab=$kab and kantor_unit=$kantor_unit and tahun=$tahun order by bulan asc";
         // print_r($sql);
         $hasil = DB::select($sql);
-
 
 
         $logo_status = [
