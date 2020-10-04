@@ -422,11 +422,14 @@ class EntriController extends Controller
             $pelabuhan = DB::select("select * from list_pelabuhan where pelabuhan_id=".session("pelabuhan_id"));
         }
 
+        $master_barang = DB::select('select * from master_barang order by barang');
+
         return view('entri/add', [
             "prov" => $prov,
             "kab" => $kab,
             "kantor_unit" => $kantor_unit,
-            "pelabuhan" => $pelabuhan
+            "pelabuhan" => $pelabuhan,
+            "master_barang" => $master_barang
         ]);
     }
 

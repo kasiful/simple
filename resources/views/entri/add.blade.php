@@ -8,7 +8,9 @@
 <!--<link href="<?php echo asset('form_template') ?>/css.css" rel="stylesheet">-->
 
 <style>
-    .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show>.btn-primary.dropdown-toggle {
         color: white;
         background-color: #4e73df;
         border-color: #4e73df;
@@ -22,9 +24,31 @@
         margin-right: 5px;
     }
 
-    .galat{
+    .galat {
         outline: 1px solid red;
-    }    
+    }
+
+
+    .modal-body {
+        height: 250px;
+        overflow-y: auto;
+    }
+
+    @media (min-height: 500px) {
+        .modal-body {
+            height: 400px;
+        }
+    }
+
+    @media (min-height: 800px) {
+        .modal-body {
+            height: 600px;
+        }
+    }
+
+    .r16-terpilih{
+        background-color: orange;
+    }
 
 </style>
 
@@ -238,7 +262,7 @@
                                     </tr>
                                     <tr>
                                         <td>Volume NRT</td>
-                                        <td><input class="form-control"  type="number" name="volume_nrt"></td>
+                                        <td><input class="form-control" type="number" name="volume_nrt"></td>
                                     </tr>
                                     <tr>
                                         <td>Panjang DWT</td>
@@ -252,8 +276,8 @@
                                         <td>Tiba Jam</td>
                                         <td>
                                             <span>
-                                                <input type="text" class="format-jam" name="tiba_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2"> :
-                                                <input type="text" class="format-jam" name="tiba_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2">
+                                                <input type="text" class="format-jam" name="tiba_jam_0" min="0" max="23" placeholder="HH" pattern="[0-9]{1,2}" maxlength="2" size="2"> :
+                                                <input type="text" class="format-jam" name="tiba_jam_1" min="0" max="23" placeholder="mm" pattern="[0-9]{1,2}" maxlength="2" size="2">
                                                 <!--<input class="form-control" type="text" name="tiba_jam">-->
                                             </span>
 
@@ -271,8 +295,8 @@
                                         <td>Tambat Jam</td>
                                         <td>
                                             <span>
-                                                <input type="text" class="format-jam" name="tambat_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2"> :
-                                                <input type="text" class="format-jam" name="tambat_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2">
+                                                <input type="text" class="format-jam" name="tambat_jam_0" min="0" max="23" placeholder="HH" pattern="[0-9]{1,2}" maxlength="2" size="2"> :
+                                                <input type="text" class="format-jam" name="tambat_jam_1" min="0" max="23" placeholder="mm" pattern="[0-9]{1,2}" maxlength="2" size="2">
                                                 <!--<input class="form-control" type="text" name="tiba_jam">-->
                                             </span>
                                         </td>
@@ -290,8 +314,8 @@
                                         <td>Berangkat Jam</td>
                                         <td>
                                             <span>
-                                                <input type="text" class="format-jam" name="berangkat_jam_0" min="0" max="23" placeholder="HH"  pattern="[0-9]{1,2}" maxlength="2" size="2"> :
-                                                <input type="text" class="format-jam" name="berangkat_jam_1" min="0" max="23" placeholder="mm"  pattern="[0-9]{1,2}" maxlength="2" size="2">
+                                                <input type="text" class="format-jam" name="berangkat_jam_0" min="0" max="23" placeholder="HH" pattern="[0-9]{1,2}" maxlength="2" size="2"> :
+                                                <input type="text" class="format-jam" name="berangkat_jam_1" min="0" max="23" placeholder="mm" pattern="[0-9]{1,2}" maxlength="2" size="2">
                                                 <!--<input class="form-control" type="text" name="tiba_jam">-->
                                             </span>
                                         </td>
@@ -327,29 +351,100 @@
 
                                 <thead>
                                     <tr>
-                                        <th>Jumlah Barang</th>
-                                        <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Satuan</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr id="input-tambah-1">
-                                        <td><input class="form-control" type="number" id="input-r16"></td>
-                                        <td><select class="form-control" id="input-r16s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
-                                            </select></td>
-                                        <td><input class="form-control" type="text" id="input-r16n"></td>
-                                        <td><input class="form-control" type="text" id="input-r17"></td>
+                                        <!-- <td><input class="form-control" type="text" id="input-r16n"></td> -->
+
+                                        <td>
+                                            <!-- <select class="form-control" type="text" id="input-r16n">
+                                                <option value=''>-- Pilih Barang --</option>
+                                                <?php
+                                                foreach ($master_barang as $x) {
+                                                ?>
+                                                    <option value="<?php echo $x->barang ?>"><?php echo $x->barang ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select> -->
+
+                                            <input id="input-r16n" class="form-control" type="text" data-toggle="modal" data-target="#modal-r16">
+
+                                            <br /><br />
+                                            Tidak menemukan barang? <a>tambah disini</a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal-r16" tabindex="-1" role="dialog" aria-labelledby="modal-r16-label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modal-r16-label">Pilih Nama Barang</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <input type="text" id="cari_r16" onkeyup="funr16()" placeholder="Search...">
+                                                            <br/><br/>
+
+                                                            <table class="table" id="tabel-r16">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Barang</th>
+                                                                        <th>Satuan</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    <?php
+                                                                    foreach ($master_barang as $x) {
+                                                                    ?>
+                                                                        <tr class="list-r16">
+                                                                            <td><?php echo $x->barang ?></td>
+                                                                            <td>
+                                                                                <?php 
+                                                                                
+                                                                                $temp_satuan = explode(", ", $x->satuan);
+                                                                                $temp_konversi = explode(", ", $x->konversi);
+
+                                                                                $teks = [];
+
+                                                                                for ($i=0; $i<count($temp_satuan); $i++){
+                                                                                    $teks[] = "<a href=# onclick=\"pilihr16('{$x->barang}', '{$temp_satuan[$i]}', {$temp_konversi[$i]})\">{$temp_satuan[$i]}</a>";
+                                                                                }
+
+                                                                                echo implode(", ", $teks);
+
+                                                                                ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php } ?>
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td><input type="text" class="form-control" id="input-r16s" style="width: 150px;"></td>
+                                        <td><input class="form-control" type="number" id="input-r16" onkeyup="hitungkonversir16()"></td>
+                                        <td>
+                                            <input type="hidden" id="temp_konversi_r16" value="0">
+                                            <input class="form-control" type="text" id="input-r17">
+                                        </td>
                                 </tbody>
 
                             </table>
@@ -359,7 +454,7 @@
                                 Tambah
                             </button>
 
-                            <br/><br/>
+                            <br /><br />
 
                             <table class="table table-bordered">
 
@@ -384,9 +479,6 @@
                                 Next</a>
 
                         </div>
-
-
-
 
                         <div class="tab-pane fade" id="tab-3b" role="tabpanel" aria-labelledby="pills-tab-3b">
                             <h3>III.b. Pelayaran Dalam Negeri (Muat Barang)</h3>
@@ -428,7 +520,7 @@
                                 Tambah
                             </button>
 
-                            <br/><br/>
+                            <br /><br />
 
                             <table class="table table-bordered">
 
@@ -453,8 +545,6 @@
                                 Next</a>
 
                         </div>
-
-
 
                         <div class="tab-pane fade" id="tab-4a" role="tabpanel" aria-labelledby="pills-tab-4a">
                             <h3>IV.a. Pelayaran Luar Negeri (Bongkar Barang)</h3>
@@ -496,7 +586,7 @@
                                 Tambah
                             </button>
 
-                            <br/><br/>
+                            <br /><br />
 
                             <table class="table table-bordered">
 
@@ -561,7 +651,7 @@
                                 Tambah
                             </button>
 
-                            <br/><br/>
+                            <br /><br />
 
                             <table class="table table-bordered">
 
@@ -599,18 +689,18 @@
 
                             <a class="btn btn-primary" style="color:white" onclick="pindah('tab-4b')">
                                 Prev</a>
-                            
-                            
-                            <hr/>
-                            
+
+
+                            <hr />
+
                             <p>
-                                Apakah entrian ini sudah selesai?<br/>
-                                <input type="radio" name="status" value="1"> Ya, entrian sudah lengkap<br/>
+                                Apakah entrian ini sudah selesai?<br />
+                                <input type="radio" name="status" value="1"> Ya, entrian sudah lengkap<br />
                                 <input type="radio" name="status" value="0" checked=""> Belum, dan akan dilanjutkan di lain waktu
                             </p>
 
-                            <input class="btn btn-primary" style="color:white"  type="submit">
-                            
+                            <input class="btn btn-primary" style="color:white" type="submit">
+
 
                         </div>
 
@@ -639,39 +729,84 @@
 
 <script src="<?php echo asset('sbadmin') ?>/vendor/bootstrap-datepicker/bootstrap-datepicker-built.js"></script>
 
+
+
+<script>
+
+</script>
+
+
+<script>
+    function funr16() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("cari_r16");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tabel-r16");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function pilihr16(barang, satuan, konversi) {
+        document.getElementById("input-r16n").value = barang;
+        document.getElementById("input-r16s").value = satuan;
+        document.getElementById("input-r16").value = 0;
+        document.getElementById("input-r17").value = 0;
+
+        document.getElementById("temp_konversi_r16").value = konversi;
+        $("#modal-r16").modal("hide");
+    }
+
+    function hitungkonversir16(){
+        var score = $("#input-r16").val()*$("#temp_konversi_r16").val();
+        score = score.toFixed(4);
+        $("#input-r17").val(score);
+    }
+
+</script>
+
+
 <?php
 if (isset($_GET['status'])) {
     if ($_GET['status'] == 'berhasil') {
-        ?>
+?>
         <script>
-                                $(document).ready(function () {
-                                    alert("Penyimpanan data berhasil");
-                                });
+            $(document).ready(function() {
+                alert("Penyimpanan data berhasil");
+            });
         </script>
-        <?php
+    <?php
     } else if ($_GET['status'] == 'gagal') {
-        ?>
+    ?>
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 alert("Gagal menyimpan data, silahkan hubungi admin");
             });
         </script>
 
-        <?php
+<?php
     }
 }
 ?>
 
 
 
-<script>
-    //                                $(document).ready(function () {
-    //                                    $('#dataTable').DataTable();
-    //                                });
-</script>
+
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $(".datepicker").datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
@@ -683,8 +818,8 @@ if (isset($_GET['status'])) {
 
 
 <script>
-    $(document).ready(function () {
-        $("#kode-xx").change(function () {
+    $(document).ready(function() {
+        $("#kode-xx").change(function() {
             var kode = $(this).val();
 
             $("#kode-xxxx").val("0000");
@@ -700,7 +835,7 @@ if (isset($_GET['status'])) {
 
         });
 
-        $("#kode-xxxx").change(function () {
+        $("#kode-xxxx").change(function() {
             var kode = $(this).val();
 
             $("#kode-xxxxxx").val("000000");
@@ -712,7 +847,7 @@ if (isset($_GET['status'])) {
             $(".kode-" + kode).show();
         });
 
-        $("#kode-xxxxxx").change(function () {
+        $("#kode-xxxxxx").change(function() {
             var kode = $(this).val();
 
             $("#kode-xxxxxxxx").val("00000000");
@@ -736,17 +871,16 @@ if (isset($_GET['status'])) {
 </script>
 
 <script>
-
-    $(document).ready(function () {
-        $("#tambah-1").click(function () {
+    $(document).ready(function() {
+        $("#tambah-1").click(function() {
             temp_id = temp_id + 1;
             var temp = '<tr id="tambah-1-' + temp_id + '">' +
-                    '<td><input type="hidden" name="r16[]" value="' + $("#input-r16").val() + '">' + $("#input-r16").val() + '</td>' +
-                    '<td><input type="hidden" name="r16s[]" value="' + $("#input-r16s").val() + '">' + $("#input-r16s").val() + '</td>' +
-                    '<td><input type="hidden" name="r16n[]" value="' + $("#input-r16n").val() + '">' + $("#input-r16n").val() + '</td>' +
-                    '<td><input type="hidden" name="r17[]" value="' + $("#input-r17").val() + '">' + $("#input-r17").val() + '</td>' +
-                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-1-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                    '</tr>';
+                '<td><input type="hidden" name="r16[]" value="' + $("#input-r16").val() + '">' + $("#input-r16").val() + '</td>' +
+                '<td><input type="hidden" name="r16s[]" value="' + $("#input-r16s").val() + '">' + $("#input-r16s").val() + '</td>' +
+                '<td><input type="hidden" name="r16n[]" value="' + $("#input-r16n").val() + '">' + $("#input-r16n").val() + '</td>' +
+                '<td><input type="hidden" name="r17[]" value="' + $("#input-r17").val() + '">' + $("#input-r17").val() + '</td>' +
+                '<td><a onclick="hapus_baris(' + "'" + 'tambah-1-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                '</tr>';
 
             //                alert(temp);
             var temp2 = $("#tabel-input-dalamnegeri-bongkar").html();
@@ -760,15 +894,15 @@ if (isset($_GET['status'])) {
         });
 
 
-        $("#tambah-2").click(function () {
+        $("#tambah-2").click(function() {
             temp_id = temp_id + 1;
             var temp = '<tr id="tambah-2-' + temp_id + '">' +
-                    '<td><input type="hidden" name="r18[]" value="' + $("#input-r18").val() + '">' + $("#input-r18").val() + '</td>' +
-                    '<td><input type="hidden" name="r18s[]" value="' + $("#input-r18s").val() + '">' + $("#input-r18s").val() + '</td>' +
-                    '<td><input type="hidden" name="r18n[]" value="' + $("#input-r18n").val() + '">' + $("#input-r18n").val() + '</td>' +
-                    '<td><input type="hidden" name="r19[]" value="' + $("#input-r19").val() + '">' + $("#input-r19").val() + '</td>' +
-                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-2-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                    '</tr>';
+                '<td><input type="hidden" name="r18[]" value="' + $("#input-r18").val() + '">' + $("#input-r18").val() + '</td>' +
+                '<td><input type="hidden" name="r18s[]" value="' + $("#input-r18s").val() + '">' + $("#input-r18s").val() + '</td>' +
+                '<td><input type="hidden" name="r18n[]" value="' + $("#input-r18n").val() + '">' + $("#input-r18n").val() + '</td>' +
+                '<td><input type="hidden" name="r19[]" value="' + $("#input-r19").val() + '">' + $("#input-r19").val() + '</td>' +
+                '<td><a onclick="hapus_baris(' + "'" + 'tambah-2-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                '</tr>';
 
             //                alert(temp);
             var temp2 = $("#tabel-input-dalamnegeri-muat").html();
@@ -780,15 +914,15 @@ if (isset($_GET['status'])) {
             $("#input-r19").val("");
         });
 
-        $("#tambah-3").click(function () {
+        $("#tambah-3").click(function() {
             temp_id = temp_id + 1;
             var temp = '<tr id="tambah-3-' + temp_id + '">' +
-                    '<td><input type="hidden" name="r20[]" value="' + $("#input-r20").val() + '">' + $("#input-r20").val() + '</td>' +
-                    '<td><input type="hidden" name="r20s[]" value="' + $("#input-r20s").val() + '">' + $("#input-r20s").val() + '</td>' +
-                    '<td><input type="hidden" name="r20n[]" value="' + $("#input-r20n").val() + '">' + $("#input-r20n").val() + '</td>' +
-                    '<td><input type="hidden" name="r20k[]" value="' + $("#input-r20k").val() + '">' + $("#input-r20k").val() + '</td>' +
-                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-3-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                    '</tr>';
+                '<td><input type="hidden" name="r20[]" value="' + $("#input-r20").val() + '">' + $("#input-r20").val() + '</td>' +
+                '<td><input type="hidden" name="r20s[]" value="' + $("#input-r20s").val() + '">' + $("#input-r20s").val() + '</td>' +
+                '<td><input type="hidden" name="r20n[]" value="' + $("#input-r20n").val() + '">' + $("#input-r20n").val() + '</td>' +
+                '<td><input type="hidden" name="r20k[]" value="' + $("#input-r20k").val() + '">' + $("#input-r20k").val() + '</td>' +
+                '<td><a onclick="hapus_baris(' + "'" + 'tambah-3-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                '</tr>';
 
             //                alert(temp);
             var temp2 = $("#tabel-input-luarnegeri-bongkar").html();
@@ -800,15 +934,15 @@ if (isset($_GET['status'])) {
             $("#input-r20k").val("");
         });
 
-        $("#tambah-4").click(function () {
+        $("#tambah-4").click(function() {
             temp_id = temp_id + 1;
             var temp = '<tr id="tambah-4-' + temp_id + '">' +
-                    '<td><input type="hidden" name="r21[]" value="' + $("#input-r21").val() + '">' + $("#input-r21").val() + '</td>' +
-                    '<td><input type="hidden" name="r21s[]" value="' + $("#input-r21s").val() + '">' + $("#input-r21s").val() + '</td>' +
-                    '<td><input type="hidden" name="r21n[]" value="' + $("#input-r21n").val() + '">' + $("#input-r21n").val() + '</td>' +
-                    '<td><input type="hidden" name="r21k[]" value="' + $("#input-r21k").val() + '">' + $("#input-r21k").val() + '</td>' +
-                    '<td><a onclick="hapus_baris(' + "'" + 'tambah-4-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
-                    '</tr>';
+                '<td><input type="hidden" name="r21[]" value="' + $("#input-r21").val() + '">' + $("#input-r21").val() + '</td>' +
+                '<td><input type="hidden" name="r21s[]" value="' + $("#input-r21s").val() + '">' + $("#input-r21s").val() + '</td>' +
+                '<td><input type="hidden" name="r21n[]" value="' + $("#input-r21n").val() + '">' + $("#input-r21n").val() + '</td>' +
+                '<td><input type="hidden" name="r21k[]" value="' + $("#input-r21k").val() + '">' + $("#input-r21k").val() + '</td>' +
+                '<td><a onclick="hapus_baris(' + "'" + 'tambah-4-' + temp_id + "'" + ')" style="font-weight: bold; color: red">Hapus</a></td>' +
+                '</tr>';
 
             //                alert(temp);
             var temp2 = $("#tabel-input-luarnegeri-muat").html();
@@ -830,37 +964,39 @@ if (isset($_GET['status'])) {
 
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        $('input[type="number"]').blur(function () {
+        $('input[type="number"]').blur(function() {
             if (!$(this).val() || isNaN($(this).val())) {
-                $(this).addClass("galat");
-                $(this).parent().children("span").remove();
-                $(this).parent().append("<span style='color:red'>Harus terisi angka, atau ketik \"0\" jika kosong</span>");
+                $(this).val("0");
+                // $(this).addClass("galat");
+                // $(this).parent().children("span").remove();
+                // $(this).parent().append("<span style='color:red'>Harus terisi angka, atau ketik \"0\" jika kosong</span>");
             } else {
                 $(this).removeClass("galat");
-                $(this).parent().children("span").remove();
+                // $(this).parent().children("span").remove();
             }
         });
-        $('input[type="text"]').blur(function () {
+        $('input[type="text"]').blur(function() {
             if (!$(this).val()) {
-                $(this).addClass("galat");
-                $(this).parent().children("span").remove();
-                if ($(this).hasClass("datepicker")) {
-                    $(this).parent().append("<span style='color:red'>Format tanggal harus yyyy-mm-dd</span>");
-                } else {
-                    $(this).parent().append("<span style='color:red'>Harus terisi, atau ketik \"-\" jika kosong</span>");
-                }
+                $(this).val("-");
+                // $(this).addClass("galat");
+                // $(this).parent().children("span").remove();
+                // if ($(this).hasClass("datepicker")) {
+                //     $(this).parent().append("<span style='color:red'>Format tanggal harus yyyy-mm-dd</span>");
+                // } else {
+                //     $(this).parent().append("<span style='color:red'>Harus terisi, atau ketik \"-\" jika kosong</span>");
+                // }
             } else {
                 $(this).removeClass("galat");
-                $(this).parent().children("span").remove();
+                // $(this).parent().children("span").remove();
             }
         });
         $('.format-jam').val("00");
         // entrian ketika enter berubah jadi tab
 
-        $('input').on("keypress", function (e) {
-            
+        $('input').on("keypress", function(e) {
+
             /* ENTER PRESSED*/
             if (e.keyCode == 13) {
                 e.preventDefault();
@@ -882,7 +1018,7 @@ if (isset($_GET['status'])) {
 </script>
 
 
-        <!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
+<!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
 
 
 @endsection

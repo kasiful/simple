@@ -1,0 +1,83 @@
+id,barang,satuan,konversi
+1,Aspal,Ton,1
+2,Barang,Ton,1
+3,Batu Bara,"Ton, Metric Ton, M3","1, 1, 1.3"
+4,Campuran,"Ton, Kg","1, 0.001"
+5,Cpko,Metric Ton,1
+6,Cpo,"Ton, Metric Ton","1, 1"
+7,Hewan,Ekor,0.2
+8,Ikan,"Ton, Kg","1, 0.001"
+9,Jagung,Ton,1
+10,Kayu Campuran,M3,0.95
+11,Kayu Pinus,M3,1.02
+12,Kayu Bakau,M3,1.2
+13,Kont,Ton,1
+14,Mobil,Unit,1.085
+15,Motor,Unit,0.1
+16,Pupuk,Ton,1
+17,Pupuk Urea,Ton,1
+18,Semen,"Ton, Metric Ton","1, 1"
+19,Semen Curah,Ton,1
+20,Semen Holcim,Ton,1
+21,Semen Tiga Roda,Ton,1
+22,Semen Tonasa,"Ton, Metric Ton","1, 1"
+23,Tali Bekas,Ton,1
+24,Tiang Listrik,Ton,1
+25,Bambu,Batang,0.003
+26,Barang,Ton,1
+27,Batu Pecah,M3,1.45
+28,Beras,Ton,1
+30,Cangkang,Ton,1
+31,Dedak,Ton,1
+32,Garam,Ton,1
+33,Gula Merah,Ton,1
+34,Jagung,Ton,1
+35,Jeruk,Ton,1
+36,Kelapa,Ton,1
+37,Kabel,Ton,1
+38,Kambing,Ekor,0.03
+39,Karnel,"Ton, Metric Ton","1, 1"
+40,Kasur,"Ton, Bal","1, 0.017"
+41,Kursi,Stel,0.1
+42,Lemari,Unit,0.1
+43,Mesocafe,Ton,1
+44,Pko,Metric Ton,1
+45,Palm Oil,Metric Ton,1
+46,Palm Olein,Metric Ton,1
+47,Palm Stearin,Metric Ton,1
+48,Pisang,Ton,1
+49,Sapi,Ekor,2.75
+50,Telur,Rak,0.002
+51,Beton,M3,2.2
+52,Beton Bertulang,M3,2.4
+53,Pasangan Bata Merah,M3,1.7
+54,"Kerikil, Koral, Split",M3,1.8
+55,Batu Karang,M3,0.7
+56,Batu Alam,M3,2.6
+57,"Pasangan Batu Belah, Bulat, Gunung",M3,2.2
+58,"Batu Belah, Batu Bulat, Batu Gunung",M3,1.5
+59,Batu Hancur,M3,1.602
+60,Pasangan Batu Cetak,M3,2.2
+61,Timah Hitam/Timbel,M3,11.4
+62,"Tanah, Lempung (Kering/Lembab)",M3,1.7
+63,"Tanah, Lempung (Basah)",M3,2
+64,Besi Tuang,M3,7.25
+65,Besi Cor,M3,7.3
+66,Besi Tempa,M3,7.75
+67,Baja,M3,7.85
+68,Seng,M3,7.135
+69,Pasangan Batu Karang,M3,1.45
+70,Air,M3,1
+71,Emas,M3,19.32
+72,Perak,M3,10.49
+73,Stainless Steel,M3,7.74
+74,Tembaga,M3,8.93
+75,Aluminium,M3,2.712
+76,Granit Padat,M3,2.691
+77,Granit Rusak,M3,1.65
+78,Marmer Padat,M3,2.563
+79,Marmer Rusak,M3,1.57
+80,Gypsum Padat,M3,2.787
+81,Kardus,M3,0.689
+82,Kertas Standar,M3,1.201
+83,Serbuk Gergaji,M3,0.21

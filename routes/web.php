@@ -54,6 +54,8 @@ Route::post('laporan/generate/list', 'LaporanController@generate_list')->middlew
 Route::post('laporan/generate/list2', 'LaporanController@generate_list2')->middleware("leveluser:5");
 Route::post('laporan/generate/process', 'LaporanController@generate_process')->middleware("leveluser:5");
 
+Route::get('laporan/generate/list3', 'LaporanController@generate_list3')->middleware("leveluser:5");
+
 // ============================================================== //
 //                         Manajemen Data                         //
 // ============================================================== //

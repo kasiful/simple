@@ -1,0 +1,871 @@
+id,r21,r21s,r21n,r21k,keygen
+1,74,Kg,barang_1,RI,1
+2,38,Unit,barang_2,RI,1
+3,76,Metric Ton,barang_3,RI,1
+4,84,Rak,barang_4,RI,1
+5,20,Ekor,barang_5,RI,1
+6,66,Kg,barang_1,RI,2
+7,86,Unit,barang_2,RI,2
+8,56,Metric Ton,barang_3,RI,2
+9,28,Rak,barang_4,RI,2
+10,39,Ekor,barang_5,RI,2
+11,64,Kg,barang_1,RI,3
+12,53,Unit,barang_2,RI,3
+13,80,Metric Ton,barang_3,RI,3
+14,1,Rak,barang_4,RI,3
+15,94,Ekor,barang_5,RI,3
+16,55,Kg,barang_1,RI,4
+17,84,Unit,barang_2,RI,4
+18,83,Metric Ton,barang_3,RI,4
+19,13,Rak,barang_4,RI,4
+20,39,Ekor,barang_5,RI,4
+21,30,Kg,barang_1,RI,5
+22,57,Unit,barang_2,RI,5
+23,7,Metric Ton,barang_3,RI,5
+24,35,Rak,barang_4,RI,5
+25,27,Ekor,barang_5,RI,5
+26,91,Kg,barang_1,RI,6
+27,72,Unit,barang_2,RI,6
+28,35,Metric Ton,barang_3,RI,6
+29,5,Rak,barang_4,RI,6
+30,42,Ekor,barang_5,RI,6
+31,58,Kg,barang_1,RI,7
+32,30,Unit,barang_2,RI,7
+33,67,Metric Ton,barang_3,RI,7
+34,62,Rak,barang_4,RI,7
+35,86,Ekor,barang_5,RI,7
+36,80,Kg,barang_1,RI,8
+37,31,Unit,barang_2,RI,8
+38,23,Metric Ton,barang_3,RI,8
+39,77,Rak,barang_4,RI,8
+40,20,Ekor,barang_5,RI,8
+41,4,Kg,barang_1,RI,9
+42,56,Unit,barang_2,RI,9
+43,97,Metric Ton,barang_3,RI,9
+44,31,Rak,barang_4,RI,9
+45,42,Ekor,barang_5,RI,9
+46,43,Kg,barang_1,RI,10
+47,16,Unit,barang_2,RI,10
+48,50,Metric Ton,barang_3,RI,10
+49,60,Rak,barang_4,RI,10
+50,37,Ekor,barang_5,RI,10
+51,46,Kg,barang_1,RI,11
+52,8,Unit,barang_2,RI,11
+53,45,Metric Ton,barang_3,RI,11
+54,87,Rak,barang_4,RI,11
+55,80,Ekor,barang_5,RI,11
+56,41,Kg,barang_1,RI,12
+57,7,Unit,barang_2,RI,12
+58,85,Metric Ton,barang_3,RI,12
+59,35,Rak,barang_4,RI,12
+60,16,Ekor,barang_5,RI,12
+61,77,Kg,barang_1,RI,13
+62,8,Unit,barang_2,RI,13
+63,8,Metric Ton,barang_3,RI,13
+64,32,Rak,barang_4,RI,13
+65,96,Ekor,barang_5,RI,13
+66,46,Kg,barang_1,RI,14
+67,21,Unit,barang_2,RI,14
+68,82,Metric Ton,barang_3,RI,14
+69,5,Rak,barang_4,RI,14
+70,37,Ekor,barang_5,RI,14
+71,25,Kg,barang_1,RI,15
+72,8,Unit,barang_2,RI,15
+73,68,Metric Ton,barang_3,RI,15
+74,79,Rak,barang_4,RI,15
+75,60,Ekor,barang_5,RI,15
+76,36,Kg,barang_1,RI,16
+77,81,Unit,barang_2,RI,16
+78,6,Metric Ton,barang_3,RI,16
+79,35,Rak,barang_4,RI,16
+80,34,Ekor,barang_5,RI,16
+81,91,Kg,barang_1,RI,17
+82,46,Unit,barang_2,RI,17
+83,74,Metric Ton,barang_3,RI,17
+84,57,Rak,barang_4,RI,17
+85,69,Ekor,barang_5,RI,17
+86,89,Kg,barang_1,RI,18
+87,16,Unit,barang_2,RI,18
+88,34,Metric Ton,barang_3,RI,18
+89,9,Rak,barang_4,RI,18
+90,64,Ekor,barang_5,RI,18
+91,64,Kg,barang_1,RI,19
+92,81,Unit,barang_2,RI,19
+93,29,Metric Ton,barang_3,RI,19
+94,62,Rak,barang_4,RI,19
+95,77,Ekor,barang_5,RI,19
+96,52,Kg,barang_1,RI,20
+97,49,Unit,barang_2,RI,20
+98,97,Metric Ton,barang_3,RI,20
+99,94,Rak,barang_4,RI,20
+100,21,Ekor,barang_5,RI,20
+101,79,Kg,barang_1,RI,21
+102,85,Unit,barang_2,RI,21
+103,80,Metric Ton,barang_3,RI,21
+104,48,Rak,barang_4,RI,21
+105,57,Ekor,barang_5,RI,21
+106,20,Kg,barang_1,RI,22
+107,79,Unit,barang_2,RI,22
+108,16,Metric Ton,barang_3,RI,22
+109,31,Rak,barang_4,RI,22
+110,34,Ekor,barang_5,RI,22
+111,96,Kg,barang_1,RI,23
+112,8,Unit,barang_2,RI,23
+113,52,Metric Ton,barang_3,RI,23
+114,62,Rak,barang_4,RI,23
+115,60,Ekor,barang_5,RI,23
+116,29,Kg,barang_1,RI,24
+117,34,Unit,barang_2,RI,24
+118,99,Metric Ton,barang_3,RI,24
+119,33,Rak,barang_4,RI,24
+120,57,Ekor,barang_5,RI,24
+121,83,Kg,barang_1,RI,25
+122,31,Unit,barang_2,RI,25
+123,7,Metric Ton,barang_3,RI,25
+124,54,Rak,barang_4,RI,25
+125,23,Ekor,barang_5,RI,25
+126,7,Kg,barang_1,RI,26
+127,76,Unit,barang_2,RI,26
+128,69,Metric Ton,barang_3,RI,26
+129,49,Rak,barang_4,RI,26
+130,47,Ekor,barang_5,RI,26
+131,41,Kg,barang_1,RI,27
+132,13,Unit,barang_2,RI,27
+133,92,Metric Ton,barang_3,RI,27
+134,47,Rak,barang_4,RI,27
+135,56,Ekor,barang_5,RI,27
+136,47,Kg,barang_1,RI,28
+137,73,Unit,barang_2,RI,28
+138,2,Metric Ton,barang_3,RI,28
+139,88,Rak,barang_4,RI,28
+140,15,Ekor,barang_5,RI,28
+141,16,Kg,barang_1,RI,29
+142,69,Unit,barang_2,RI,29
+143,67,Metric Ton,barang_3,RI,29
+144,24,Rak,barang_4,RI,29
+145,8,Ekor,barang_5,RI,29
+146,36,Kg,barang_1,RI,30
+147,3,Unit,barang_2,RI,30
+148,88,Metric Ton,barang_3,RI,30
+149,35,Rak,barang_4,RI,30
+150,23,Ekor,barang_5,RI,30
+151,90,Kg,barang_1,RI,31
+152,85,Unit,barang_2,RI,31
+153,30,Metric Ton,barang_3,RI,31
+154,67,Rak,barang_4,RI,31
+155,41,Ekor,barang_5,RI,31
+156,33,Kg,barang_1,RI,32
+157,72,Unit,barang_2,RI,32
+158,39,Metric Ton,barang_3,RI,32
+159,30,Rak,barang_4,RI,32
+160,12,Ekor,barang_5,RI,32
+161,43,Kg,barang_1,RI,33
+162,92,Unit,barang_2,RI,33
+163,95,Metric Ton,barang_3,RI,33
+164,65,Rak,barang_4,RI,33
+165,78,Ekor,barang_5,RI,33
+166,36,Kg,barang_1,RI,34
+167,24,Unit,barang_2,RI,34
+168,4,Metric Ton,barang_3,RI,34
+169,94,Rak,barang_4,RI,34
+170,44,Ekor,barang_5,RI,34
+171,75,Kg,barang_1,RI,35
+172,59,Unit,barang_2,RI,35
+173,93,Metric Ton,barang_3,RI,35
+174,89,Rak,barang_4,RI,35
+175,36,Ekor,barang_5,RI,35
+176,31,Kg,barang_1,RI,36
+177,72,Unit,barang_2,RI,36
+178,78,Metric Ton,barang_3,RI,36
+179,96,Rak,barang_4,RI,36
+180,42,Ekor,barang_5,RI,36
+181,64,Kg,barang_1,RI,37
+182,71,Unit,barang_2,RI,37
+183,92,Metric Ton,barang_3,RI,37
+184,12,Rak,barang_4,RI,37
+185,72,Ekor,barang_5,RI,37
+186,28,Kg,barang_1,RI,38
+187,70,Unit,barang_2,RI,38
+188,64,Metric Ton,barang_3,RI,38
+189,94,Rak,barang_4,RI,38
+190,78,Ekor,barang_5,RI,38
+191,36,Kg,barang_1,RI,39
+192,30,Unit,barang_2,RI,39
+193,42,Metric Ton,barang_3,RI,39
+194,66,Rak,barang_4,RI,39
+195,76,Ekor,barang_5,RI,39
+196,24,Kg,barang_1,RI,40
+197,64,Unit,barang_2,RI,40
+198,96,Metric Ton,barang_3,RI,40
+199,20,Rak,barang_4,RI,40
+200,40,Ekor,barang_5,RI,40
+201,76,Kg,barang_1,RI,41
+202,75,Unit,barang_2,RI,41
+203,12,Metric Ton,barang_3,RI,41
+204,44,Rak,barang_4,RI,41
+205,96,Ekor,barang_5,RI,41
+206,28,Kg,barang_1,RI,42
+207,17,Unit,barang_2,RI,42
+208,39,Metric Ton,barang_3,RI,42
+209,85,Rak,barang_4,RI,42
+210,30,Ekor,barang_5,RI,42
+211,19,Kg,barang_1,RI,43
+212,92,Unit,barang_2,RI,43
+213,11,Metric Ton,barang_3,RI,43
+214,25,Rak,barang_4,RI,43
+215,26,Ekor,barang_5,RI,43
+216,24,Kg,barang_1,RI,44
+217,67,Unit,barang_2,RI,44
+218,100,Metric Ton,barang_3,RI,44
+219,100,Rak,barang_4,RI,44
+220,22,Ekor,barang_5,RI,44
+221,67,Kg,barang_1,RI,45
+222,15,Unit,barang_2,RI,45
+223,81,Metric Ton,barang_3,RI,45
+224,56,Rak,barang_4,RI,45
+225,53,Ekor,barang_5,RI,45
+226,98,Kg,barang_1,RI,46
+227,86,Unit,barang_2,RI,46
+228,54,Metric Ton,barang_3,RI,46
+229,35,Rak,barang_4,RI,46
+230,64,Ekor,barang_5,RI,46
+231,26,Kg,barang_1,RI,47
+232,33,Unit,barang_2,RI,47
+233,14,Metric Ton,barang_3,RI,47
+234,14,Rak,barang_4,RI,47
+235,65,Ekor,barang_5,RI,47
+236,73,Kg,barang_1,RI,48
+237,53,Unit,barang_2,RI,48
+238,92,Metric Ton,barang_3,RI,48
+239,96,Rak,barang_4,RI,48
+240,46,Ekor,barang_5,RI,48
+241,91,Kg,barang_1,RI,49
+242,59,Unit,barang_2,RI,49
+243,50,Metric Ton,barang_3,RI,49
+244,25,Rak,barang_4,RI,49
+245,8,Ekor,barang_5,RI,49
+246,73,Kg,barang_1,RI,50
+247,85,Unit,barang_2,RI,50
+248,65,Metric Ton,barang_3,RI,50
+249,94,Rak,barang_4,RI,50
+250,78,Ekor,barang_5,RI,50
+251,16,Kg,barang_1,RI,51
+252,16,Unit,barang_2,RI,51
+253,83,Metric Ton,barang_3,RI,51
+254,33,Rak,barang_4,RI,51
+255,83,Ekor,barang_5,RI,51
+256,29,Kg,barang_1,RI,52
+257,51,Unit,barang_2,RI,52
+258,74,Metric Ton,barang_3,RI,52
+259,31,Rak,barang_4,RI,52
+260,21,Ekor,barang_5,RI,52
+261,49,Kg,barang_1,RI,53
+262,50,Unit,barang_2,RI,53
+263,38,Metric Ton,barang_3,RI,53
+264,100,Rak,barang_4,RI,53
+265,38,Ekor,barang_5,RI,53
+266,14,Kg,barang_1,RI,54
+267,89,Unit,barang_2,RI,54
+268,25,Metric Ton,barang_3,RI,54
+269,43,Rak,barang_4,RI,54
+270,90,Ekor,barang_5,RI,54
+271,92,Kg,barang_1,RI,55
+272,94,Unit,barang_2,RI,55
+273,41,Metric Ton,barang_3,RI,55
+274,28,Rak,barang_4,RI,55
+275,49,Ekor,barang_5,RI,55
+276,35,Kg,barang_1,RI,56
+277,31,Unit,barang_2,RI,56
+278,4,Metric Ton,barang_3,RI,56
+279,74,Rak,barang_4,RI,56
+280,74,Ekor,barang_5,RI,56
+281,35,Kg,barang_1,RI,57
+282,19,Unit,barang_2,RI,57
+283,94,Metric Ton,barang_3,RI,57
+284,39,Rak,barang_4,RI,57
+285,69,Ekor,barang_5,RI,57
+286,94,Kg,barang_1,RI,58
+287,100,Unit,barang_2,RI,58
+288,35,Metric Ton,barang_3,RI,58
+289,89,Rak,barang_4,RI,58
+290,33,Ekor,barang_5,RI,58
+291,77,Kg,barang_1,RI,59
+292,28,Unit,barang_2,RI,59
+293,36,Metric Ton,barang_3,RI,59
+294,17,Rak,barang_4,RI,59
+295,79,Ekor,barang_5,RI,59
+296,36,Kg,barang_1,RI,60
+297,82,Unit,barang_2,RI,60
+298,47,Metric Ton,barang_3,RI,60
+299,77,Rak,barang_4,RI,60
+300,65,Ekor,barang_5,RI,60
+301,67,Kg,barang_1,RI,61
+302,72,Unit,barang_2,RI,61
+303,52,Metric Ton,barang_3,RI,61
+304,23,Rak,barang_4,RI,61
+305,39,Ekor,barang_5,RI,61
+306,81,Kg,barang_1,RI,62
+307,37,Unit,barang_2,RI,62
+308,80,Metric Ton,barang_3,RI,62
+309,96,Rak,barang_4,RI,62
+310,28,Ekor,barang_5,RI,62
+311,31,Kg,barang_1,RI,63
+312,10,Unit,barang_2,RI,63
+313,26,Metric Ton,barang_3,RI,63
+314,16,Rak,barang_4,RI,63
+315,27,Ekor,barang_5,RI,63
+316,53,Kg,barang_1,RI,64
+317,54,Unit,barang_2,RI,64
+318,27,Metric Ton,barang_3,RI,64
+319,80,Rak,barang_4,RI,64
+320,53,Ekor,barang_5,RI,64
+321,54,Kg,barang_1,RI,65
+322,92,Unit,barang_2,RI,65
+323,15,Metric Ton,barang_3,RI,65
+324,13,Rak,barang_4,RI,65
+325,80,Ekor,barang_5,RI,65
+326,92,Kg,barang_1,RI,66
+327,82,Unit,barang_2,RI,66
+328,47,Metric Ton,barang_3,RI,66
+329,88,Rak,barang_4,RI,66
+330,59,Ekor,barang_5,RI,66
+331,54,Kg,barang_1,RI,67
+332,26,Unit,barang_2,RI,67
+333,69,Metric Ton,barang_3,RI,67
+334,96,Rak,barang_4,RI,67
+335,23,Ekor,barang_5,RI,67
+336,48,Kg,barang_1,RI,68
+337,86,Unit,barang_2,RI,68
+338,6,Metric Ton,barang_3,RI,68
+339,42,Rak,barang_4,RI,68
+340,38,Ekor,barang_5,RI,68
+341,27,Kg,barang_1,RI,69
+342,63,Unit,barang_2,RI,69
+343,7,Metric Ton,barang_3,RI,69
+344,59,Rak,barang_4,RI,69
+345,87,Ekor,barang_5,RI,69
+346,9,Kg,barang_1,RI,70
+347,83,Unit,barang_2,RI,70
+348,15,Metric Ton,barang_3,RI,70
+349,53,Rak,barang_4,RI,70
+350,35,Ekor,barang_5,RI,70
+351,99,Kg,barang_1,RI,71
+352,39,Unit,barang_2,RI,71
+353,30,Metric Ton,barang_3,RI,71
+354,13,Rak,barang_4,RI,71
+355,43,Ekor,barang_5,RI,71
+356,18,Kg,barang_1,RI,72
+357,83,Unit,barang_2,RI,72
+358,93,Metric Ton,barang_3,RI,72
+359,39,Rak,barang_4,RI,72
+360,7,Ekor,barang_5,RI,72
+361,75,Kg,barang_1,RI,73
+362,47,Unit,barang_2,RI,73
+363,5,Metric Ton,barang_3,RI,73
+364,69,Rak,barang_4,RI,73
+365,6,Ekor,barang_5,RI,73
+366,72,Kg,barang_1,RI,74
+367,50,Unit,barang_2,RI,74
+368,53,Metric Ton,barang_3,RI,74
+369,60,Rak,barang_4,RI,74
+370,37,Ekor,barang_5,RI,74
+371,5,Kg,barang_1,RI,75
+372,94,Unit,barang_2,RI,75
+373,55,Metric Ton,barang_3,RI,75
+374,63,Rak,barang_4,RI,75
+375,66,Ekor,barang_5,RI,75
+376,90,Kg,barang_1,RI,76
+377,96,Unit,barang_2,RI,76
+378,71,Metric Ton,barang_3,RI,76
+379,46,Rak,barang_4,RI,76
+380,58,Ekor,barang_5,RI,76
+381,27,Kg,barang_1,RI,77
+382,78,Unit,barang_2,RI,77
+383,63,Metric Ton,barang_3,RI,77
+384,82,Rak,barang_4,RI,77
+385,60,Ekor,barang_5,RI,77
+386,83,Kg,barang_1,RI,78
+387,14,Unit,barang_2,RI,78
+388,98,Metric Ton,barang_3,RI,78
+389,45,Rak,barang_4,RI,78
+390,14,Ekor,barang_5,RI,78
+391,44,Kg,barang_1,RI,79
+392,52,Unit,barang_2,RI,79
+393,48,Metric Ton,barang_3,RI,79
+394,84,Rak,barang_4,RI,79
+395,76,Ekor,barang_5,RI,79
+396,51,Kg,barang_1,RI,80
+397,54,Unit,barang_2,RI,80
+398,35,Metric Ton,barang_3,RI,80
+399,90,Rak,barang_4,RI,80
+400,6,Ekor,barang_5,RI,80
+401,78,Kg,barang_1,RI,81
+402,86,Unit,barang_2,RI,81
+403,62,Metric Ton,barang_3,RI,81
+404,19,Rak,barang_4,RI,81
+405,32,Ekor,barang_5,RI,81
+406,49,Kg,barang_1,RI,82
+407,42,Unit,barang_2,RI,82
+408,3,Metric Ton,barang_3,RI,82
+409,47,Rak,barang_4,RI,82
+410,28,Ekor,barang_5,RI,82
+411,63,Kg,barang_1,RI,83
+412,12,Unit,barang_2,RI,83
+413,84,Metric Ton,barang_3,RI,83
+414,5,Rak,barang_4,RI,83
+415,94,Ekor,barang_5,RI,83
+416,86,Kg,barang_1,RI,84
+417,80,Unit,barang_2,RI,84
+418,56,Metric Ton,barang_3,RI,84
+419,72,Rak,barang_4,RI,84
+420,65,Ekor,barang_5,RI,84
+421,32,Kg,barang_1,RI,85
+422,7,Unit,barang_2,RI,85
+423,84,Metric Ton,barang_3,RI,85
+424,58,Rak,barang_4,RI,85
+425,58,Ekor,barang_5,RI,85
+426,68,Kg,barang_1,RI,86
+427,86,Unit,barang_2,RI,86
+428,89,Metric Ton,barang_3,RI,86
+429,1,Rak,barang_4,RI,86
+430,90,Ekor,barang_5,RI,86
+431,30,Kg,barang_1,RI,87
+432,10,Unit,barang_2,RI,87
+433,23,Metric Ton,barang_3,RI,87
+434,66,Rak,barang_4,RI,87
+435,24,Ekor,barang_5,RI,87
+436,97,Kg,barang_1,RI,88
+437,27,Unit,barang_2,RI,88
+438,47,Metric Ton,barang_3,RI,88
+439,55,Rak,barang_4,RI,88
+440,40,Ekor,barang_5,RI,88
+441,5,Kg,barang_1,RI,89
+442,6,Unit,barang_2,RI,89
+443,22,Metric Ton,barang_3,RI,89
+444,19,Rak,barang_4,RI,89
+445,73,Ekor,barang_5,RI,89
+446,4,Kg,barang_1,RI,90
+447,62,Unit,barang_2,RI,90
+448,98,Metric Ton,barang_3,RI,90
+449,29,Rak,barang_4,RI,90
+450,71,Ekor,barang_5,RI,90
+451,30,Kg,barang_1,RI,91
+452,58,Unit,barang_2,RI,91
+453,7,Metric Ton,barang_3,RI,91
+454,83,Rak,barang_4,RI,91
+455,72,Ekor,barang_5,RI,91
+456,91,Kg,barang_1,RI,92
+457,16,Unit,barang_2,RI,92
+458,3,Metric Ton,barang_3,RI,92
+459,48,Rak,barang_4,RI,92
+460,64,Ekor,barang_5,RI,92
+461,20,Kg,barang_1,RI,93
+462,97,Unit,barang_2,RI,93
+463,36,Metric Ton,barang_3,RI,93
+464,87,Rak,barang_4,RI,93
+465,90,Ekor,barang_5,RI,93
+466,91,Kg,barang_1,RI,94
+467,87,Unit,barang_2,RI,94
+468,36,Metric Ton,barang_3,RI,94
+469,62,Rak,barang_4,RI,94
+470,89,Ekor,barang_5,RI,94
+471,31,Kg,barang_1,RI,95
+472,14,Unit,barang_2,RI,95
+473,50,Metric Ton,barang_3,RI,95
+474,3,Rak,barang_4,RI,95
+475,10,Ekor,barang_5,RI,95
+476,91,Kg,barang_1,RI,96
+477,14,Unit,barang_2,RI,96
+478,3,Metric Ton,barang_3,RI,96
+479,32,Rak,barang_4,RI,96
+480,5,Ekor,barang_5,RI,96
+481,33,Kg,barang_1,RI,97
+482,89,Unit,barang_2,RI,97
+483,3,Metric Ton,barang_3,RI,97
+484,40,Rak,barang_4,RI,97
+485,78,Ekor,barang_5,RI,97
+486,50,Kg,barang_1,RI,98
+487,84,Unit,barang_2,RI,98
+488,66,Metric Ton,barang_3,RI,98
+489,99,Rak,barang_4,RI,98
+490,9,Ekor,barang_5,RI,98
+491,91,Kg,barang_1,RI,99
+492,84,Unit,barang_2,RI,99
+493,22,Metric Ton,barang_3,RI,99
+494,24,Rak,barang_4,RI,99
+495,8,Ekor,barang_5,RI,99
+496,60,Kg,barang_1,RI,100
+497,75,Unit,barang_2,RI,100
+498,89,Metric Ton,barang_3,RI,100
+499,70,Rak,barang_4,RI,100
+500,47,Ekor,barang_5,RI,100
+501,72,Kg,barang_1,RI,101
+502,38,Unit,barang_2,RI,101
+503,17,Metric Ton,barang_3,RI,101
+504,28,Rak,barang_4,RI,101
+505,47,Ekor,barang_5,RI,101
+506,63,Kg,barang_1,RI,102
+507,2,Unit,barang_2,RI,102
+508,69,Metric Ton,barang_3,RI,102
+509,9,Rak,barang_4,RI,102
+510,6,Ekor,barang_5,RI,102
+511,5,Kg,barang_1,RI,103
+512,76,Unit,barang_2,RI,103
+513,42,Metric Ton,barang_3,RI,103
+514,24,Rak,barang_4,RI,103
+515,45,Ekor,barang_5,RI,103
+516,79,Kg,barang_1,RI,104
+517,72,Unit,barang_2,RI,104
+518,41,Metric Ton,barang_3,RI,104
+519,39,Rak,barang_4,RI,104
+520,25,Ekor,barang_5,RI,104
+521,95,Kg,barang_1,RI,105
+522,70,Unit,barang_2,RI,105
+523,92,Metric Ton,barang_3,RI,105
+524,66,Rak,barang_4,RI,105
+525,84,Ekor,barang_5,RI,105
+526,15,Kg,barang_1,RI,106
+527,70,Unit,barang_2,RI,106
+528,74,Metric Ton,barang_3,RI,106
+529,81,Rak,barang_4,RI,106
+530,65,Ekor,barang_5,RI,106
+531,36,Kg,barang_1,RI,107
+532,97,Unit,barang_2,RI,107
+533,19,Metric Ton,barang_3,RI,107
+534,73,Rak,barang_4,RI,107
+535,60,Ekor,barang_5,RI,107
+536,87,Kg,barang_1,RI,108
+537,65,Unit,barang_2,RI,108
+538,41,Metric Ton,barang_3,RI,108
+539,33,Rak,barang_4,RI,108
+540,85,Ekor,barang_5,RI,108
+541,24,Kg,barang_1,RI,109
+542,56,Unit,barang_2,RI,109
+543,99,Metric Ton,barang_3,RI,109
+544,44,Rak,barang_4,RI,109
+545,20,Ekor,barang_5,RI,109
+546,49,Kg,barang_1,RI,110
+547,28,Unit,barang_2,RI,110
+548,80,Metric Ton,barang_3,RI,110
+549,40,Rak,barang_4,RI,110
+550,68,Ekor,barang_5,RI,110
+551,20,Kg,barang_1,RI,111
+552,33,Unit,barang_2,RI,111
+553,52,Metric Ton,barang_3,RI,111
+554,8,Rak,barang_4,RI,111
+555,14,Ekor,barang_5,RI,111
+556,66,Kg,barang_1,RI,112
+557,75,Unit,barang_2,RI,112
+558,69,Metric Ton,barang_3,RI,112
+559,90,Rak,barang_4,RI,112
+560,79,Ekor,barang_5,RI,112
+561,56,Kg,barang_1,RI,113
+562,25,Unit,barang_2,RI,113
+563,49,Metric Ton,barang_3,RI,113
+564,22,Rak,barang_4,RI,113
+565,50,Ekor,barang_5,RI,113
+566,12,Kg,barang_1,RI,114
+567,15,Unit,barang_2,RI,114
+568,44,Metric Ton,barang_3,RI,114
+569,25,Rak,barang_4,RI,114
+570,45,Ekor,barang_5,RI,114
+571,13,Kg,barang_1,RI,115
+572,64,Unit,barang_2,RI,115
+573,48,Metric Ton,barang_3,RI,115
+574,9,Rak,barang_4,RI,115
+575,99,Ekor,barang_5,RI,115
+576,54,Kg,barang_1,RI,116
+577,80,Unit,barang_2,RI,116
+578,52,Metric Ton,barang_3,RI,116
+579,40,Rak,barang_4,RI,116
+580,72,Ekor,barang_5,RI,116
+581,68,Kg,barang_1,RI,117
+582,22,Unit,barang_2,RI,117
+583,52,Metric Ton,barang_3,RI,117
+584,69,Rak,barang_4,RI,117
+585,80,Ekor,barang_5,RI,117
+586,70,Kg,barang_1,RI,118
+587,71,Unit,barang_2,RI,118
+588,95,Metric Ton,barang_3,RI,118
+589,20,Rak,barang_4,RI,118
+590,47,Ekor,barang_5,RI,118
+591,94,Kg,barang_1,RI,119
+592,22,Unit,barang_2,RI,119
+593,89,Metric Ton,barang_3,RI,119
+594,96,Rak,barang_4,RI,119
+595,32,Ekor,barang_5,RI,119
+596,74,Kg,barang_1,RI,120
+597,47,Unit,barang_2,RI,120
+598,17,Metric Ton,barang_3,RI,120
+599,16,Rak,barang_4,RI,120
+600,2,Ekor,barang_5,RI,120
+601,87,Kg,barang_1,RI,121
+602,61,Unit,barang_2,RI,121
+603,97,Metric Ton,barang_3,RI,121
+604,25,Rak,barang_4,RI,121
+605,82,Ekor,barang_5,RI,121
+606,68,Kg,barang_1,RI,122
+607,71,Unit,barang_2,RI,122
+608,98,Metric Ton,barang_3,RI,122
+609,89,Rak,barang_4,RI,122
+610,42,Ekor,barang_5,RI,122
+611,96,Kg,barang_1,RI,123
+612,36,Unit,barang_2,RI,123
+613,37,Metric Ton,barang_3,RI,123
+614,97,Rak,barang_4,RI,123
+615,20,Ekor,barang_5,RI,123
+616,24,Kg,barang_1,RI,124
+617,10,Unit,barang_2,RI,124
+618,96,Metric Ton,barang_3,RI,124
+619,80,Rak,barang_4,RI,124
+620,81,Ekor,barang_5,RI,124
+621,85,Kg,barang_1,RI,125
+622,74,Unit,barang_2,RI,125
+623,23,Metric Ton,barang_3,RI,125
+624,18,Rak,barang_4,RI,125
+625,33,Ekor,barang_5,RI,125
+626,56,Kg,barang_1,RI,126
+627,92,Unit,barang_2,RI,126
+628,16,Metric Ton,barang_3,RI,126
+629,19,Rak,barang_4,RI,126
+630,7,Ekor,barang_5,RI,126
+631,1,Kg,barang_1,RI,127
+632,9,Unit,barang_2,RI,127
+633,81,Metric Ton,barang_3,RI,127
+634,83,Rak,barang_4,RI,127
+635,33,Ekor,barang_5,RI,127
+636,15,Kg,barang_1,RI,128
+637,58,Unit,barang_2,RI,128
+638,11,Metric Ton,barang_3,RI,128
+639,81,Rak,barang_4,RI,128
+640,86,Ekor,barang_5,RI,128
+641,39,Kg,barang_1,RI,129
+642,98,Unit,barang_2,RI,129
+643,4,Metric Ton,barang_3,RI,129
+644,97,Rak,barang_4,RI,129
+645,56,Ekor,barang_5,RI,129
+646,76,Kg,barang_1,RI,130
+647,30,Unit,barang_2,RI,130
+648,70,Metric Ton,barang_3,RI,130
+649,55,Rak,barang_4,RI,130
+650,60,Ekor,barang_5,RI,130
+651,6,Kg,barang_1,RI,131
+652,94,Unit,barang_2,RI,131
+653,91,Metric Ton,barang_3,RI,131
+654,55,Rak,barang_4,RI,131
+655,42,Ekor,barang_5,RI,131
+656,57,Kg,barang_1,RI,132
+657,53,Unit,barang_2,RI,132
+658,61,Metric Ton,barang_3,RI,132
+659,7,Rak,barang_4,RI,132
+660,70,Ekor,barang_5,RI,132
+661,10,Kg,barang_1,RI,133
+662,2,Unit,barang_2,RI,133
+663,66,Metric Ton,barang_3,RI,133
+664,4,Rak,barang_4,RI,133
+665,7,Ekor,barang_5,RI,133
+666,82,Kg,barang_1,RI,134
+667,60,Unit,barang_2,RI,134
+668,16,Metric Ton,barang_3,RI,134
+669,64,Rak,barang_4,RI,134
+670,61,Ekor,barang_5,RI,134
+671,54,Kg,barang_1,RI,135
+672,91,Unit,barang_2,RI,135
+673,53,Metric Ton,barang_3,RI,135
+674,64,Rak,barang_4,RI,135
+675,48,Ekor,barang_5,RI,135
+676,50,Kg,barang_1,RI,136
+677,40,Unit,barang_2,RI,136
+678,81,Metric Ton,barang_3,RI,136
+679,92,Rak,barang_4,RI,136
+680,2,Ekor,barang_5,RI,136
+681,23,Kg,barang_1,RI,137
+682,88,Unit,barang_2,RI,137
+683,27,Metric Ton,barang_3,RI,137
+684,64,Rak,barang_4,RI,137
+685,76,Ekor,barang_5,RI,137
+686,3,Kg,barang_1,RI,138
+687,98,Unit,barang_2,RI,138
+688,46,Metric Ton,barang_3,RI,138
+689,39,Rak,barang_4,RI,138
+690,24,Ekor,barang_5,RI,138
+691,18,Kg,barang_1,RI,139
+692,28,Unit,barang_2,RI,139
+693,81,Metric Ton,barang_3,RI,139
+694,39,Rak,barang_4,RI,139
+695,84,Ekor,barang_5,RI,139
+696,35,Kg,barang_1,RI,140
+697,37,Unit,barang_2,RI,140
+698,89,Metric Ton,barang_3,RI,140
+699,9,Rak,barang_4,RI,140
+700,86,Ekor,barang_5,RI,140
+701,16,Kg,barang_1,RI,141
+702,72,Unit,barang_2,RI,141
+703,8,Metric Ton,barang_3,RI,141
+704,41,Rak,barang_4,RI,141
+705,43,Ekor,barang_5,RI,141
+706,1,Kg,barang_1,RI,142
+707,3,Unit,barang_2,RI,142
+708,78,Metric Ton,barang_3,RI,142
+709,65,Rak,barang_4,RI,142
+710,41,Ekor,barang_5,RI,142
+711,81,Kg,barang_1,RI,143
+712,98,Unit,barang_2,RI,143
+713,12,Metric Ton,barang_3,RI,143
+714,18,Rak,barang_4,RI,143
+715,23,Ekor,barang_5,RI,143
+716,48,Kg,barang_1,RI,144
+717,93,Unit,barang_2,RI,144
+718,7,Metric Ton,barang_3,RI,144
+719,85,Rak,barang_4,RI,144
+720,99,Ekor,barang_5,RI,144
+721,58,Kg,barang_1,RI,145
+722,92,Unit,barang_2,RI,145
+723,23,Metric Ton,barang_3,RI,145
+724,76,Rak,barang_4,RI,145
+725,73,Ekor,barang_5,RI,145
+726,36,Kg,barang_1,RI,146
+727,41,Unit,barang_2,RI,146
+728,17,Metric Ton,barang_3,RI,146
+729,9,Rak,barang_4,RI,146
+730,20,Ekor,barang_5,RI,146
+731,69,Kg,barang_1,RI,147
+732,32,Unit,barang_2,RI,147
+733,56,Metric Ton,barang_3,RI,147
+734,65,Rak,barang_4,RI,147
+735,78,Ekor,barang_5,RI,147
+736,89,Kg,barang_1,RI,148
+737,3,Unit,barang_2,RI,148
+738,85,Metric Ton,barang_3,RI,148
+739,21,Rak,barang_4,RI,148
+740,70,Ekor,barang_5,RI,148
+741,100,Kg,barang_1,RI,149
+742,63,Unit,barang_2,RI,149
+743,86,Metric Ton,barang_3,RI,149
+744,65,Rak,barang_4,RI,149
+745,72,Ekor,barang_5,RI,149
+746,61,Kg,barang_1,RI,150
+747,39,Unit,barang_2,RI,150
+748,29,Metric Ton,barang_3,RI,150
+749,98,Rak,barang_4,RI,150
+750,9,Ekor,barang_5,RI,150
+751,38,Kg,barang_1,RI,151
+752,82,Unit,barang_2,RI,151
+753,80,Metric Ton,barang_3,RI,151
+754,76,Rak,barang_4,RI,151
+755,40,Ekor,barang_5,RI,151
+756,3,Kg,barang_1,RI,152
+757,90,Unit,barang_2,RI,152
+758,51,Metric Ton,barang_3,RI,152
+759,67,Rak,barang_4,RI,152
+760,79,Ekor,barang_5,RI,152
+761,56,Kg,barang_1,RI,153
+762,93,Unit,barang_2,RI,153
+763,61,Metric Ton,barang_3,RI,153
+764,34,Rak,barang_4,RI,153
+765,55,Ekor,barang_5,RI,153
+766,16,Kg,barang_1,RI,154
+767,42,Unit,barang_2,RI,154
+768,52,Metric Ton,barang_3,RI,154
+769,59,Rak,barang_4,RI,154
+770,93,Ekor,barang_5,RI,154
+771,35,Kg,barang_1,RI,155
+772,85,Unit,barang_2,RI,155
+773,46,Metric Ton,barang_3,RI,155
+774,87,Rak,barang_4,RI,155
+775,65,Ekor,barang_5,RI,155
+776,85,Kg,barang_1,RI,156
+777,44,Unit,barang_2,RI,156
+778,64,Metric Ton,barang_3,RI,156
+779,13,Rak,barang_4,RI,156
+780,50,Ekor,barang_5,RI,156
+781,90,Kg,barang_1,RI,157
+782,89,Unit,barang_2,RI,157
+783,70,Metric Ton,barang_3,RI,157
+784,68,Rak,barang_4,RI,157
+785,14,Ekor,barang_5,RI,157
+786,1,Kg,barang_1,RI,158
+787,44,Unit,barang_2,RI,158
+788,22,Metric Ton,barang_3,RI,158
+789,54,Rak,barang_4,RI,158
+790,83,Ekor,barang_5,RI,158
+791,7,Kg,barang_1,RI,159
+792,58,Unit,barang_2,RI,159
+793,11,Metric Ton,barang_3,RI,159
+794,78,Rak,barang_4,RI,159
+795,35,Ekor,barang_5,RI,159
+796,96,Kg,barang_1,RI,160
+797,80,Unit,barang_2,RI,160
+798,16,Metric Ton,barang_3,RI,160
+799,48,Rak,barang_4,RI,160
+800,65,Ekor,barang_5,RI,160
+801,62,Kg,barang_1,RI,161
+802,36,Unit,barang_2,RI,161
+803,81,Metric Ton,barang_3,RI,161
+804,19,Rak,barang_4,RI,161
+805,79,Ekor,barang_5,RI,161
+806,79,Kg,barang_1,RI,162
+807,57,Unit,barang_2,RI,162
+808,43,Metric Ton,barang_3,RI,162
+809,29,Rak,barang_4,RI,162
+810,38,Ekor,barang_5,RI,162
+811,86,Kg,barang_1,RI,163
+812,72,Unit,barang_2,RI,163
+813,17,Metric Ton,barang_3,RI,163
+814,60,Rak,barang_4,RI,163
+815,43,Ekor,barang_5,RI,163
+816,53,Kg,barang_1,RI,164
+817,100,Unit,barang_2,RI,164
+818,87,Metric Ton,barang_3,RI,164
+819,52,Rak,barang_4,RI,164
+820,81,Ekor,barang_5,RI,164
+821,81,Kg,barang_1,RI,165
+822,1,Unit,barang_2,RI,165
+823,16,Metric Ton,barang_3,RI,165
+824,50,Rak,barang_4,RI,165
+825,74,Ekor,barang_5,RI,165
+826,40,Kg,barang_1,RI,166
+827,31,Unit,barang_2,RI,166
+828,49,Metric Ton,barang_3,RI,166
+829,51,Rak,barang_4,RI,166
+830,94,Ekor,barang_5,RI,166
+831,71,Kg,barang_1,RI,167
+832,1,Unit,barang_2,RI,167
+833,44,Metric Ton,barang_3,RI,167
+834,77,Rak,barang_4,RI,167
+835,74,Ekor,barang_5,RI,167
+836,46,Kg,barang_1,RI,168
+837,66,Unit,barang_2,RI,168
+838,55,Metric Ton,barang_3,RI,168
+839,31,Rak,barang_4,RI,168
+840,71,Ekor,barang_5,RI,168
+841,62,Kg,barang_1,RI,169
+842,68,Unit,barang_2,RI,169
+843,16,Metric Ton,barang_3,RI,169
+844,38,Rak,barang_4,RI,169
+845,38,Ekor,barang_5,RI,169
+846,73,Kg,barang_1,RI,170
+847,1,Unit,barang_2,RI,170
+848,91,Metric Ton,barang_3,RI,170
+849,56,Rak,barang_4,RI,170
+850,67,Ekor,barang_5,RI,170
+851,93,Kg,barang_1,RI,171
+852,32,Unit,barang_2,RI,171
+853,8,Metric Ton,barang_3,RI,171
+854,88,Rak,barang_4,RI,171
+855,74,Ekor,barang_5,RI,171
+856,36,Kg,barang_1,RI,172
+857,55,Unit,barang_2,RI,172
+858,95,Metric Ton,barang_3,RI,172
+859,26,Rak,barang_4,RI,172
+860,23,Ekor,barang_5,RI,172
+861,2,Kg,barang_1,RI,173
+862,28,Unit,barang_2,RI,173
+863,16,Metric Ton,barang_3,RI,173
+864,30,Rak,barang_4,RI,173
+865,43,Ekor,barang_5,RI,173
+866,19,Kg,barang_1,RI,174
+867,96,Unit,barang_2,RI,174
+868,88,Metric Ton,barang_3,RI,174
+869,11,Rak,barang_4,RI,174
+870,81,Ekor,barang_5,RI,174

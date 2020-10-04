@@ -180,7 +180,7 @@
 
             <div class="card-body">
 
-                <form id="form_simpan" method="POST" action="<?php echo url("laporan/generate/process") ?>">
+                <form id="form_simpan" method="POST" enctype="multipart/form-data" action="<?php echo url("laporan/generate/process") ?>">
                     @csrf
                     <div id="hasil">
 
@@ -241,9 +241,18 @@
         var tahun = $("#input_tahun").val();
         var tgl1 = $("#input_tgl1").val();
         var tgl2 = $("#input_tgl2").val();
+        var jabatan = $("#input_jabatan").val();
+        var kelas = $("#input_kelas").val();
+        var nama = $("#input_nama").val();
+        var golongan = $("#input_golongan").val();
+        var nip = $("#input_nip").val();
 
         //            var url = "<?php echo url("laporan/generate/list2") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&pelabuhan_id=" + pelabuhan_id + "&jenis_pelayaran=" + jenis_pelayaran + "&bulan=" + bulan + "&tahun=" + tahun;
         var url = "<?php echo url("laporan/generate/list2") ?>";
+
+
+        // var tes = "<?php echo url("laporan/generate/list2") ?>?prov=" + prov + "&kab=" + kab + "&kantor_unit=" + kantor_unit + "&bulan=" + bulan + "&tahun=" + tahun;
+        // console.log(tes);
 
         //            alert("{{ csrf_token() }}-"+prov+"-"+kab+"-"+kantor_unit+"-"+pelabuhan_id+"-"+jenis_pelayaran+"-"+bulan+"-"+tahun);
 
@@ -259,7 +268,12 @@
                 tahun: tahun,
                 tgl1: tgl1,
                 tgl2: tgl2,
-                model_laporan: model_laporan
+                model_laporan: model_laporan,
+                jabatan: jabatan,
+                kelas: kelas,
+                nama: nama,
+                golongan: golongan,
+                nip: nip
             },
             success: function(data) {
                 var w = window.open('about:blank', 'Hasil Record');
