@@ -46,10 +46,9 @@
         }
     }
 
-    .r16-terpilih{
+    .r16-terpilih {
         background-color: orange;
     }
-
 </style>
 
 
@@ -343,9 +342,49 @@
 
                         </div>
 
+
+
+                        <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="modal-add-label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal-add-label">Tambah Barang</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="add_barang">
+                                            <div class="form-group">
+                                                <label for="add_nama">Nama Barang:</label>
+                                                <input type="text" class="form-control" id="add_nama">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="tabel_satuan">Nama Barang:</label>
+                                                <table id="tabel_satuan" class="table">
+                                                    <?php foreach($master_satuan as $x){ ?>
+                                                        <tr><?php echo $x->satuan ?></tr>
+                                                    <?php } ?>
+                                                </table>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                         <div class="tab-pane fade" id="tab-3a" role="tabpanel" aria-labelledby="pills-tab-3a">
                             <h3>III.a. Pelayaran Dalam Negeri (Bongkar Barang)</h3>
-                            <!-- Button trigger modal -->
 
                             <table class="table table-bordered">
 
@@ -360,24 +399,13 @@
 
                                 <tbody>
                                     <tr id="input-tambah-1">
-                                        <!-- <td><input class="form-control" type="text" id="input-r16n"></td> -->
 
                                         <td>
-                                            <!-- <select class="form-control" type="text" id="input-r16n">
-                                                <option value=''>-- Pilih Barang --</option>
-                                                <?php
-                                                foreach ($master_barang as $x) {
-                                                ?>
-                                                    <option value="<?php echo $x->barang ?>"><?php echo $x->barang ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select> -->
 
                                             <input id="input-r16n" class="form-control" type="text" data-toggle="modal" data-target="#modal-r16">
 
-                                            <br /><br />
-                                            Tidak menemukan barang? <a>tambah disini</a>
+                                            <br />
+                                            Tidak menemukan barang? <a href="#add_barang" data-toggle="modal" data-target="#modal-add">klik disini</a>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal-r16" tabindex="-1" role="dialog" aria-labelledby="modal-r16-label" aria-hidden="true">
@@ -392,7 +420,7 @@
                                                         <div class="modal-body">
 
                                                             <input type="text" id="cari_r16" onkeyup="funr16()" placeholder="Search...">
-                                                            <br/><br/>
+                                                            <br /><br />
 
                                                             <table class="table" id="tabel-r16">
                                                                 <thead>
@@ -409,14 +437,14 @@
                                                                         <tr class="list-r16">
                                                                             <td><?php echo $x->barang ?></td>
                                                                             <td>
-                                                                                <?php 
-                                                                                
+                                                                                <?php
+
                                                                                 $temp_satuan = explode(", ", $x->satuan);
                                                                                 $temp_konversi = explode(", ", $x->konversi);
 
                                                                                 $teks = [];
 
-                                                                                for ($i=0; $i<count($temp_satuan); $i++){
+                                                                                for ($i = 0; $i < count($temp_satuan); $i++) {
                                                                                     $teks[] = "<a href=# onclick=\"pilihr16('{$x->barang}', '{$temp_satuan[$i]}', {$temp_konversi[$i]})\">{$temp_satuan[$i]}</a>";
                                                                                 }
 
@@ -440,7 +468,7 @@
                                         </td>
 
                                         <td><input type="text" class="form-control" id="input-r16s" style="width: 150px;"></td>
-                                        <td><input class="form-control" type="number" id="input-r16" onkeyup="hitungkonversir16()"></td>
+                                        <td><input class="form-control" type="number" id="input-r16" onchange="hitungkonversir16()"></td>
                                         <td>
                                             <input type="hidden" id="temp_konversi_r16" value="0">
                                             <input class="form-control" type="text" id="input-r17">
@@ -448,7 +476,6 @@
                                 </tbody>
 
                             </table>
-
 
                             <button type="button" id='tambah-1'>
                                 Tambah
@@ -463,7 +490,7 @@
                                         <th>Jumlah Barang</th>
                                         <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
@@ -488,33 +515,92 @@
 
                                 <thead>
                                     <tr>
-                                        <th>Jumlah Barang</th>
-                                        <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Satuan</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr id="input-tambah-2">
-                                        <td><input class="form-control" type="number" id="input-r18"></td>
-                                        <td><select class="form-control" id="input-r18s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
-                                            </select></td>
-                                        <td><input class="form-control" type="text" id="input-r18n"></td>
-                                        <td><input class="form-control" type="text" id="input-r19"></td>
+                                    <tr id="input-tambah-1">
+
+                                        <td>
+
+                                            <input id="input-r18n" class="form-control" type="text" data-toggle="modal" data-target="#modal-r18">
+
+                                            <br /><br />
+                                            Tidak menemukan barang? <a>tambah disini</a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal-r18" tabindex="-1" role="dialog" aria-labelledby="modal-r18-label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modal-r18-label">Pilih Nama Barang</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <input type="text" id="cari_r18" onkeyup="funr18()" placeholder="Search...">
+                                                            <br /><br />
+
+                                                            <table class="table" id="tabel-r18">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Barang</th>
+                                                                        <th>Satuan</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    <?php
+                                                                    foreach ($master_barang as $x) {
+                                                                    ?>
+                                                                        <tr class="list-r18">
+                                                                            <td><?php echo $x->barang ?></td>
+                                                                            <td>
+                                                                                <?php
+
+                                                                                $temp_satuan = explode(", ", $x->satuan);
+                                                                                $temp_konversi = explode(", ", $x->konversi);
+
+                                                                                $teks = [];
+
+                                                                                for ($i = 0; $i < count($temp_satuan); $i++) {
+                                                                                    $teks[] = "<a href=# onclick=\"pilihr18('{$x->barang}', '{$temp_satuan[$i]}', {$temp_konversi[$i]})\">{$temp_satuan[$i]}</a>";
+                                                                                }
+
+                                                                                echo implode(", ", $teks);
+
+                                                                                ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php } ?>
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td><input type="text" class="form-control" id="input-r18s" style="width: 150px;"></td>
+                                        <td><input class="form-control" type="number" id="input-r18" onchange="hitungkonversir18()"></td>
+                                        <td>
+                                            <input type="hidden" id="temp_konversi_r18" value="0">
+                                            <input class="form-control" type="text" id="input-r19">
+                                        </td>
                                 </tbody>
 
                             </table>
-
 
                             <button type="button" id='tambah-2'>
                                 Tambah
@@ -529,7 +615,7 @@
                                         <th>Jumlah Barang</th>
                                         <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
@@ -548,39 +634,96 @@
 
                         <div class="tab-pane fade" id="tab-4a" role="tabpanel" aria-labelledby="pills-tab-4a">
                             <h3>IV.a. Pelayaran Luar Negeri (Bongkar Barang)</h3>
-                            <!-- Button trigger modal -->
-
                             <table class="table table-bordered">
 
                                 <thead>
                                     <tr>
-                                        <th>Jumlah Barang</th>
-                                        <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Satuan</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr id="input-tambah-3">
-                                        <td><input class="form-control" type="number" id="input-r20"></td>
-                                        <td><select class="form-control" id="input-r20s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
-                                            </select></td>
-                                        <td><input class="form-control" type="text" id="input-r20n"></td>
-                                        <td><input class="form-control" type="text" id="input-r20k"></td>
+                                    <tr id="input-tambah-1">
+
+                                        <td>
+
+                                            <input id="input-r20n" class="form-control" type="text" data-toggle="modal" data-target="#modal-r20">
+
+                                            <br /><br />
+                                            Tidak menemukan barang? <a>tambah disini</a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal-r20" tabindex="-1" role="dialog" aria-labelledby="modal-r20-label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modal-r20-label">Pilih Nama Barang</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <input type="text" id="cari_r20" onkeyup="funr20()" placeholder="Search...">
+                                                            <br /><br />
+
+                                                            <table class="table" id="tabel-r20">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Barang</th>
+                                                                        <th>Satuan</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    <?php
+                                                                    foreach ($master_barang as $x) {
+                                                                    ?>
+                                                                        <tr class="list-r20">
+                                                                            <td><?php echo $x->barang ?></td>
+                                                                            <td>
+                                                                                <?php
+
+                                                                                $temp_satuan = explode(", ", $x->satuan);
+                                                                                $temp_konversi = explode(", ", $x->konversi);
+
+                                                                                $teks = [];
+
+                                                                                for ($i = 0; $i < count($temp_satuan); $i++) {
+                                                                                    $teks[] = "<a href=# onclick=\"pilihr20('{$x->barang}', '{$temp_satuan[$i]}', {$temp_konversi[$i]})\">{$temp_satuan[$i]}</a>";
+                                                                                }
+
+                                                                                echo implode(", ", $teks);
+
+                                                                                ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php } ?>
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td><input type="text" class="form-control" id="input-r20s" style="width: 150px;"></td>
+                                        <td><input class="form-control" type="number" id="input-r20" onchange="hitungkonversir20()"></td>
+                                        <td>
+                                            <input type="hidden" id="temp_konversi_r20k" value="0">
+                                            <input class="form-control" type="text" id="input-r20k">
+                                        </td>
                                 </tbody>
 
                             </table>
-
 
                             <button type="button" id='tambah-3'>
                                 Tambah
@@ -595,7 +738,7 @@
                                         <th>Jumlah Barang</th>
                                         <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
@@ -613,39 +756,96 @@
 
                         <div class="tab-pane fade" id="tab-4b" role="tabpanel" aria-labelledby="pills-tab-4b">
                             <h3>IV.b. Pelayaran Luar Negeri (Muat Barang)</h3>
-                            <!-- Button trigger modal -->
-
                             <table class="table table-bordered">
 
                                 <thead>
                                     <tr>
-                                        <th>Jumlah Barang</th>
-                                        <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Satuan</th>
+                                        <th>Jumlah Barang</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr id="input-tambah-4">
-                                        <td><input class="form-control" type="number" id="input-r21"></td>
-                                        <td><select class="form-control" id="input-r21s">
-                                                <option value="Kg">Kg</option>
-                                                <option value="Metric Ton">Metric Ton</option>
-                                                <option value="Ton">Ton</option>
-                                                <option value="M3">M3</option>
-                                                <option value="Unit">Unit</option>
-                                                <option value="Batang">Batang</option>
-                                                <option value="Ekor">Ekor</option>
-                                                <option value="Bal">Bal</option>
-                                                <option value="Rak">Rak</option>
-                                            </select></td>
-                                        <td><input class="form-control" type="text" id="input-r21n"></td>
-                                        <td><input class="form-control" type="text" id="input-r21k"></td>
+                                    <tr id="input-tambah-1">
+
+                                        <td>
+
+                                            <input id="input-r21n" class="form-control" type="text" data-toggle="modal" data-target="#modal-r21">
+
+                                            <br /><br />
+                                            Tidak menemukan barang? <a>tambah disini</a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal-r21" tabindex="-1" role="dialog" aria-labelledby="modal-r21-label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modal-r21-label">Pilih Nama Barang</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <input type="text" id="cari_r21" onkeyup="funr21()" placeholder="Search...">
+                                                            <br /><br />
+
+                                                            <table class="table" id="tabel-r21">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Barang</th>
+                                                                        <th>Satuan</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    <?php
+                                                                    foreach ($master_barang as $x) {
+                                                                    ?>
+                                                                        <tr class="list-r21">
+                                                                            <td><?php echo $x->barang ?></td>
+                                                                            <td>
+                                                                                <?php
+
+                                                                                $temp_satuan = explode(", ", $x->satuan);
+                                                                                $temp_konversi = explode(", ", $x->konversi);
+
+                                                                                $teks = [];
+
+                                                                                for ($i = 0; $i < count($temp_satuan); $i++) {
+                                                                                    $teks[] = "<a href=# onclick=\"pilihr21('{$x->barang}', '{$temp_satuan[$i]}', {$temp_konversi[$i]})\">{$temp_satuan[$i]}</a>";
+                                                                                }
+
+                                                                                echo implode(", ", $teks);
+
+                                                                                ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php } ?>
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td><input type="text" class="form-control" id="input-r21s" style="width: 150px;"></td>
+                                        <td><input class="form-control" type="number" id="input-r21" onchange="hitungkonversir21()"></td>
+                                        <td>
+                                            <input type="hidden" id="temp_konversi_r21k" value="0">
+                                            <input class="form-control" type="text" id="input-r21k">
+                                        </td>
                                 </tbody>
 
                             </table>
-
 
                             <button type="button" id='tambah-4'>
                                 Tambah
@@ -660,7 +860,7 @@
                                         <th>Jumlah Barang</th>
                                         <th>Satuan</th>
                                         <th>Nama Barang</th>
-                                        <th>Bendera</th>
+                                        <th>Konversi (Ton)</th>
                                     </tr>
                                 </thead>
 
@@ -769,12 +969,125 @@
         $("#modal-r16").modal("hide");
     }
 
-    function hitungkonversir16(){
-        var score = $("#input-r16").val()*$("#temp_konversi_r16").val();
+    function hitungkonversir16() {
+        var score = $("#input-r16").val() * $("#temp_konversi_r16").val();
         score = score.toFixed(4);
         $("#input-r17").val(score);
     }
 
+    function funr18() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("cari_r18");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tabel-r18");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function pilihr18(barang, satuan, konversi) {
+        document.getElementById("input-r18n").value = barang;
+        document.getElementById("input-r18s").value = satuan;
+        document.getElementById("input-r18").value = 0;
+        document.getElementById("input-r19").value = 0;
+
+        document.getElementById("temp_konversi_r18").value = konversi;
+        $("#modal-r18").modal("hide");
+    }
+
+    function hitungkonversir18() {
+        var score = $("#input-r18").val() * $("#temp_konversi_r18").val();
+        score = score.toFixed(4);
+        $("#input-r19").val(score);
+    }
+
+    function funr20() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("cari_r20");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tabel-r20");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function pilihr20(barang, satuan, konversi) {
+        document.getElementById("input-r20n").value = barang;
+        document.getElementById("input-r20s").value = satuan;
+        document.getElementById("input-r20").value = 0;
+        document.getElementById("input-r20k").value = 0;
+
+        document.getElementById("temp_konversi_r20k").value = konversi;
+        $("#modal-r20").modal("hide");
+    }
+
+    function hitungkonversir20() {
+        var score = $("#input-r20").val() * $("#temp_konversi_r20k").val();
+        score = score.toFixed(4);
+        $("#input-r20k").val(score);
+    }
+
+    function funr21() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("cari_r21");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tabel-r21");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function pilihr21(barang, satuan, konversi) {
+        document.getElementById("input-r21n").value = barang;
+        document.getElementById("input-r21s").value = satuan;
+        document.getElementById("input-r21").value = 0;
+        document.getElementById("input-r21k").value = 0;
+
+        document.getElementById("temp_konversi_r21k").value = konversi;
+        $("#modal-r21").modal("hide");
+    }
+
+    function hitungkonversir21() {
+        var score = $("#input-r21").val() * $("#temp_konversi_r21k").val();
+        score = score.toFixed(4);
+        $("#input-r21k").val(score);
+    }
 </script>
 
 

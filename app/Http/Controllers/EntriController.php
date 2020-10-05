@@ -423,13 +423,15 @@ class EntriController extends Controller
         }
 
         $master_barang = DB::select('select * from master_barang order by barang');
+        $master_satuan = DB::select('select * from master_satuan order by satuan');
 
         return view('entri/add', [
             "prov" => $prov,
             "kab" => $kab,
             "kantor_unit" => $kantor_unit,
             "pelabuhan" => $pelabuhan,
-            "master_barang" => $master_barang
+            "master_barang" => $master_barang,
+            "master_satuan" => $master_satuan
         ]);
     }
 
