@@ -98,9 +98,11 @@ Route::post('user/hapus/process', 'UserController@hapus_process')->middleware("l
 });
 
 
+// ============================================================== //
+//                              Ajax                              //
+// ============================================================== //
 
-
-
+Route::get('ajax/add_barang', 'AjaxController@add_tambah_barang');
 
 
 Route::get('generate-pdf', 'PDFController@generatePDF');

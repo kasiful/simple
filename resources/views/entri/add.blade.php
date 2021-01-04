@@ -54,7 +54,7 @@
 
 <!--<style>
     #tabel_menu{
-        border-collapse:separate; 
+        border-collapse:separate;
         border-spacing: 5px;
     }
 </style>-->
@@ -71,8 +71,6 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col">
-
-
 
         <div class="card shadow">
             <div class="card-header py-3">
@@ -357,14 +355,25 @@
                                         <form id="add_barang">
                                             <div class="form-group">
                                                 <label for="add_nama">Nama Barang:</label>
-                                                <input type="text" class="form-control" id="add_nama">
+                                                <input type="text" class="form-control" id="add_nama" name="add_nama">
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="tabel_satuan">Nama Barang:</label>
+                                                <label for="tabel_satuan">Satuan:</label>
+
                                                 <table id="tabel_satuan" class="table">
-                                                    <?php foreach($master_satuan as $x){ ?>
-                                                        <tr><?php echo $x->satuan ?></tr>
+                                                    <?php foreach ($master_satuan as $key => $x) { ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $x->satuan ?>
+                                                            </td>
+                                                            <td>
+                                                                <input class="form-control add_satuan" type="checkbox" name="add_satuan[]" value="<?php echo $x->satuan ?>" id="id_satuan_<?php echo $key ?>" onclick="add_satuan_clicked('<?php echo $key ?>')">
+                                                            </td>
+                                                            <td style="max-width: 50px;">
+                                                                <input class="form-control add_konversi" type="number" name="add_konversi[]" id="id_konversi_<?php echo $key ?>" style="display: none">
+                                                            </td>
+                                                        </tr>
                                                     <?php } ?>
                                                 </table>
                                             </div>
@@ -374,7 +383,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary" id="simpan_perubahan" onclick="simpanPerubahan()">Simpan Perubahan</button>
                                     </div>
                                 </div>
                             </div>
@@ -1329,6 +1338,100 @@ if (isset($_GET['status'])) {
 
     });
 </script>
+
+
+<script>
+    function add_satuan_clicked(key) {
+        if (document.getElementById("id_satuan_" + key).checked) {
+            // alert(document.getElementById("id_satuan_"+key).checked);
+            document.getElementById("id_konversi_" + key).setAttribute("style", "display: block");
+        } else {
+            // alert(document.getElementById("id_satuan_"+key).checked);
+            document.getElementById("id_konversi_" + key).setAttribute("style", "display: none");
+            document.getElementById("id_konversi_" + key).value = "";
+        }
+    }
+
+    function simpanPerubahan() {
+        var nama = document.getElementById("add_nama").value;
+        var temp_satuan = document.getElementsByClassName("add_satuan");
+        var temp_konversi = document.getElementsByClassName("add_konversi");
+
+        var satuan = [];
+        var konversi = [];
+
+        for (let i = 0; i < temp_satuan.length; i++) {
+            if (temp_satuan[i].checked) {
+                satuan.push(temp_satuan[i].value);
+                konversi.push(temp_konversi[i].value);
+            }
+        }
+
+        if (satuan.length > 0) {
+            satuan = satuan.join(", ");
+            konversi = konversi.join(", ");
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                // document.getElementById("tabel-r16").innerHTML = "HAHAHAHAHA";
+
+                    var temp = this.responseText;
+                    temp = JSON.parse(temp)
+                    console.log(temp);
+
+                    temp = temp.list_barang;
+
+                    console.log("temp");
+                    console.log(temp);
+
+                    var list_code = ["r16", "r18", "r20", "r21"];
+
+                    for (let code of list_code){
+
+                        // console.log(code);
+
+                        var teks = "";
+                        for (let x of temp){
+                            teks = teks + "<tr class='list-"+code+"'>";
+                            teks = teks + "<td>"+x.barang+"</td>";
+
+
+                            temp_satuan = x.satuan;
+                            temp_satuan = temp_satuan.split(", ");
+                            temp_konversi = x.konversi;
+                            temp_konversi = temp_konversi.split(", ");
+
+                            console.log(temp_satuan);
+
+                            teks = teks + "<td>";
+
+                            for(let i = 0; i<temp_satuan.length; i++){
+                                teks = teks + "<a href='#' onclick=\"pilih"+code+"('"+x.barang+"', '"+temp_satuan[i]+"', "+temp_konversi[i]+")\">"+temp_satuan[i]+"</a>, ";
+                            }
+
+                            teks = teks + "</td>";
+                            teks = teks + "</tr>";
+
+                            // alert(teks);
+
+                        }
+
+                        // alert(teks);
+                        document.getElementById("tabel-"+code).innerHTML = teks;
+                    }
+                    alert("data berhasil ditambahkan ke database");
+                }
+            };
+
+            xhttp.open("GET", "<?php echo url("ajax/add_barang") ?>?nama=" + nama + "&satuan=" + satuan + "&konversi=" + konversi, true);
+            xhttp.send();
+
+        }
+
+    }
+</script>
+
 
 
 <!--<script src="<?php echo asset('form_template') ?>/js_edited.js"></script>-->
