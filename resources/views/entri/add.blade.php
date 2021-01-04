@@ -352,7 +352,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="add_barang">
+                                        <var id="add_barang">
                                             <div class="form-group">
                                                 <label for="add_nama">Nama Barang:</label>
                                                 <input type="text" class="form-control" id="add_nama" name="add_nama">
@@ -378,7 +378,7 @@
                                                 </table>
                                             </div>
 
-                                        </form>
+                                        </var>
 
                                     </div>
                                     <div class="modal-footer">
